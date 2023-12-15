@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>使用Hexo+Gitee搭建个人博客 | PengHC</title>
+  <title>使用Hexo+Gitee/GitHub搭建个人博客 | PHC&#39;s Personal Blog</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -198,8 +198,8 @@
   <div class="drawer-box" :class="{'active': visible}">
     <div class="drawer-box-head bg-color">
       <img class="drawer-box-head_logo lazyload placeholder" src="/medias/logo.png" class="lazyload placeholder" data-srcset="/medias/logo.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="logo">
-      <h3 class="drawer-box-head_title">PengHC</h3>
-      <h5 class="drawer-box-head_desc"></h5>
+      <h3 class="drawer-box-head_title">PHC&#39;s Personal Blog</h3>
+      <h5 class="drawer-box-head_desc">这是我的个人博客，存放了我的学习笔记，欢迎访问 ^_^</h5>
     </div>
     
     <div class="drawer-box-content">
@@ -270,7 +270,7 @@
           <img src="/medias/logo.png" class="lazyload placeholder" data-srcset="/medias/logo.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="logo">
         </div>
       
-      <a href="/" class="logo">PengHC</a>
+      <a href="/" class="logo">PHC&#39;s Personal Blog</a>
     </div>
     <nav class="navbar">
       <ul class="menu">
@@ -409,7 +409,7 @@
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        使用Hexo+Gitee搭建个人博客
+        使用Hexo+Gitee/GitHub搭建个人博客
       </span>
     </div>
     
@@ -440,22 +440,42 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="使用Hexo-Gitee搭建个人博客"><a href="#使用Hexo-Gitee搭建个人博客" class="headerlink" title="使用Hexo+Gitee搭建个人博客"></a>使用Hexo+Gitee搭建个人博客</h1><hr>
-<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><blockquote>
+        <h1 id="使用Hexo-Gitee-GitHub搭建个人博客"><a href="#使用Hexo-Gitee-GitHub搭建个人博客" class="headerlink" title="使用Hexo+Gitee&#x2F;GitHub搭建个人博客"></a>使用Hexo+Gitee&#x2F;GitHub搭建个人博客</h1><hr>
+<h2 id="前期工作"><a href="#前期工作" class="headerlink" title="前期工作"></a>前期工作</h2><blockquote>
 <ol>
+<li><p>本机电脑安装<code>Git</code>工具和<code>.Net</code></p>
+</li>
 <li><p>打开<code>windows</code>下的<code>cmd</code>命令行输入以下内容安装<code>Hexo</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install hexo-cli -g</span><br></pre></td></tr></table></figure>
 
 <p><img src="/images/%E4%BD%BF%E7%94%A8Hexo+Gitee%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%AE%89%E8%A3%85Hexo.png" class="lazyload placeholder" data-srcset="/images/%E4%BD%BF%E7%94%A8Hexo+Gitee%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%AE%89%E8%A3%85Hexo.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
 </li>
-<li><p>推荐学习：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Memory_888/article/details/129706462">Hexo+Gitee 搭建“个人博客”-CSDN博客</a></p>
+</ol>
+</blockquote>
+<h2 id="Hexo-Gitee"><a href="#Hexo-Gitee" class="headerlink" title="Hexo+Gitee"></a>Hexo+Gitee</h2><blockquote>
+<ol>
+<li><p>参考博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Memory_888/article/details/129706462">Hexo+Gitee 搭建“个人博客”-CSDN博客</a></p>
 </li>
 <li><p>主题：</p>
 <p>（1）主题库：<a target="_blank" rel="noopener" href="https://hexo.io/themes/">https://hexo.io/themes/</a></p>
 <p>（2）推荐主题：<a target="_blank" rel="noopener" href="https://github.com/yuang01/hexo-theme-bamboo">https://github.com/yuang01/hexo-theme-bamboo</a></p>
 </li>
 <li><p>博客推送</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo generate &amp;&amp; hexo server &amp;&amp; hexo deploy</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo clean #网站缓存清理</span><br><span class="line">hexo generate #生成网站内容</span><br><span class="line">hexo server #启动hexo服务器</span><br><span class="line">hexo deploy # 部署网站到服务器</span><br></pre></td></tr></table></figure></li>
+</ol>
+</blockquote>
+<h2 id="Hexo-GitHub"><a href="#Hexo-GitHub" class="headerlink" title="Hexo+GitHub"></a>Hexo+GitHub</h2><blockquote>
+<ol>
+<li><p>在<code>blog</code>目录下执行如下<code>hexo</code>命令，将本地网站部署到<code>github</code>中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy --repo=https://github.com/Peng-HC/Peng-HC.git</span><br></pre></td></tr></table></figure>
+
+<p>部署成功后，能在<code>https://github.com/Peng-HC/Peng-HC.git</code>网站上看到上传的代码</p>
+<p><img src="/images/%E4%BD%BF%E7%94%A8Hexo+Gitee%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/Hexo%E9%83%A8%E7%BD%B2%E7%BD%91%E7%AB%99%E5%88%B0Github.png" class="lazyload placeholder" data-srcset="/images/%E4%BD%BF%E7%94%A8Hexo+Gitee%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/Hexo%E9%83%A8%E7%BD%B2%E7%BD%91%E7%AB%99%E5%88%B0Github.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Hexo部署网站到Github"></p>
+</li>
+<li><p>参考文档：<a target="_blank" rel="noopener" href="https://docs.github.com/en/pages/quickstart%EF%BC%88%E9%9C%80%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%EF%BC%89">https://docs.github.com/en/pages/quickstart（需科学上网）</a></p>
+</li>
+<li><p>部署成功后，可以通过**<code>https://peng-hc.github.io/</code>**访问个人博客（但Github不稳定，外界访问也需科学上网）</p>
+</li>
 </ol>
 </blockquote>
 <h2 id="解决npm-install执行速度慢的问题"><a href="#解决npm-install执行速度慢的问题" class="headerlink" title="解决npm install执行速度慢的问题"></a>解决<code>npm install</code>执行速度慢的问题</h2><blockquote>
@@ -490,6 +510,11 @@
 </li>
 </ol>
 </blockquote>
+<h3 id="Gitee实名认证审核周期过长"><a href="#Gitee实名认证审核周期过长" class="headerlink" title="Gitee实名认证审核周期过长"></a>Gitee实名认证审核周期过长</h3><blockquote>
+<p><code>Gitee Page</code>需要实名认证审核，周期很长</p>
+<p><img src="/images/%E4%BD%BF%E7%94%A8Hexo+Gitee%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E5%AE%9E%E5%90%8D%E8%AE%A4%E8%AF%81%E5%91%A8%E6%9C%9F%E9%95%BF.png" class="lazyload placeholder" data-srcset="/images/%E4%BD%BF%E7%94%A8Hexo+Gitee%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E5%AE%9E%E5%90%8D%E8%AE%A4%E8%AF%81%E5%91%A8%E6%9C%9F%E9%95%BF.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
+<p><img src="/images/%E4%BD%BF%E7%94%A8Hexo+Gitee%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E5%AE%9E%E5%90%8D%E8%AE%A4%E8%AF%81%E5%91%A8%E6%9C%9F%E9%95%BF2.png" class="lazyload placeholder" data-srcset="/images/%E4%BD%BF%E7%94%A8Hexo+Gitee%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E5%AE%9E%E5%90%8D%E8%AE%A4%E8%AF%81%E5%91%A8%E6%9C%9F%E9%95%BF2.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
+</blockquote>
 
       </div>
       <div class="post-tags-categories">
@@ -508,6 +533,10 @@
               个人博客
             </a>
           
+            <a href="/tags/github/" class="">
+              github
+            </a>
+          
         </div>
         
       </div>
@@ -515,11 +544,11 @@
         <div class="copyright">
   <ul class="post-copyright">
     <li class="post-copyright-author">
-    <strong>author:  </strong>Peng Hao Chao</a>
+    <strong>author:  </strong>彭浩超</a>
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/2023/12/14/使用Hexo-Gitee搭建个人博客/" target="_blank" title="使用Hexo+Gitee搭建个人博客">https://phc-seu.gitee.io/2023/12/14/使用Hexo-Gitee搭建个人博客/</a>
+    <a href="/2023/12/14/使用Hexo-Gitee搭建个人博客/" target="_blank" title="使用Hexo+Gitee/GitHub搭建个人博客">https://peng-hc.github.io/2023/12/14/使用Hexo-Gitee搭建个人博客/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -725,7 +754,7 @@
 
         
         
-          <p><span id="jinrishici-sentence">PengHC</span></p>
+          <p><span id="jinrishici-sentence">PHC's Personal Blog</span></p>
           <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
         
       </div>
@@ -794,7 +823,7 @@
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Hexo-Gitee%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2"><span class="toc-text">使用Hexo+Gitee搭建个人博客</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Hexo"><span class="toc-text">安装Hexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3npm-install%E6%89%A7%E8%A1%8C%E9%80%9F%E5%BA%A6%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">解决npm install执行速度慢的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">遇到的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E4%B8%8E%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2%E7%9A%84%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%E4%B8%8D%E4%B8%80%E8%87%B4%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">本地部署与网站部署的图片路径不一致的问题</span></a></li></ol></li></ol></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Hexo-Gitee-GitHub%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2"><span class="toc-text">使用Hexo+Gitee&#x2F;GitHub搭建个人博客</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E6%9C%9F%E5%B7%A5%E4%BD%9C"><span class="toc-text">前期工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo-Gitee"><span class="toc-text">Hexo+Gitee</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo-GitHub"><span class="toc-text">Hexo+GitHub</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3npm-install%E6%89%A7%E8%A1%8C%E9%80%9F%E5%BA%A6%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">解决npm install执行速度慢的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">遇到的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E4%B8%8E%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2%E7%9A%84%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%E4%B8%8D%E4%B8%80%E8%87%B4%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">本地部署与网站部署的图片路径不一致的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Gitee%E5%AE%9E%E5%90%8D%E8%AE%A4%E8%AF%81%E5%AE%A1%E6%A0%B8%E5%91%A8%E6%9C%9F%E8%BF%87%E9%95%BF"><span class="toc-text">Gitee实名认证审核周期过长</span></a></li></ol></li></ol></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
@@ -901,7 +930,7 @@
                   <span class="post-date">12-14</span>
                 
               </div>
-              <a class="post-title" href="/2023/12/14/%E4%BD%BF%E7%94%A8Hexo-Gitee%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">使用Hexo+Gitee搭建个人博客</a>
+              <a class="post-title" href="/2023/12/14/%E4%BD%BF%E7%94%A8Hexo-Gitee%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">使用Hexo+Gitee/GitHub搭建个人博客</a>
             </div>
           </div>
         
@@ -1820,8 +1849,8 @@
 <!-- 鼠标点击特效 -->
 <!-- 爱心点击 -->
 
-   
-    <script src="/js/cursor/clicklove.js"></script> 
+  
+    <script src="/js/cursor/text.js"></script>
   
 
 
