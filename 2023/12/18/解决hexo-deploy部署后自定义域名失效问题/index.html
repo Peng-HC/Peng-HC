@@ -443,7 +443,7 @@
         <h1 id="解决hexo-deploy部署后自定义域名失效问题"><a href="#解决hexo-deploy部署后自定义域名失效问题" class="headerlink" title="解决hexo deploy部署后自定义域名失效问题"></a>解决hexo deploy部署后自定义域名失效问题</h1><hr>
 <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><blockquote>
 <p>本地执行<code>hexo deploy</code>将网页部署到服务器上后，访问自定义域名<code>penghc.cn</code>，发现报404网页无法找到</p>
-<p><img src="/2023/12/18/%E8%A7%A3%E5%86%B3hexo-deploy%E9%83%A8%E7%BD%B2%E5%90%8E%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/404%E6%8A%A5%E9%94%99.png" class="lazyload placeholder" data-srcset="/2023/12/18/%E8%A7%A3%E5%86%B3hexo-deploy%E9%83%A8%E7%BD%B2%E5%90%8E%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/404%E6%8A%A5%E9%94%99.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="404报错"></p>
+<p><img src="/images/%E8%A7%A3%E5%86%B3hexo-deploy%E9%83%A8%E7%BD%B2%E5%90%8E%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/404%E6%8A%A5%E9%94%99.png" class="lazyload placeholder" data-srcset="/images/%E8%A7%A3%E5%86%B3hexo-deploy%E9%83%A8%E7%BD%B2%E5%90%8E%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/404%E6%8A%A5%E9%94%99.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="404报错"></p>
 <p>查看Github pages的setting发现Custom domain也被清空了，代码中也不存在<code>CNAME</code>文件了</p>
 <p>在<code>Custom domain</code>手动添加上域名后，访问正常。但我们也不能每次部署网页到服务器都去setting中手动添加域名呀，这也太麻烦了。</p>
 </blockquote>
@@ -453,7 +453,7 @@
 <li><p>配置正确的<code>Custom domain</code>。</p>
 </li>
 <li><p>到本地<code>source</code>目录下，创建<code>CNAME</code>文件，并在里面写入自定义的域名。</p>
-<p><img src="/2023/12/18/%E8%A7%A3%E5%86%B3hexo-deploy%E9%83%A8%E7%BD%B2%E5%90%8E%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/source%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%B7%BB%E5%8A%A0CNAME%E6%96%87%E4%BB%B6.png" class="lazyload placeholder" data-srcset="/2023/12/18/%E8%A7%A3%E5%86%B3hexo-deploy%E9%83%A8%E7%BD%B2%E5%90%8E%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/source%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%B7%BB%E5%8A%A0CNAME%E6%96%87%E4%BB%B6.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
+<p><img src="/images/%E8%A7%A3%E5%86%B3hexo-deploy%E9%83%A8%E7%BD%B2%E5%90%8E%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/source%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%B7%BB%E5%8A%A0CNAME%E6%96%87%E4%BB%B6.png" class="lazyload placeholder" data-srcset="/images/%E8%A7%A3%E5%86%B3hexo-deploy%E9%83%A8%E7%BD%B2%E5%90%8E%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/source%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%B7%BB%E5%8A%A0CNAME%E6%96%87%E4%BB%B6.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
 </li>
 <li><p>重新发布</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo generate &amp;&amp; hexo deploy</span><br></pre></td></tr></table></figure></li>
