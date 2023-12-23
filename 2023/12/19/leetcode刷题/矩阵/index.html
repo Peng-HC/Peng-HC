@@ -479,6 +479,65 @@
 <p>时间复杂度：<code>O(n^2)</code></p>
 <p>空间复杂度：<code>O(1)</code></p>
 </blockquote>
+<h2 id="LC240-搜索二维矩阵-II"><a href="#LC240-搜索二维矩阵-II" class="headerlink" title="LC240. 搜索二维矩阵 II"></a>LC240. 搜索二维矩阵 II</h2><h3 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/search-a-2d-matrix-ii/">240. 搜索二维矩阵 II</a></p>
+<p>编写一个高效的算法来搜索 <code>*m* x *n*</code> 矩阵 <code>matrix</code> 中的一个目标值 <code>target</code> 。该矩阵具有以下特性：</p>
+<ul>
+<li>每行的元素从左到右升序排列。</li>
+<li>每列的元素从上到下升序排列。</li>
+</ul>
+<p><strong>示例 1：</strong></p>
+<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/11/25/searchgrid2.jpg" class="lazyload placeholder" data-srcset="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/11/25/searchgrid2.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="img"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], target = 5</span><br><span class="line">输出：true</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/11/25/searchgrid.jpg" class="lazyload placeholder" data-srcset="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/11/25/searchgrid.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="img"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], target = 20</span><br><span class="line">输出：false</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>m == matrix.length</code></li>
+<li><code>n == matrix[i].length</code></li>
+<li><code>1 &lt;= n, m &lt;= 300</code></li>
+<li><code>-109 &lt;= matrix[i][j] &lt;= 109</code></li>
+<li>每行的所有元素从左到右升序排列</li>
+<li>每列的所有元素从上到下升序排列</li>
+<li><code>-109 &lt;= target &lt;= 109</code></li>
+</ul>
+</blockquote>
+<h3 id="解题方法-1"><a href="#解题方法-1" class="headerlink" title="解题方法"></a>解题方法</h3><h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><blockquote>
+<p>从右上角开始遍历</p>
+<ul>
+<li>若<code>target&gt;matrix[row][col]</code>，那么row++，即丢弃改行。因为该行已经没有比<code>matrix[row][col]</code>更大的了</li>
+<li>若<code>target&lt;matrix[row][col]</code>，那么col–，即丢弃改列。因为该列已经没有比<code>matrix[row][col]</code>更小的了</li>
+<li>若<code>target==matrix[row][col]</code>，则<code>return true</code>;</li>
+</ul>
+</blockquote>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><blockquote>
+<p>数组从左到右和从上到下都是升序的，如果从右上角出发开始遍历呢？会发现每次都是向左数字会变小，向下数字会变大，有点和二分查找树相似。二分查找树的话，是向左数字变小，向右数字变大。</p>
+<p>所以我们可以把 target 和当前值比较。</p>
+<ul>
+<li><p>如果 target 的值大于当前值，那么就向下走。</p>
+</li>
+<li><p>如果 target 的值小于当前值，那么就向左走。</p>
+</li>
+<li><p>如果相等的话，直接返回 true 。</p>
+</li>
+</ul>
+<p>也可以换个角度思考。</p>
+<ul>
+<li>如果 target 的值小于当前值，也就意味着当前值所在的列肯定不会存在 target 了，可以把当前列去掉，从新的右上角的值开始遍历。</li>
+<li>同理，如果 target 的值大于当前值，也就意味着当前值所在的行肯定不会存在 target 了，可以把当前行去掉，从新的右上角的值开始遍历。</li>
+</ul>
+<p>看下边的例子。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">[1,   4,  7, 11, 15],</span><br><span class="line">[2,   5,  8, 12, 19],</span><br><span class="line">[3,   6,  9, 16, 22],</span><br><span class="line">[10, 13, 14, 17, 24],</span><br><span class="line">[18, 21, 23, 26, 30]</span><br><span class="line"></span><br><span class="line">如果 target  = 9，如果我们从 15 开始遍历, cur = 15</span><br><span class="line">    </span><br><span class="line">target &lt; 15, 去掉当前列, cur = 11</span><br><span class="line">[1,   4,  7, 11],</span><br><span class="line">[2,   5,  8, 12],</span><br><span class="line">[3,   6,  9, 16],</span><br><span class="line">[10, 13, 14, 17],</span><br><span class="line">[18, 21, 23, 26]    </span><br><span class="line">    </span><br><span class="line">target &lt; 11, 去掉当前列, cur = 7  </span><br><span class="line">[1,   4,  7],</span><br><span class="line">[2,   5,  8],</span><br><span class="line">[3,   6,  9],</span><br><span class="line">[10, 13, 14],</span><br><span class="line">[18, 21, 23]     </span><br><span class="line"></span><br><span class="line">target &gt; 7, 去掉当前行, cur = 8   </span><br><span class="line">[2,   5,  8],</span><br><span class="line">[3,   6,  9],</span><br><span class="line">[10, 13, 14],</span><br><span class="line">[18, 21, 23]       </span><br><span class="line"></span><br><span class="line">target &gt; 8, 去掉当前行, cur = 9, 遍历结束    </span><br><span class="line">[3,   6,  9],</span><br><span class="line">[10, 13, 14],</span><br><span class="line">[18, 21, 23]</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 从右上角开始遍历</span></span><br><span class="line"><span class="comment">// 若target&gt;matrix[row][col]，那么row++，即丢弃改行。因为该行已经没有比matrix[row][col]更大的了</span></span><br><span class="line"><span class="comment">// 若target&lt;matrix[row][col]，那么col--，即丢弃改列。因为该列已经没有比matrix[row][col]更小的了</span></span><br><span class="line"><span class="comment">// 若target==matrix[row][col]，则return true;</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">searchMatrix</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; matrix, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> row = <span class="number">0</span>,col=matrix[<span class="number">0</span>].<span class="built_in">size</span>()<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(row&gt;=<span class="number">0</span>&amp;&amp;row&lt;matrix.<span class="built_in">size</span>()&amp;&amp;col&gt;=<span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span>(target&gt;matrix[row][col]) &#123;</span><br><span class="line">                row++;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span>(target&lt;matrix[row][col]) &#123;</span><br><span class="line">                col--;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度：<code>O(m+n)</code></p>
+<p>空间复杂度：<code>O(1)</code></p>
+</blockquote>
 
       </div>
       <div class="post-tags-categories">
@@ -781,7 +840,7 @@ LC141. 环形链表题目描述
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5"><span class="toc-text">矩阵</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#LC73-%E7%9F%A9%E9%98%B5%E7%BD%AE%E9%9B%B6"><span class="toc-text">LC73. 矩阵置零</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95"><span class="toc-text">解题方法</span></a></li></ol></li></ol></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5"><span class="toc-text">矩阵</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#LC73-%E7%9F%A9%E9%98%B5%E7%BD%AE%E9%9B%B6"><span class="toc-text">LC73. 矩阵置零</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95"><span class="toc-text">解题方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LC240-%E6%90%9C%E7%B4%A2%E4%BA%8C%E7%BB%B4%E7%9F%A9%E9%98%B5-II"><span class="toc-text">LC240. 搜索二维矩阵 II</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-1"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95-1"><span class="toc-text">解题方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95"><span class="toc-text">方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a></li></ol></li></ol></li></ol></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
