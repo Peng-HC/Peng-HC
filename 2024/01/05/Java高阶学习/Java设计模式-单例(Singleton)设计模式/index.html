@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>使用Hexo搭建个人博客 | Penghc_Blog</title>
+  <title>Java设计模式-单例(Singleton)设计模式 | Penghc_Blog</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -402,21 +402,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp')">
+  background-position: center center;position: relative;background-image:url('https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        使用Hexo搭建个人博客
+        Java设计模式-单例(Singleton)设计模式
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> Published in：2023-12-14 |
+          <i class="fas fa-calendar"></i> Published in：2024-01-05 |
         </span>
       
 
@@ -440,115 +440,59 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="使用Hexo搭建个人博客"><a href="#使用Hexo搭建个人博客" class="headerlink" title="使用Hexo搭建个人博客"></a>使用Hexo搭建个人博客</h1><hr>
-<h2 id="前期工作"><a href="#前期工作" class="headerlink" title="前期工作"></a>前期工作</h2><blockquote>
+        <h1 id="Java设计模式-单例-Singleton-设计模式"><a href="#Java设计模式-单例-Singleton-设计模式" class="headerlink" title="Java设计模式-单例(Singleton)设计模式"></a>Java设计模式-单例(Singleton)设计模式</h1><hr>
+<p>参考博客：<a target="_blank" rel="noopener" href="https://guolin.blog.csdn.net/article/details/8860649">https://guolin.blog.csdn.net/article/details/8860649</a></p>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><blockquote>
+<p>在一个类中只会创建一个实例，并提供一个访问该实例的全局访问变量</p>
+<p>步骤：</p>
 <ol>
-<li><p>本机电脑安装<code>Git</code>工具和<code>.Net</code></p>
-</li>
-<li><p>打开<code>windows</code>下的<code>cmd</code>命令行输入以下内容安装<code>Hexo</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+<li>创建存储实例的静态变量</li>
+<li>将构造函数设为私有，使得用户无法通过构造函数创建新的实例</li>
+<li>向外界提供创建或访问唯一实例的入口（方法）</li>
+</ol>
+</blockquote>
+<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><blockquote>
+<p>写软件的时候经常需要用到打印日志功能，可以帮助你调试和定位问题，项目上线后还可以帮助你分析数据。但是Java原生带有的System.out.println()方法却很少在真正的项目开发中使用，甚至像findbugs等代码检查工具还会认为使用System.out.println()是一个bug。</p>
+<p>为什么作为Java新手神器的System.out.println()，到了真正项目开发当中会被唾弃呢？其实只要细细分析，你就会发现它的很多弊端。比如不可控制，所有的日志都会在项目上线后照常打印，从而降低运行效率；又或者不能将日志记录到本地文件，一旦打印被清除，日志将再也找不回来；再或者打印的内容没有Tag区分，你将很难辨别这一行日志是在哪个类里打印的。</p>
+<p>你的leader也不是傻瓜，用System.out.println()的各项弊端他也清清楚楚，因此他今天给你的任务就是<strong>制作一个日志工具类，来提供更好的日志功能</strong>。不过你的leader人还不错，并没让你一开始就实现一个具备各项功能的牛逼日志工具类，只需要一个<strong>能够控制打印级别的日志工具</strong>就好。</p>
+</blockquote>
+<h2 id="第一版"><a href="#第一版" class="headerlink" title="第一版"></a>第一版</h2><blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LogUtil</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">DEGUB</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">INFO</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">ERROR</span> <span class="operator">=</span> <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">NOTHING</span> <span class="operator">=</span> <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="variable">level</span> <span class="operator">=</span> DEGUB;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">debug</span><span class="params">(String msg)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (DEGUB &gt;= level) &#123;</span><br><span class="line">            System.out.println(msg);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">info</span><span class="params">(String msg)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (INFO &gt;= level) &#123;</span><br><span class="line">            System.out.println(msg);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">error</span><span class="params">(String msg)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (ERROR &gt;= level) &#123;</span><br><span class="line">            System.out.println(msg);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/%E4%BD%BF%E7%94%A8Hexo+Gitee%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%AE%89%E8%A3%85Hexo.png" class="lazyload placeholder" data-srcset="/images/%E4%BD%BF%E7%94%A8Hexo+Gitee%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%AE%89%E8%A3%85Hexo.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
-</li>
-</ol>
+<p>通过这个类来打印日志，只需要控制level的级别，就可以自由地控制打印的内容。比如现在项目处于开发阶段，就将level设置为DEBUG，这样所有的日志信息都会被打印。而项目如果上线了，可以把level设置为INFO，这样就只能看到INFO及以上级别的日志打印。如果你只想看到错误日志，就可以把level设置为ERROR。而如果你开发的项目是客户端版本，不想让任何日志打印出来，可以将level设置为NOTHING。打印的时候只需要调用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">LogUtil</span>().debug(<span class="string">&quot;Hello world!&quot;</span>);</span><br></pre></td></tr></table></figure>
 </blockquote>
-<h2 id="Hexo-Gitee"><a href="#Hexo-Gitee" class="headerlink" title="Hexo+Gitee"></a>Hexo+Gitee</h2><blockquote>
-<ol>
-<li><p>参考博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Memory_888/article/details/129706462">Hexo+Gitee 搭建“个人博客”-CSDN博客</a></p>
-</li>
-<li><p>主题：</p>
-<p>（1）主题库：<a target="_blank" rel="noopener" href="https://hexo.io/themes/">https://hexo.io/themes/</a></p>
-<p>（2）推荐主题：<a target="_blank" rel="noopener" href="https://github.com/yuang01/hexo-theme-bamboo">https://github.com/yuang01/hexo-theme-bamboo</a></p>
-</li>
-<li><p>博客推送</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo clean #网站缓存清理</span><br><span class="line">hexo generate #生成网站内容</span><br><span class="line">hexo server #启动hexo服务器</span><br><span class="line">hexo deploy # 部署网站到服务器</span><br></pre></td></tr></table></figure></li>
-</ol>
-</blockquote>
-<h2 id="Hexo-GitHub"><a href="#Hexo-GitHub" class="headerlink" title="Hexo+GitHub"></a>Hexo+GitHub</h2><blockquote>
-<ol>
-<li><p>在<code>blog</code>目录下执行如下<code>hexo</code>命令，将本地网站部署到<code>github</code>中</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy --repo=https://github.com/Peng-HC/Peng-HC.git</span><br></pre></td></tr></table></figure>
+<h2 id="第二版：线程不安全的单例模式"><a href="#第二版：线程不安全的单例模式" class="headerlink" title="第二版：线程不安全的单例模式"></a>第二版：线程不安全的单例模式</h2><blockquote>
+<p>你迫不及待地将这个工具介绍给你的leader，你的leader听完你的介绍后说：“好样的，今后大伙都用你写的这个工具来打印日志了！”</p>
+<p>可是没过多久，你的leader找到你来反馈问题了。他说虽然这个工具好用，可是<strong>打印这种事情是不区分对象的，这里每次需要打印日志的时候都需要new出一个新的LogUtil，太占用内存了</strong>，希望你可以将这个工具改成用<strong>单例模式</strong>实现。</p>
+<p>你认为你的leader说的很有道理，而且你也正想趁这个机会练习使用一下设计模式，于是你写出了如下的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LogUtil</span> &#123;</span><br><span class="line">    <span class="comment">// 1.创建存储实例的静态变量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> LogUtil sLogUtil;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">DEGUB</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">INFO</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">ERROR</span> <span class="operator">=</span> <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">NOTHING</span> <span class="operator">=</span> <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="variable">level</span> <span class="operator">=</span> DEGUB;</span><br><span class="line">    <span class="comment">// 2.将构造函数设为私有，使得用户无法通过构造函数创建新的实例</span></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">LogUtil</span><span class="params">()</span> &#123;&#125;</span><br><span class="line">    <span class="comment">// 3.向外界提供创建或访问唯一实例的入口（方法）</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> LogUtil <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(sLogUtil == <span class="literal">null</span>) &#123;</span><br><span class="line">            sLogUtil = <span class="keyword">new</span> <span class="title class_">LogUtil</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sLogUtil;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">debug</span><span class="params">(String msg)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (DEGUB &gt;= level) &#123;</span><br><span class="line">            System.out.println(msg);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">info</span><span class="params">(String msg)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (INFO &gt;= level) &#123;</span><br><span class="line">            System.out.println(msg);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">error</span><span class="params">(String msg)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (ERROR &gt;= level) &#123;</span><br><span class="line">            System.out.println(msg);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>部署成功后，能在<code>https://github.com/Peng-HC/Peng-HC.git</code>网站上看到上传的代码</p>
-<p><img src="/images/%E4%BD%BF%E7%94%A8Hexo+Gitee%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/Hexo%E9%83%A8%E7%BD%B2%E7%BD%91%E7%AB%99%E5%88%B0Github.png" class="lazyload placeholder" data-srcset="/images/%E4%BD%BF%E7%94%A8Hexo+Gitee%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/Hexo%E9%83%A8%E7%BD%B2%E7%BD%91%E7%AB%99%E5%88%B0Github.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Hexo部署网站到Github"></p>
-</li>
-<li><p>参考文档：<a target="_blank" rel="noopener" href="https://docs.github.com/en/pages/quickstart%EF%BC%88%E9%9C%80%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%EF%BC%89">https://docs.github.com/en/pages/quickstart（需科学上网）</a></p>
-</li>
-<li><p>部署成功后，可以通过**<code>https://peng-hc.github.io/</code>**访问个人博客（但Github不稳定，外界访问也需科学上网）</p>
-</li>
-</ol>
+<p>首先<strong>将LogUtil的构造函数私有化</strong>，这样就无法使用new关键字来创建LogUtil的实例了。然后<strong>使用一个sLogUtil私有静态变量来保存实例</strong>，并<strong>提供一个公有的getInstance方法用于获取LogUtil的实例</strong>，在这个方法里面判断如果sLogUtil为空，就new出一个新的LogUtil实例，否则就直接返回sLogUtil。这样就可以保证内存当中只会存在一个LogUtil的实例了。单例模式完工！这时打印日志的代码需要改成如下方式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LogUtil.getInstance().debug(<span class="string">&quot;Hello World&quot;</span>);</span><br></pre></td></tr></table></figure>
 </blockquote>
-<h2 id="配置DNS域名服务"><a href="#配置DNS域名服务" class="headerlink" title="配置DNS域名服务"></a>配置DNS域名服务</h2><blockquote>
-<p>起因是我的个人博客地址为：<code>https://peng-hc.github.io/</code>，是不是挺复杂的，难以记忆，所以我想映射一个DNS域名服务器。很快啊，我就在阿里云上斥巨资（35元&#x2F;年）购买了域名为<code>penghc.cn</code>的DNS服务器。</p>
-</blockquote>
-<h3 id="阿里云购买DNS域名服务器流程"><a href="#阿里云购买DNS域名服务器流程" class="headerlink" title="阿里云购买DNS域名服务器流程"></a>阿里云购买DNS域名服务器流程</h3><blockquote>
-<ol>
-<li>访问阿里云网站：打开您的浏览器，访问阿里云的官方网站（<a target="_blank" rel="noopener" href="http://www.alibabacloud.com/">www.alibabacloud.com</a>）。</li>
-<li>注册&#x2F;登录账户：如果您还没有阿里云账户，点击网站右上角的 “注册” 按钮创建一个新账户。如果您已经是阿里云用户，请直接登录。</li>
-<li>进入域名注册页面：登录后，在阿里云控制台中，点击顶部导航栏的 “域名” 菜单，然后选择 “域名注册”。</li>
-<li>搜索域名：在域名注册页面上，输入您想要购买的域名，并点击 “搜索” 按钮。系统将显示域名是否可用以及价格信息。</li>
-<li>选择域名：如果您找到了满意的域名，点击 “加入购物车” 将其添加到购物车中。</li>
-<li>确认订单：在购物车页面上，确认您选择的域名和购买年限，并点击 “继续”。</li>
-<li>填写订单信息：填写订单信息，包括注册人信息、付款方式等。确保提供准确的信息，并阅读并同意相关条款和协议。（需要等待注册管理局同意）</li>
-<li>完成支付：选择合适的支付方式，并按照提示完成支付流程。</li>
-<li>域名绑定与管理：支付成功后，您将获得域名的所有权。您可以在阿里云控制台中管理和配置您的域名设置，例如DNS解析、域名转发等。</li>
-</ol>
-<p><img src="/images/%E4%BD%BF%E7%94%A8Hexo+Gitee%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B4%AD%E4%B9%B0.png" class="lazyload placeholder" data-srcset="/images/%E4%BD%BF%E7%94%A8Hexo+Gitee%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B4%AD%E4%B9%B0.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
-</blockquote>
-<h3 id="配置阿里云DNS解析"><a href="#配置阿里云DNS解析" class="headerlink" title="配置阿里云DNS解析"></a>配置阿里云DNS解析</h3><blockquote>
-<p>记录类型：</p>
-<p>A：将域名指向一个IPV4地址</p>
-<p>CNAME：将域名指向另外一个域名</p>
-<p><img src="/images/%E4%BD%BF%E7%94%A8Hexo+Gitee%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E9%85%8D%E7%BD%AE%E9%98%BF%E9%87%8C%E4%BA%91DNS%E8%A7%A3%E6%9E%90.png" class="lazyload placeholder" data-srcset="/images/%E4%BD%BF%E7%94%A8Hexo+Gitee%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E9%85%8D%E7%BD%AE%E9%98%BF%E9%87%8C%E4%BA%91DNS%E8%A7%A3%E6%9E%90.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
-<p>其中github pages的ip地址可通过ping命令来获取</p>
-<p><img src="/images/%E4%BD%BF%E7%94%A8Hexo+Gitee%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E9%80%9A%E8%BF%87ping%E5%9F%9F%E5%90%8D%E8%8E%B7%E5%BE%97ip%E5%9C%B0%E5%9D%80.png" class="lazyload placeholder" data-srcset="/images/%E4%BD%BF%E7%94%A8Hexo+Gitee%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E9%80%9A%E8%BF%87ping%E5%9F%9F%E5%90%8D%E8%8E%B7%E5%BE%97ip%E5%9C%B0%E5%9D%80.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
-</blockquote>
-<h3 id="Github-Pages自定义域名"><a href="#Github-Pages自定义域名" class="headerlink" title="Github Pages自定义域名"></a>Github Pages自定义域名</h3><blockquote>
-<p>打开个人博客的仓库，找到<code>Settings/Code and automation/Pages/Custom domain</code></p>
-<p>输入域名：<code>penghc.cn</code></p>
-<p>![](&#x2F;images&#x2F;使用Hexo+Gitee搭建个人博客&#x2F;Github Pages自定义域名.png)</p>
-</blockquote>
-<h3 id="DNS域名测试"><a href="#DNS域名测试" class="headerlink" title="DNS域名测试"></a>DNS域名测试</h3><blockquote>
-<p><strong>注：阿里云DNS解析配置成功后需要等待几个小时，域名才可以生效</strong></p>
-<p>打开浏览器，输入网址域名<code>https://penghc.cn/</code>，查看是否访问成功</p>
-<p><img src="/images/%E4%BD%BF%E7%94%A8Hexo+Gitee%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/DNS%E5%9F%9F%E5%90%8D%E6%B5%8B%E8%AF%95.png" class="lazyload placeholder" data-srcset="/images/%E4%BD%BF%E7%94%A8Hexo+Gitee%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/DNS%E5%9F%9F%E5%90%8D%E6%B5%8B%E8%AF%95.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
-</blockquote>
-<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="npm-install执行速度较慢"><a href="#npm-install执行速度较慢" class="headerlink" title="npm install执行速度较慢"></a><code>npm install</code>执行速度较慢</h3><blockquote>
-<ol>
-<li>使用淘宝镜像</li>
-</ol>
-<p>使用淘宝的npm镜像源可以加速npm包的下载速度，特别是对于国内用户而言。您可以通过以下命令来将npm源切换为淘宝源：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<h2 id="第三版：线程安全的单例模式"><a href="#第三版：线程安全的单例模式" class="headerlink" title="第三版：线程安全的单例模式"></a>第三版：线程安全的单例模式</h2><blockquote>
+<p>你将这个版本展示给你的leader瞧，他看后笑了笑，说：“虽然这看似是实现了单例模式，可是还存在着bug的哦。</p>
+<p>你满腹狐疑，单例模式不都是这样实现的吗？还会有什么bug呢？</p>
+<p>你的leader提示你，使用单例模式就是为了让这个类在内存中只能有一个实例的，可是你有考虑到在多线程中打印日志的情况吗？如下面代码所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> LogUtil <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (sLogUtil == <span class="literal">null</span>) &#123;</span><br><span class="line">        sLogUtil = <span class="keyword">new</span> <span class="title class_">LogUtil</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sLogUtil;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<ol start="2">
-<li>使用cnpm</li>
-</ol>
-<p>cnpm是一个npm的镜像，它可以提供更快的包下载速度。您可以通过以下命令来全局安装cnpm：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<p>如果现在<strong>有两个线程同时在执行getInstance方法</strong>，第一个线程刚执行完第2行，还没执行第3行，这个时候第二个线程执行到了第2行，它会发现sLogUtil还是null，于是进入到了if判断里面。这样你的单例模式就失败了，因为创建了两个不同的实例。</p>
+<p>你恍然大悟，不过你的思维非常快，立刻就想到了解决办法，只需要给方法加上同步锁就可以了，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">static</span> LogUtil <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (sLogUtil == <span class="literal">null</span>) &#123;</span><br><span class="line">        sLogUtil = <span class="keyword">new</span> <span class="title class_">LogUtil</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sLogUtil;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/%E4%BD%BF%E7%94%A8Hexo+Gitee%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E8%A7%A3%E5%86%B3npm_install%E6%89%A7%E8%A1%8C%E9%80%9F%E5%BA%A6%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98.png" class="lazyload placeholder" data-srcset="/images/%E4%BD%BF%E7%94%A8Hexo+Gitee%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E8%A7%A3%E5%86%B3npm_install%E6%89%A7%E8%A1%8C%E9%80%9F%E5%BA%A6%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
-</blockquote>
-<h3 id="本地部署与网站部署的图片路径不一致的问题"><a href="#本地部署与网站部署的图片路径不一致的问题" class="headerlink" title="本地部署与网站部署的图片路径不一致的问题"></a>本地部署与网站部署的图片路径不一致的问题</h3><blockquote>
-<ol>
-<li><p>本地图片存储路径</p>
-<p><img src="/images/%E4%BD%BF%E7%94%A8Hexo+Gitee%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%E4%B8%8D%E4%B8%80%E8%87%B4%E9%97%AE%E9%A2%981.png" class="lazyload placeholder" data-srcset="/images/%E4%BD%BF%E7%94%A8Hexo+Gitee%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%E4%B8%8D%E4%B8%80%E8%87%B4%E9%97%AE%E9%A2%981.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
-</li>
-<li><p>在本地markdown中填写的路径</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![](../images/使用Hexo+Gitee搭建个人博客/解决npm_install执行速度慢的问题.png)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在网站中使用的路径</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![](/images/使用Hexo+Gitee搭建个人博客/解决npm_install执行速度慢的问题.png)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>原因分析：</p>
-<p>（1）本地相对路径是以md文件为根节点，向上进行搜索路径的</p>
-<p>（2）网站的相对路径是以source为根节点，向下进行搜索路径的</p>
-</li>
-</ol>
-</blockquote>
-<h3 id="Gitee实名认证审核周期过长"><a href="#Gitee实名认证审核周期过长" class="headerlink" title="Gitee实名认证审核周期过长"></a>Gitee实名认证审核周期过长</h3><blockquote>
-<p><code>Gitee Page</code>需要实名认证审核，周期很长</p>
-<p><img src="/images/%E4%BD%BF%E7%94%A8Hexo+Gitee%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E5%AE%9E%E5%90%8D%E8%AE%A4%E8%AF%81%E5%91%A8%E6%9C%9F%E9%95%BF.png" class="lazyload placeholder" data-srcset="/images/%E4%BD%BF%E7%94%A8Hexo+Gitee%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E5%AE%9E%E5%90%8D%E8%AE%A4%E8%AF%81%E5%91%A8%E6%9C%9F%E9%95%BF.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
-<p><img src="/images/%E4%BD%BF%E7%94%A8Hexo+Gitee%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E5%AE%9E%E5%90%8D%E8%AE%A4%E8%AF%81%E5%91%A8%E6%9C%9F%E9%95%BF2.png" class="lazyload placeholder" data-srcset="/images/%E4%BD%BF%E7%94%A8Hexo+Gitee%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E5%AE%9E%E5%90%8D%E8%AE%A4%E8%AF%81%E5%91%A8%E6%9C%9F%E9%95%BF2.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
+<p>这样，<strong>同一时刻只允许有一个线程在执行getInstance里面的代码</strong>，这样就有效地解决了上面会创建两个实例的情况。</p>
+<p>你的leader看了你的新代码后说：“恩，不错。这确实解决了有可能创建两个实例的情况，但是这段代码还是有问题的。”</p>
+<p>你紧张了起来，怎么还会有问题啊？</p>
+<p>你的leader笑笑：“不用紧张，这次不是bug，只是性能上可以优化一些。你看一下，如果是<u>在getInstance方法上加了一个synchronized，那么我每次去执行getInstace方法的时候都会受到同步锁的影响，这样运行的效率会降低，其实只需要在第一次创建LogUtil实例的时候加上同步锁就好了</u>。我来教你一下怎么把它优化的更好。”</p>
+<p>首先将synchronized关键字从方法声明中去除，把它加入到方法体当中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> LogUtil <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">synchronized</span> (LogUtil.class) &#123;</span><br><span class="line">        <span class="keyword">if</span> (sLogUtil == <span class="literal">null</span>) &#123;</span><br><span class="line">            sLogUtil = <span class="keyword">new</span> <span class="title class_">LogUtil</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sLogUtil;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样效果是和直接在方法上加synchronized完全一致的。然后在synchronized的外面再加一层判断，如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> LogUtil <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (sLogUtil == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (LogUtil.class) &#123;</span><br><span class="line">            <span class="keyword">if</span> (sLogUtil == <span class="literal">null</span>) &#123;</span><br><span class="line">                sLogUtil = <span class="keyword">new</span> <span class="title class_">LogUtil</span>();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sLogUtil;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码改成这样之后，只有在sLogUtil还没被初始化的时候才会进入到第3行，然后加上同步锁。等sLogUtil一但初始化完成了，就再也走不到第3行了，这样执行getInstance方法也不会再受到同步锁的影响，效率上会有一定的提升。</p>
+<p>这种方法叫做<strong>双重锁定(Double-Check Locking)</strong></p>
 </blockquote>
 
       </div>
@@ -556,24 +500,12 @@
         
         <div class="tags">
           
-            <a href="/tags/hexo/" class="">
-              hexo
+            <a href="/tags/%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="">
+              单例设计模式
             </a>
           
-            <a href="/tags/gitee/" class="">
-              gitee
-            </a>
-          
-            <a href="/tags/github/" class="">
-              github
-            </a>
-          
-            <a href="/tags/DNS%E5%9F%9F%E5%90%8D/" class="">
-              DNS域名
-            </a>
-          
-            <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="">
-              个人博客
+            <a href="/tags/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="">
+              Java设计模式
             </a>
           
         </div>
@@ -587,7 +519,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/2023/12/14/个人博客/使用Hexo搭建个人博客/" target="_blank" title="使用Hexo搭建个人博客">https://peng-hc.github.io/2023/12/14/个人博客/使用Hexo搭建个人博客/</a>
+    <a href="/2024/01/05/Java高阶学习/Java设计模式-单例(Singleton)设计模式/" target="_blank" title="Java设计模式-单例(Singleton)设计模式">https://peng-hc.github.io/2024/01/05/Java高阶学习/Java设计模式-单例(Singleton)设计模式/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -605,43 +537,22 @@
 
 
 
-  
-  <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-9c50d3af0bc62a0e8b6e89e24c769317_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-9c50d3af0bc62a0e8b6e89e24c769317_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-    </div>
-    <a href="/2023/12/14/Android%E5%BC%80%E5%8F%91/%E7%AC%AC8%E7%AB%A0-%E4%B8%B0%E5%AF%8C%E4%BD%A0%E7%9A%84%E7%A8%8B%E5%BA%8F%E2%80%94%E2%80%94%E8%BF%90%E7%94%A8%E6%89%8B%E6%9C%BA%E5%A4%9A%E5%AA%92%E4%BD%93/" class="post-nav-link">
-      <div class="title">
-        <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">第8章_丰富你的程序——运用手机多媒体</div>
-      </div>
-      
-      <!-- <div class="content">
-        第8章_丰富你的程序——运用手机多媒体
-调用摄像头和相册调用摄像头拍照
-新建CameraAlbumTest项目
-
-修改布
-      </div> -->
-    </a>
-  </div>
-
 
 
   
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
     </div>
-    <a href="/2023/12/13/hello-world/" class="post-nav-link">
+    <a href="/2024/01/05/Redis%E5%AD%A6%E4%B9%A0/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">Hello World</div>
+        <div class="title-text">Redis学习</div>
       </div>
       <!-- <div class="content">
-        Welcome to Hexo! This is your very first post. Check documen
+        Redis学习什么是Redis
+Redis是一种基于内存的数据库，对数据的读写都是在内存中完成的，因此读写速度非常快，常
       </div> -->
     </a>
   </div>
@@ -862,7 +773,7 @@
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2"><span class="toc-text">使用Hexo搭建个人博客</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E6%9C%9F%E5%B7%A5%E4%BD%9C"><span class="toc-text">前期工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo-Gitee"><span class="toc-text">Hexo+Gitee</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo-GitHub"><span class="toc-text">Hexo+GitHub</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEDNS%E5%9F%9F%E5%90%8D%E6%9C%8D%E5%8A%A1"><span class="toc-text">配置DNS域名服务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%BF%E9%87%8C%E4%BA%91%E8%B4%AD%E4%B9%B0DNS%E5%9F%9F%E5%90%8D%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B5%81%E7%A8%8B"><span class="toc-text">阿里云购买DNS域名服务器流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E9%98%BF%E9%87%8C%E4%BA%91DNS%E8%A7%A3%E6%9E%90"><span class="toc-text">配置阿里云DNS解析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Github-Pages%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D"><span class="toc-text">Github Pages自定义域名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DNS%E5%9F%9F%E5%90%8D%E6%B5%8B%E8%AF%95"><span class="toc-text">DNS域名测试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">遇到的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#npm-install%E6%89%A7%E8%A1%8C%E9%80%9F%E5%BA%A6%E8%BE%83%E6%85%A2"><span class="toc-text">npm install执行速度较慢</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E4%B8%8E%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2%E7%9A%84%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%E4%B8%8D%E4%B8%80%E8%87%B4%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">本地部署与网站部署的图片路径不一致的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Gitee%E5%AE%9E%E5%90%8D%E8%AE%A4%E8%AF%81%E5%AE%A1%E6%A0%B8%E5%91%A8%E6%9C%9F%E8%BF%87%E9%95%BF"><span class="toc-text">Gitee实名认证审核周期过长</span></a></li></ol></li></ol></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B-Singleton-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-text">Java设计模式-单例(Singleton)设计模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD"><span class="toc-text">功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF"><span class="toc-text">场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%89%88"><span class="toc-text">第一版</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%89%88%EF%BC%9A%E7%BA%BF%E7%A8%8B%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F"><span class="toc-text">第二版：线程不安全的单例模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%89%88%EF%BC%9A%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F"><span class="toc-text">第三版：线程安全的单例模式</span></a></li></ol></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
