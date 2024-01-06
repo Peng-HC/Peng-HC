@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>子串 | Penghc_Blog</title>
+  <title>Java设计模式-单例(Singleton)设计模式 | Penghc_Blog</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -402,21 +402,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp')">
+  background-position: center center;position: relative;background-image:url('https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        子串
+        Java设计模式-单例(Singleton)设计模式
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> Published in：2023-12-15 |
+          <i class="fas fa-calendar"></i> Published in：2024-01-05 |
         </span>
       
 
@@ -440,35 +440,59 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="子串"><a href="#子串" class="headerlink" title="子串"></a>子串</h1><hr>
-<h2 id="LC560-和为-K-的子数组"><a href="#LC560-和为-K-的子数组" class="headerlink" title="LC560. 和为 K 的子数组"></a>LC560. 和为 K 的子数组</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><blockquote>
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/subarray-sum-equals-k/">560. 和为 K 的子数组</a></p>
-<p>给你一个整数数组 <code>nums</code> 和一个整数 <code>k</code> ，请你统计并返回 <em>该数组中和为 <code>k</code> 的子数组的个数</em> 。</p>
-<p>子数组是数组中元素的连续非空序列。</p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,1,1], k = 2</span><br><span class="line">输出：2</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 2：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,2,3], k = 3</span><br><span class="line">输出：2</span><br></pre></td></tr></table></figure>
-
-<p><strong>提示：</strong></p>
-<ul>
-<li><code>1 &lt;= nums.length &lt;= 2 * 104</code></li>
-<li><code>-1000 &lt;= nums[i] &lt;= 1000</code></li>
-<li><code>-107 &lt;= k &lt;= 107</code></li>
-</ul>
+        <h1 id="Java设计模式-单例-Singleton-设计模式"><a href="#Java设计模式-单例-Singleton-设计模式" class="headerlink" title="Java设计模式-单例(Singleton)设计模式"></a>Java设计模式-单例(Singleton)设计模式</h1><hr>
+<p>参考博客：<a target="_blank" rel="noopener" href="https://guolin.blog.csdn.net/article/details/8860649">https://guolin.blog.csdn.net/article/details/8860649</a></p>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><blockquote>
+<p>在一个类中只会创建一个实例，并提供一个访问该实例的全局访问变量</p>
+<p>步骤：</p>
+<ol>
+<li>创建存储实例的静态变量</li>
+<li>将构造函数设为私有，使得用户无法通过构造函数创建新的实例</li>
+<li>向外界提供创建或访问唯一实例的入口（方法）</li>
+</ol>
 </blockquote>
-<h3 id="解题方法"><a href="#解题方法" class="headerlink" title="解题方法"></a>解题方法</h3><blockquote>
-<p><strong>前缀和+哈希表优化</strong></p>
-<p>思路：我们可以将求子数组的和为k问题转化为求解两个前缀和之差等于k的情况。</p>
-<p>假设数组的前缀和数组为prefixSum，其中prefixSum[i]表示从数组起始位置（这里是从下表0开始）到第i个位置的元素之和。那么对于任意的两个下标i和j（i &lt; j），如果<code>prefixSum[j] - prefixSum[i] = k</code>，即从第i个位置到第j个位置的元素之和等于k，那么说明从第i+1个位置到第j个位置的连续子数组的和为k，此时计数+1。</p>
-<p>通过遍历数组，计算每个位置的前缀和，并使用一个<strong>哈希表</strong>来存储每个前缀和出现的次数。在遍历的过程中，我们检查是否存在<code>prefixSum[j] - k</code>的前缀和，如果存在，说明从某个位置到当前位置的连续子数组的和为k，我们将对应的次数累加到结果中。</p>
-<p>这样，通过遍历一次数组，我们可以统计出和为k的连续子数组的个数，并且时间复杂度为O(n)，其中n为数组的长度。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    思路：前缀和+哈希表</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">subarraySum</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> preSum = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> count = <span class="number">0</span>;</span><br><span class="line">        unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; preSumTimes; <span class="comment">// key为前缀和,value为该和出现的次数</span></span><br><span class="line">        preSumTimes[<span class="number">0</span>] = <span class="number">1</span>; <span class="comment">// 初始化：前缀和为0出现的次数为1</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;nums.<span class="built_in">size</span>();i++) &#123;</span><br><span class="line">            preSum += nums[i];</span><br><span class="line">            <span class="comment">// 存在nums[j]-nums[i] = k的情况</span></span><br><span class="line">            <span class="keyword">if</span>(preSumTimes.<span class="built_in">find</span>(preSum-k)!=preSumTimes.<span class="built_in">end</span>()) &#123;</span><br><span class="line">                count += preSumTimes[preSum-k];</span><br><span class="line">            &#125;</span><br><span class="line">            preSumTimes[preSum]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><blockquote>
+<p>写软件的时候经常需要用到打印日志功能，可以帮助你调试和定位问题，项目上线后还可以帮助你分析数据。但是Java原生带有的System.out.println()方法却很少在真正的项目开发中使用，甚至像findbugs等代码检查工具还会认为使用System.out.println()是一个bug。</p>
+<p>为什么作为Java新手神器的System.out.println()，到了真正项目开发当中会被唾弃呢？其实只要细细分析，你就会发现它的很多弊端。比如不可控制，所有的日志都会在项目上线后照常打印，从而降低运行效率；又或者不能将日志记录到本地文件，一旦打印被清除，日志将再也找不回来；再或者打印的内容没有Tag区分，你将很难辨别这一行日志是在哪个类里打印的。</p>
+<p>你的leader也不是傻瓜，用System.out.println()的各项弊端他也清清楚楚，因此他今天给你的任务就是<strong>制作一个日志工具类，来提供更好的日志功能</strong>。不过你的leader人还不错，并没让你一开始就实现一个具备各项功能的牛逼日志工具类，只需要一个<strong>能够控制打印级别的日志工具</strong>就好。</p>
 </blockquote>
-<h3 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h3><blockquote>
-<p>时间复杂度：<code>O(n)</code></p>
-<p>空间复杂度：<code>O(n)</code></p>
+<h2 id="第一版"><a href="#第一版" class="headerlink" title="第一版"></a>第一版</h2><blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LogUtil</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">DEGUB</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">INFO</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">ERROR</span> <span class="operator">=</span> <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">NOTHING</span> <span class="operator">=</span> <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="variable">level</span> <span class="operator">=</span> DEGUB;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">debug</span><span class="params">(String msg)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (DEGUB &gt;= level) &#123;</span><br><span class="line">            System.out.println(msg);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">info</span><span class="params">(String msg)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (INFO &gt;= level) &#123;</span><br><span class="line">            System.out.println(msg);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">error</span><span class="params">(String msg)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (ERROR &gt;= level) &#123;</span><br><span class="line">            System.out.println(msg);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过这个类来打印日志，只需要控制level的级别，就可以自由地控制打印的内容。比如现在项目处于开发阶段，就将level设置为DEBUG，这样所有的日志信息都会被打印。而项目如果上线了，可以把level设置为INFO，这样就只能看到INFO及以上级别的日志打印。如果你只想看到错误日志，就可以把level设置为ERROR。而如果你开发的项目是客户端版本，不想让任何日志打印出来，可以将level设置为NOTHING。打印的时候只需要调用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">LogUtil</span>().debug(<span class="string">&quot;Hello world!&quot;</span>);</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="第二版：线程不安全的单例模式"><a href="#第二版：线程不安全的单例模式" class="headerlink" title="第二版：线程不安全的单例模式"></a>第二版：线程不安全的单例模式</h2><blockquote>
+<p>你迫不及待地将这个工具介绍给你的leader，你的leader听完你的介绍后说：“好样的，今后大伙都用你写的这个工具来打印日志了！”</p>
+<p>可是没过多久，你的leader找到你来反馈问题了。他说虽然这个工具好用，可是<strong>打印这种事情是不区分对象的，这里每次需要打印日志的时候都需要new出一个新的LogUtil，太占用内存了</strong>，希望你可以将这个工具改成用<strong>单例模式</strong>实现。</p>
+<p>你认为你的leader说的很有道理，而且你也正想趁这个机会练习使用一下设计模式，于是你写出了如下的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LogUtil</span> &#123;</span><br><span class="line">    <span class="comment">// 1.创建存储实例的静态变量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> LogUtil sLogUtil;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">DEGUB</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">INFO</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">ERROR</span> <span class="operator">=</span> <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">NOTHING</span> <span class="operator">=</span> <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="variable">level</span> <span class="operator">=</span> DEGUB;</span><br><span class="line">    <span class="comment">// 2.将构造函数设为私有，使得用户无法通过构造函数创建新的实例</span></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">LogUtil</span><span class="params">()</span> &#123;&#125;</span><br><span class="line">    <span class="comment">// 3.向外界提供创建或访问唯一实例的入口（方法）</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> LogUtil <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(sLogUtil == <span class="literal">null</span>) &#123;</span><br><span class="line">            sLogUtil = <span class="keyword">new</span> <span class="title class_">LogUtil</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sLogUtil;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">debug</span><span class="params">(String msg)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (DEGUB &gt;= level) &#123;</span><br><span class="line">            System.out.println(msg);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">info</span><span class="params">(String msg)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (INFO &gt;= level) &#123;</span><br><span class="line">            System.out.println(msg);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">error</span><span class="params">(String msg)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (ERROR &gt;= level) &#123;</span><br><span class="line">            System.out.println(msg);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>首先<strong>将LogUtil的构造函数私有化</strong>，这样就无法使用new关键字来创建LogUtil的实例了。然后<strong>使用一个sLogUtil私有静态变量来保存实例</strong>，并<strong>提供一个公有的getInstance方法用于获取LogUtil的实例</strong>，在这个方法里面判断如果sLogUtil为空，就new出一个新的LogUtil实例，否则就直接返回sLogUtil。这样就可以保证内存当中只会存在一个LogUtil的实例了。单例模式完工！这时打印日志的代码需要改成如下方式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LogUtil.getInstance().debug(<span class="string">&quot;Hello World&quot;</span>);</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="第三版：线程安全的单例模式"><a href="#第三版：线程安全的单例模式" class="headerlink" title="第三版：线程安全的单例模式"></a>第三版：线程安全的单例模式</h2><blockquote>
+<p>你将这个版本展示给你的leader瞧，他看后笑了笑，说：“虽然这看似是实现了单例模式，可是还存在着bug的哦。</p>
+<p>你满腹狐疑，单例模式不都是这样实现的吗？还会有什么bug呢？</p>
+<p>你的leader提示你，使用单例模式就是为了让这个类在内存中只能有一个实例的，可是你有考虑到在多线程中打印日志的情况吗？如下面代码所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> LogUtil <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (sLogUtil == <span class="literal">null</span>) &#123;</span><br><span class="line">        sLogUtil = <span class="keyword">new</span> <span class="title class_">LogUtil</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sLogUtil;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果现在<strong>有两个线程同时在执行getInstance方法</strong>，第一个线程刚执行完第2行，还没执行第3行，这个时候第二个线程执行到了第2行，它会发现sLogUtil还是null，于是进入到了if判断里面。这样你的单例模式就失败了，因为创建了两个不同的实例。</p>
+<p>你恍然大悟，不过你的思维非常快，立刻就想到了解决办法，只需要给方法加上同步锁就可以了，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">static</span> LogUtil <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (sLogUtil == <span class="literal">null</span>) &#123;</span><br><span class="line">        sLogUtil = <span class="keyword">new</span> <span class="title class_">LogUtil</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sLogUtil;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样，<strong>同一时刻只允许有一个线程在执行getInstance里面的代码</strong>，这样就有效地解决了上面会创建两个实例的情况。</p>
+<p>你的leader看了你的新代码后说：“恩，不错。这确实解决了有可能创建两个实例的情况，但是这段代码还是有问题的。”</p>
+<p>你紧张了起来，怎么还会有问题啊？</p>
+<p>你的leader笑笑：“不用紧张，这次不是bug，只是性能上可以优化一些。你看一下，如果是<u>在getInstance方法上加了一个synchronized，那么我每次去执行getInstace方法的时候都会受到同步锁的影响，这样运行的效率会降低，其实只需要在第一次创建LogUtil实例的时候加上同步锁就好了</u>。我来教你一下怎么把它优化的更好。”</p>
+<p>首先将synchronized关键字从方法声明中去除，把它加入到方法体当中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> LogUtil <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">synchronized</span> (LogUtil.class) &#123;</span><br><span class="line">        <span class="keyword">if</span> (sLogUtil == <span class="literal">null</span>) &#123;</span><br><span class="line">            sLogUtil = <span class="keyword">new</span> <span class="title class_">LogUtil</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sLogUtil;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样效果是和直接在方法上加synchronized完全一致的。然后在synchronized的外面再加一层判断，如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> LogUtil <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (sLogUtil == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (LogUtil.class) &#123;</span><br><span class="line">            <span class="keyword">if</span> (sLogUtil == <span class="literal">null</span>) &#123;</span><br><span class="line">                sLogUtil = <span class="keyword">new</span> <span class="title class_">LogUtil</span>();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sLogUtil;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码改成这样之后，只有在sLogUtil还没被初始化的时候才会进入到第3行，然后加上同步锁。等sLogUtil一但初始化完成了，就再也走不到第3行了，这样执行getInstance方法也不会再受到同步锁的影响，效率上会有一定的提升。</p>
+<p>这种方法叫做<strong>双重锁定(Double-Check Locking)</strong></p>
 </blockquote>
 
       </div>
@@ -476,16 +500,12 @@
         
         <div class="tags">
           
-            <a href="/tags/leetcode/" class="">
-              leetcode
+            <a href="/tags/%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="">
+              单例设计模式
             </a>
           
-            <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" class="">
-              前缀和
-            </a>
-          
-            <a href="/tags/%E5%AD%90%E4%B8%B2/" class="">
-              子串
+            <a href="/tags/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="">
+              Java设计模式
             </a>
           
         </div>
@@ -499,7 +519,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/2023/12/15/leetcode刷题/子串/" target="_blank" title="子串">https://peng-hc.github.io/2023/12/15/leetcode刷题/子串/</a>
+    <a href="/2024/01/05/Java高阶学习/Java设计模式/Java设计模式-单例(Singleton)设计模式/" target="_blank" title="Java设计模式-单例(Singleton)设计模式">https://peng-hc.github.io/2024/01/05/Java高阶学习/Java设计模式/Java设计模式-单例(Singleton)设计模式/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -523,17 +543,16 @@
       background-position: center center;">
       <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
     </div>
-    <a href="/2023/12/15/leetcode%E5%88%B7%E9%A2%98/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="post-nav-link">
+    <a href="/2024/01/06/Java%E9%AB%98%E9%98%B6%E5%AD%A6%E4%B9%A0/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%A6%82%E8%BF%B0/" class="post-nav-link">
       <div class="title">
         <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">滑动窗口</div>
+        <div class="title-text">Java设计模式概述</div>
       </div>
       
       <!-- <div class="content">
-        滑动窗口
-LC438. 找到字符串中所有字母异位词题目描述
-438. 找到字符串中所有字母异位词
-给定两个字符串 s 和
+        Java设计模式概述
+什么是Java设计模式
+Java设计模式是一套被广泛应用于Java编程语言的软件设计原则和解决方案
       </div> -->
     </a>
   </div>
@@ -544,19 +563,16 @@ LC438. 找到字符串中所有字母异位词题目描述
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-9c50d3af0bc62a0e8b6e89e24c769317_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-9c50d3af0bc62a0e8b6e89e24c769317_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
     </div>
-    <a href="/2023/12/14/Android%E5%BC%80%E5%8F%91/%E7%AC%AC8%E7%AB%A0-%E4%B8%B0%E5%AF%8C%E4%BD%A0%E7%9A%84%E7%A8%8B%E5%BA%8F%E2%80%94%E2%80%94%E8%BF%90%E7%94%A8%E6%89%8B%E6%9C%BA%E5%A4%9A%E5%AA%92%E4%BD%93/" class="post-nav-link">
+    <a href="/2024/01/05/Redis%E5%AD%A6%E4%B9%A0/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">第8章_丰富你的程序——运用手机多媒体</div>
+        <div class="title-text">Redis学习</div>
       </div>
       <!-- <div class="content">
-        第8章_丰富你的程序——运用手机多媒体
-调用摄像头和相册调用摄像头拍照
-新建CameraAlbumTest项目
-
-修改布
+        Redis学习什么是Redis
+Redis是一种基于内存的数据库，对数据的读写都是在内存中完成的，因此读写速度非常快，常
       </div> -->
     </a>
   </div>
@@ -777,7 +793,7 @@ LC438. 找到字符串中所有字母异位词题目描述
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%90%E4%B8%B2"><span class="toc-text">子串</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#LC560-%E5%92%8C%E4%B8%BA-K-%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84"><span class="toc-text">LC560. 和为 K 的子数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95"><span class="toc-text">解题方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-text">复杂度</span></a></li></ol></li></ol></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B-Singleton-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-text">Java设计模式-单例(Singleton)设计模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD"><span class="toc-text">功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF"><span class="toc-text">场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%89%88"><span class="toc-text">第一版</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%89%88%EF%BC%9A%E7%BA%BF%E7%A8%8B%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F"><span class="toc-text">第二版：线程不安全的单例模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%89%88%EF%BC%9A%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F"><span class="toc-text">第三版：线程安全的单例模式</span></a></li></ol></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
