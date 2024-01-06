@@ -440,14 +440,14 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="笔记本-N210安装V2X-ZUC版本的ROI系统教程"><a href="#笔记本-N210安装V2X-ZUC版本的ROI系统教程" class="headerlink" title="笔记本+N210安装V2X-ZUC版本的ROI系统教程"></a>笔记本+N210安装V2X-ZUC版本的ROI系统教程</h1><hr>
+        <h1 id="笔记本-N210安装V2X-ZUC版本的ROI系统教程"><a href="#笔记本-N210安装V2X-ZUC版本的ROI系统教程" class="headerlink" title="笔记本+N210安装V2X-ZUC版本的ROI系统教程"></a>笔记本+<code>N210</code>安装<code>V2X-ZUC</code>版本的<code>ROI</code>系统教程</h1><hr>
 <h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><blockquote>
 <ol>
 <li><p>两台安装了<code>Ubuntu 16.04</code>系统的笔记本电脑</p>
 </li>
-<li><p>主机安装了<code>UHD3.11</code>驱动</p>
+<li><p>主机安装了<code>UHD3.11</code>驱动和<code>GNIRadio3.7.11</code></p>
 </li>
-<li><p>主机安装了<code>GNIRadio3.7.11</code></p>
+<li><p>下载了相关的软件包代码</p>
 </li>
 <li><p>读&#x2F;写的缓冲区大小修改</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo sysctl -w net.core.wmem_max=50000000</span><br><span class="line">sudo sysctl -w net.core.rmem_max=50000000</span><br></pre></td></tr></table></figure></li>
@@ -455,7 +455,7 @@
 </blockquote>
 <h2 id="MQTT环境配置"><a href="#MQTT环境配置" class="headerlink" title="MQTT环境配置"></a>MQTT环境配置</h2><blockquote>
 <p>软件包中<code>ROI_env</code>目录下有<code>MQTT</code>相关环境</p>
-<p><img src="/images/%E7%A7%91%E7%A0%94/%E7%AC%94%E8%AE%B0%E6%9C%AC-N210%E5%AE%89%E8%A3%85V2X-ZUC%E7%89%88%E6%9C%AC%E7%9A%84ROI%E7%B3%BB%E7%BB%9F%E6%95%99%E7%A8%8B/MQTT%E7%8E%AF%E5%A2%83%E7%9B%B8%E5%85%B3%E7%9B%AE%E5%BD%95.png" class="lazyload placeholder" data-srcset="/images/%E7%A7%91%E7%A0%94/%E7%AC%94%E8%AE%B0%E6%9C%AC-N210%E5%AE%89%E8%A3%85V2X-ZUC%E7%89%88%E6%9C%AC%E7%9A%84ROI%E7%B3%BB%E7%BB%9F%E6%95%99%E7%A8%8B/MQTT%E7%8E%AF%E5%A2%83%E7%9B%B8%E5%85%B3%E7%9B%AE%E5%BD%95.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
+<p><img src="/../../images/%E7%A7%91%E7%A0%94/%E7%AC%94%E8%AE%B0%E6%9C%AC-N210%E5%AE%89%E8%A3%85V2X-ZUC%E7%89%88%E6%9C%AC%E7%9A%84ROI%E7%B3%BB%E7%BB%9F%E6%95%99%E7%A8%8B/MQTT%E7%8E%AF%E5%A2%83%E7%9B%B8%E5%85%B3%E7%9B%AE%E5%BD%95.png" class="lazyload placeholder" data-srcset="/../../images/%E7%A7%91%E7%A0%94/%E7%AC%94%E8%AE%B0%E6%9C%AC-N210%E5%AE%89%E8%A3%85V2X-ZUC%E7%89%88%E6%9C%AC%E7%9A%84ROI%E7%B3%BB%E7%BB%9F%E6%95%99%E7%A8%8B/MQTT%E7%8E%AF%E5%A2%83%E7%9B%B8%E5%85%B3%E7%9B%AE%E5%BD%95.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
 </blockquote>
 <h3 id="安装paho-mqtt-c"><a href="#安装paho-mqtt-c" class="headerlink" title="安装paho.mqtt.c"></a>安装paho.mqtt.c</h3><blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> paho.mqtt.c</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
