@@ -19,6 +19,21 @@
   <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
   
   
+    <script>
+        var themeModelId = '';
+        if (themeModelId) {
+            localStorage.setItem('modelId', themeModelId);
+        }
+    </script>
+    
+    <script defer src="https://cdn.jsdelivr.net/gh/yuang01/live2d-widget@latest/autoload.js"></script>
+    <script>
+        var live2dOpen = eval('true') || false;
+        if (!live2dOpen) {
+            localStorage.setItem('waifu-display', 1609323474481);
+        }
+    </script>
+  
   
   
 <link rel="stylesheet" href="/css/animate.min.css">
@@ -500,12 +515,12 @@
         
         <div class="tags">
           
-            <a href="/tags/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="">
-              Java设计模式
-            </a>
-          
             <a href="/tags/%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="">
               单例设计模式
+            </a>
+          
+            <a href="/tags/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="">
+              Java设计模式
             </a>
           
         </div>
