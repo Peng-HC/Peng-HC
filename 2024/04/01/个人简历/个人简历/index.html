@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>Tag: github | Penghc_Blog</title>
+  <title>个人简历 | Penghc_Blog</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -389,118 +389,696 @@
 </header>
         <!-- 内容区域 -->
         
+ <!-- prismjs 代码高亮 -->
+ 
 
-<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"></div>
-<div class="bg-light-floor-tagDetail" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -3;"></div>
 
-<div class="tag-header" style="background-image: url('https://pic1.zhimg.com/80/v2-604a15cef201cf177943af2d915eb2e7_1440w.jpg?source=1940ef5c');">
-  <div class="tag-header-title">
-    tag
-  </div>
-  <div class="tag-header-desc">
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
-    <span class="title" id="tag-header-desc"></span>
-    <script>
-  function typedFn() {
-    const el = '#tag-header-desc';
-    const type = 'tagDetail';
-    let desc = '愿你如风，被人温柔以待'
-    var typed = new Typed(el, {
-      strings: [desc],
-      startDelay: 100,
-      typeSpeed: 100,
-      loop: true,
-      backSpeed: 50,
-      showCursor: true
-    });
-  }
-  typedFn();
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        个人简历
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> Published in：2024-04-01 |
+        </span>
+      
+
+      
+
+      
+    
+  </div>
+  
+  
+    <script src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content post-row" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <h1 id="个人简历"><a href="#个人简历" class="headerlink" title="个人简历"></a>个人简历</h1><hr>
+<h2 id="一、基本信息"><a href="#一、基本信息" class="headerlink" title="一、基本信息"></a>一、基本信息</h2><blockquote>
+<p>生日：1999.04.18</p>
+<p>现居：浙江 · 杭州</p>
+<p>电话：185 3238 6306</p>
+<p>邮箱：<a href="mailto:penghc_seu@163.com">penghc_seu@163.com</a></p>
+</blockquote>
+<h2 id="二、教育背景"><a href="#二、教育背景" class="headerlink" title="二、教育背景"></a>二、教育背景</h2><blockquote>
+<p><strong>2021.09-2024.07</strong>           <strong>东南大学（985）          网络空间安全&#x2F;硕士</strong></p>
+<p><strong>2017.09-2021.07</strong>           <strong>河北大学              软件工程&#x2F;本科</strong></p>
+<p>东南大学网安学院21级硕士第四支部<strong>团支部书记</strong>  2022-09 至今</p>
+</blockquote>
+<h2 id="三、实习经历"><a href="#三、实习经历" class="headerlink" title="三、实习经历"></a>三、实习经历</h2><h3 id="小红书（上海）"><a href="#小红书（上海）" class="headerlink" title="小红书（上海）"></a>小红书（上海）</h3><p>2024.02-至今	社区技术部&#x2F;Android客户端开发</p>
+<p>实习内容：</p>
+<blockquote>
+<ol>
+<li>使用<strong>RecyclerView</strong>完成相关搜索区的GridLayout布局，并为每个子item添加监听事件；</li>
+<li>对搜索主页的输入框进行删词路径优化，控制输入法的唤起时机，并完成AB实验，在8.28版本上线后**日均query量提升8w+**；</li>
+<li>对sug页的用户卡和搜索结果页的oneBox卡区分热区，完成根据后端下发的直播状态跳转至个人页或直播页的需求，并添加曝光和点击事件的<strong>埋点</strong>；</li>
+<li>使用<strong>Retrofit网络库</strong>GET和PUT用户隐私设置状态，并增加新的图搜隐私设置开关，联调结束后，进行了AB实验和Reverse实验以验证用户预期效果。</li>
+<li>学习 <strong>DSL 技术</strong>，使用 DSL 模板完成了相关地点推荐卡的动态化布局。</li>
+</ol>
+</blockquote>
+<h3 id="美团（北京）"><a href="#美团（北京）" class="headerlink" title="美团（北京）"></a>美团（北京）</h3><p>2023.06-2023.08	Android业务组&#x2F;客户端开发</p>
+<p>实习内容：</p>
+<blockquote>
+<ol>
+<li>使用<strong>Java</strong>编程语言，基于<strong>Android Studio</strong>开发环境进行了应用程序的开发；</li>
+<li>使用<strong>ViewPager组件</strong>作为容器，在首页的大促专区中实现了展示多个<strong>Fragment</strong>的效果；</li>
+<li>在订单中心页面筛选按钮右侧<strong>增加发票按钮的UI，并为发票侧提供跳链</strong>，新增曝光和点击埋点需求，完成AB实验和App Mock自测，最终在美团app的12.11.400版本上线；</li>
+<li>根据<strong>SCA工具</strong>的建议修复现有应用程序的Bug，并<strong>学习首页启动业务的代码性能优化和重构</strong>；</li>
+<li>积极参与团队的<strong>技术交流</strong>，分享自己的学习心得与项目经验，促进团队共同成长与进步。</li>
+</ol>
+</blockquote>
+<h2 id="四、项目经历"><a href="#四、项目经历" class="headerlink" title="四、项目经历"></a>四、项目经历</h2><p><strong>LTE-V2X</strong> <strong>无线密钥生成系统                        2022.03-2023.02</strong></p>
+<p><strong>项目描述</strong>：本项目基于提取的<strong>CSI</strong> (信道状态信息)为通信双方生成 <strong>KDR</strong> (密钥不一致率)较低的两组密钥，同时使用CRC校验码对密钥进行<strong>信息调和</strong>，形成完全一致的两组密钥，最后，通信双方可以用此密钥实现图文的加解密传输。项目完全基于<strong>C++语言开发</strong>，部署在<strong>Linux环境</strong>下。</p>
+<p><strong>项目地址</strong>：<a target="_blank" rel="noopener" href="https://github.com/Peng-HC/My_Project/tree/LTE-D_System">https://github.com/Peng-HC/My_Project/tree/LTE-D_System</a></p>
+<p><strong>责任描述</strong>：</p>
+<p>（1）负责使用<strong>QT信号槽机制</strong>为系统设计可操作化的界面。</p>
+<p>（2）负责使用<strong>MQTT协议</strong>完成明文消息的发布与订阅服务。</p>
+<p>（3）负责使用<strong>CRC校验码</strong>对不一致的密钥组进行信息调和。</p>
+<p>（4）负责开发图片和文字加解密功能并完成对<strong>密钥性能的评估</strong>(如随机性&#x2F;生成速率&#x2F;KDR等)。</p>
+<p>（5）使用进程通信中的<strong>管道方式</strong>实现了子进程（随机性检测程序）与父进程（主程序）的通信。</p>
+<p>测试效果：在室外LOS和NLOS环境下以5.9GHz的载波进行信号的传输，系统可以快速地实现信号的捕捉和密钥的生成，并能成功地对数据进行加解密。在LOS环境下，系统每分钟可生成4-8组密钥，基本可以做到一次一密。</p>
+<h2 id="五、专业技能"><a href="#五、专业技能" class="headerlink" title="五、专业技能"></a>五、专业技能</h2><blockquote>
+<p>熟练掌握**C&#x2F;C++**基础语法，熟悉面向对象编程思想，能使用C++独立开发项目。</p>
+<p>熟悉<strong>Java和Kotlin</strong>语言，能进行Android业务相关的开发。</p>
+<p>熟悉常见的四大组件的创建流程和生命周期，<strong>binder通信、handler消息机制</strong>等。</p>
+<p>了解常见的框架(<strong>RxJava****、ViewModel、Lifecycles、LiveData</strong>)并能够熟练使用</p>
+<p>深入理解<strong>RecyclerView的实现原理</strong>和<strong>UI的渲染过程</strong>。</p>
+<p>熟悉常见的<strong>数据结构与算法</strong>，如线性表、链表、二叉树等。</p>
+<p>熟悉<strong>OSI七层模型</strong>，掌握常见的网络协议，如HTTP&#x2F;HTTPS、TCP&#x2F;IP、UDP、DNS等。</p>
+<p>熟练使用<strong>Git</strong>版本管理工具、<strong>Charles</strong>抓包工具等，熟悉Android项目从开发到上线的具体流程。</p>
+<p>通过英语<strong>CET-6</strong>测试，有较强的论文检索和文献阅读能力。</p>
+</blockquote>
+<h2 id="六、荣誉证书"><a href="#六、荣誉证书" class="headerlink" title="六、荣誉证书"></a>六、荣誉证书</h2><blockquote>
+<p>2022.10      2021-2022学年东南大学校级三好研究生</p>
+<p>2022.10      东南大学硕士第二学年学业奖学金二等</p>
+<p>2021.10      东南大学硕士第一学年学业奖学金一等</p>
+<p>2022.03      2022华为软件精英挑战赛江山赛区二等奖</p>
+<p>2021.12      第十八届中国研究生数学建模竞赛国家级三等奖</p>
+</blockquote>
+<h2 id="七、自我评价"><a href="#七、自我评价" class="headerlink" title="七、自我评价"></a>七、自我评价</h2><blockquote>
+<p>我是一个热爱学习和钻研新事物的人，有大厂实习经历，对技术充满热情。未来计划深耕客户端开发方向，梦想是有一天能创造出自己的DAU过百万的app。同时我也是一个热爱生活，极其自律的人。在闲余时间里我喜欢运动健身，在家里喜欢自己做饭，平时也会弹吉他，徒步旅游等，生活丰富多彩。毕竟生活中的每个细节都值得我们用心对待~</p>
+<p><strong>个人博客</strong>：<a target="_blank" rel="noopener" href="https://penghc.cn/">https://penghc.cn/</a></p>
+</blockquote>
+
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86/" class="">
+              个人简历
+            </a>
+          
+        </div>
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>author:  </strong>彭浩超</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>link:  </strong>
+    <a href="/2024/04/01/个人简历/个人简历/" target="_blank" title="个人简历">https://peng-hc.github.io/2024/04/01/个人简历/个人简历/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>Copyright notice:   </strong>
+      All articles on this website, unless otherwise stated, adopt <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      reprint policy. If reproduced, please indicate source!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" class="lazyload placeholder" data-srcset="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+    </div>
+    <a href="/2024/01/12/%E7%A7%91%E7%A0%94/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%9E%E9%AA%8C%E5%AE%89%E6%8E%92/" class="post-nav-link">
+      <div class="title">
+        Next: <i class="fas fa-angle-right"></i>
+        <div class="title-text">车联网实验安排</div>
+      </div>
+      <!-- <div class="content">
+        车联网实验安排基于m序列设计的TDD快速切换设计
+展示发射和接收到的信号
+
+展示导频信号设计模型
+
+Alice端10帧测
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          你的赏识是我前进的动力
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="https://gitee.com/phc-seu/picture-sets/raw/master/AliPay_%20Payment.webp" class="lazyload placeholder" data-srcset="https://gitee.com/phc-seu/picture-sets/raw/master/AliPay_%20Payment.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="https://gitee.com/phc-seu/picture-sets/raw/master/WeChat%20_Payment.webp" class="lazyload placeholder" data-srcset="https://gitee.com/phc-seu/picture-sets/raw/master/WeChat%20_Payment.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
 </script>
     
+
+    <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <div id="gitment-container"></div>
+
+    
   </div>
-  <div class="mask-box"></div>
-</div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
 
 
-
-<div class="tag">
-  <div class="tag-name">
-    <div class="name" style="background-color: #F5EEF8;">github category</div>
   </div>
-  <!-- 每一篇文章卡片 -->
-  <!-- hash算法 -->
 
-<section class="posts">
+  <!-- 目录 -->
+  <aside id='l_side'>
   
     
-    <article class="post reveal" style="flex-direction: row-reverse;   ">
-      <div class="post-main">
-        <div class="post-info">
-          <div class="post-time">
-            <i class="fas fa-clock" aria-hidden="true"></i>
-            <span class="post-time">2023-12-14</span>
-          </div>
-          <div class="post-title">
-            <a class="post-title-link" href="/2023/12/14/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">使用Hexo搭建个人博客</a>
-          </div>
-          <div class="post-meta">
-            <div class="post-tags">
-              <!-- 文章详情页的标签 -->
-
-    <i class="iconfont icontag"></i>
-    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DNS%E5%9F%9F%E5%90%8D/" rel="tag">DNS域名</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gitee/" rel="tag">gitee</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/" rel="tag">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" rel="tag">个人博客</a></li></ul>
-
-            </div>
-            <div class="post-categories">
-              <!-- 文章详情页的分类 -->
-
-
-            </div>
-          </div>
-          <div class="post-img-mobile">
-            <a href="/2023/12/14/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" style="background-size: cover; 
-              background-position: center center;">
-              <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-            </a>
-          </div>
-          <div class="post-content">
-            使用Hexo搭建个人博客
-前期工作
-
-本机电脑安装Git工具和.Net
-
-打开windows下的cmd命令行输入以下内容安装Hexo
-1cnpm install hexo-cli -g
-
-
-
-
-
-Hexo+Gitee
-
-参考博客：Hexo+
-          </div>
-        </div>
-        <div class="post-more">
-          <a href="/2023/12/14/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
-            <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
-          </a>
-        </div>
-      </div>
-      <div class="post-img">
-        <a href="/2023/12/14/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" style="background-size: cover; 
-          background-position: center center;">
-          <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+      <section class="widget side_blogger">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about/'>
+          <img src='https://pic2.zhimg.com/80/v2-42b72d5ebee4b8d8aa70d9687effe87b_1440w.webp'/>
         </a>
+      
+    
+    
+      <div class='text'>
+        
+          <h2>听风说梦</h2>
+        
+        
+          <p>独钓寒江雪</p>
+
+        
+        
+          <p><span id="jinrishici-sentence">Penghc_Blog</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
       </div>
-    </article>
-  
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="/3207161176@qq.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://github.com/Peng-HC"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=3207161176"
+              class="social fab fa-qq flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
 </section>
+
+    
+  
+  
+  
+
+  <div class="layout_sticky">    
+    
+      
+<section class="widget side_toc">
+  
+  <header>
+    
+      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name' style="color: ">本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+    <div class="toc-main">
+      <div class="toc-content">
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86"><span class="toc-text">个人简历</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="toc-text">一、基本信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%95%99%E8%82%B2%E8%83%8C%E6%99%AF"><span class="toc-text">二、教育背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AE%9E%E4%B9%A0%E7%BB%8F%E5%8E%86"><span class="toc-text">三、实习经历</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E7%BA%A2%E4%B9%A6%EF%BC%88%E4%B8%8A%E6%B5%B7%EF%BC%89"><span class="toc-text">小红书（上海）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BE%8E%E5%9B%A2%EF%BC%88%E5%8C%97%E4%BA%AC%EF%BC%89"><span class="toc-text">美团（北京）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E9%A1%B9%E7%9B%AE%E7%BB%8F%E5%8E%86"><span class="toc-text">四、项目经历</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E4%B8%93%E4%B8%9A%E6%8A%80%E8%83%BD"><span class="toc-text">五、专业技能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E8%8D%A3%E8%AA%89%E8%AF%81%E4%B9%A6"><span class="toc-text">六、荣誉证书</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E8%87%AA%E6%88%91%E8%AF%84%E4%BB%B7"><span class="toc-text">七、自我评价</span></a></li></ol></li></ol> -->
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 手机端目录按钮 -->
+<div id="toc-mobile-btn">
+  <i class="fas fa-list-ul" aria-hidden="true"></i>
 </div>
 
-<div class="w-70">
-  
+      
+  <section class="widget side_recent_post">
+    
+  <header>
+    
+      <a style="color: " href='/tags/'><i class="fas fa-book fa-fw" aria-hidden="true"></i><span class='name'>最新文章</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      
+      <!-- hash算法 -->
+      
+      <div class="aside-list">
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/04/01/%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86/%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">04-01</span>
+                
+              </div>
+              <a class="post-title" href="/2024/04/01/%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86/%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86/">个人简历</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/01/12/%E7%A7%91%E7%A0%94/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%9E%E9%AA%8C%E5%AE%89%E6%8E%92/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" class="lazyload placeholder" data-srcset="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">01-12</span>
+                
+              </div>
+              <a class="post-title" href="/2024/01/12/%E7%A7%91%E7%A0%94/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%9E%E9%AA%8C%E5%AE%89%E6%8E%92/">车联网实验安排</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/01/09/%E6%95%88%E7%8E%87%E6%8F%90%E5%8D%87%E6%8A%80%E5%B7%A7/AS%E5%AE%89%E8%A3%85CodeGeex%E6%8F%92%E4%BB%B6/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">01-09</span>
+                
+              </div>
+              <a class="post-title" href="/2024/01/09/%E6%95%88%E7%8E%87%E6%8F%90%E5%8D%87%E6%8A%80%E5%B7%A7/AS%E5%AE%89%E8%A3%85CodeGeex%E6%8F%92%E4%BB%B6/">AS安装CodeGeex插件</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/01/06/%E7%A7%91%E7%A0%94/%E7%AC%94%E8%AE%B0%E6%9C%AC-N210%E5%AE%89%E8%A3%85V2X-ZUC%E7%89%88%E6%9C%AC%E7%9A%84ROI%E7%B3%BB%E7%BB%9F%E6%95%99%E7%A8%8B/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic4.zhimg.com/80/v2-83ea273b88e119d9615aed0d89aad4ab_1440w.webp" class="lazyload placeholder" data-srcset="https://pic4.zhimg.com/80/v2-83ea273b88e119d9615aed0d89aad4ab_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">01-06</span>
+                
+              </div>
+              <a class="post-title" href="/2024/01/06/%E7%A7%91%E7%A0%94/%E7%AC%94%E8%AE%B0%E6%9C%AC-N210%E5%AE%89%E8%A3%85V2X-ZUC%E7%89%88%E6%9C%AC%E7%9A%84ROI%E7%B3%BB%E7%BB%9F%E6%95%99%E7%A8%8B/">笔记本+N210安装V2X-ZUC版本的ROI系统教程</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/01/06/Java%E9%AB%98%E9%98%B6%E5%AD%A6%E4%B9%A0/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8%E5%8F%8C%E6%A3%80%E9%94%81%E6%9C%BA%E5%88%B6%E6%97%B6%EF%BC%8C%E5%BF%85%E9%A1%BB%E5%B0%86instance%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E%E4%B8%BAvolatile/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">01-06</span>
+                
+              </div>
+              <a class="post-title" href="/2024/01/06/Java%E9%AB%98%E9%98%B6%E5%AD%A6%E4%B9%A0/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8%E5%8F%8C%E6%A3%80%E9%94%81%E6%9C%BA%E5%88%B6%E6%97%B6%EF%BC%8C%E5%BF%85%E9%A1%BB%E5%B0%86instance%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E%E4%B8%BAvolatile/">为什么使用双检锁机制时，必须将instance成员变量声明为volatile</a>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+
+    
+  </div>
+</aside>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
 </div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
 
       </main>
     </div>
