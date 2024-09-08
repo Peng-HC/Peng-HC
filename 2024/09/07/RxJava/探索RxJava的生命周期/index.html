@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>笔记本+N210安装V2X-ZUC版本的ROI系统教程 | Penghc_Blog</title>
+  <title>探索RxJava的生命周期 | Penghc_Blog</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -417,21 +417,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://pic4.zhimg.com/80/v2-83ea273b88e119d9615aed0d89aad4ab_1440w.webp')">
+  background-position: center center;position: relative;background-image:url('https://picx.zhimg.com/80/v2-85c31120acff76826ab53ea8934ef4bb_1440w.webp')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        笔记本+N210安装V2X-ZUC版本的ROI系统教程
+        探索RxJava的生命周期
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> Published in：2024-01-06 |
+          <i class="fas fa-calendar"></i> Published in：2024-09-07 |
         </span>
       
 
@@ -455,99 +455,112 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="笔记本-N210安装V2X-ZUC版本的ROI系统教程"><a href="#笔记本-N210安装V2X-ZUC版本的ROI系统教程" class="headerlink" title="笔记本+N210安装V2X-ZUC版本的ROI系统教程"></a>笔记本+N210安装V2X-ZUC版本的ROI系统教程</h1><hr>
-<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><blockquote>
+        <h1 id="探索RxJava的生命周期"><a href="#探索RxJava的生命周期" class="headerlink" title="探索RxJava的生命周期"></a>探索RxJava的生命周期</h1><hr>
+<h2 id="一、基本使用"><a href="#一、基本使用" class="headerlink" title="一、基本使用"></a>一、基本使用</h2><p>我们都知道，RxJava的使用通常需要进行三个步骤：</p>
 <ol>
-<li><p>两台安装了<code>Ubuntu 16.04</code>系统的笔记本电脑</p>
-</li>
-<li><p>主机安装了<code>UHD3.11</code>驱动和<code>GNIRadio3.7.11</code></p>
-</li>
-<li><p>下载了相关的软件包代码</p>
-</li>
-<li><p>读&#x2F;写的缓冲区大小修改</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo sysctl -w net.core.wmem_max=50000000</span><br><span class="line">sudo sysctl -w net.core.rmem_max=50000000</span><br></pre></td></tr></table></figure></li>
+<li>创建Observable<br> 即被观察者，使用 RxJava 需要创建一个被观察者，它会决定什么时候触发事件以及触发怎样的事件。有点类似上游发送命令，可以在这里决定<strong>异步操作模块的顺序和异步操作模块的次数</strong>。</li>
+<li>创建Observser<br> 即观察者，它可以在不同的线程中执行任务。这种模式可以极大地简化并发操作，因为它创建了一个处于待命状态的观察者哨兵，可以在未来某个时刻响应 Observable 的通知，而不需要阻塞等待。</li>
+<li>使用subscribe()进行订阅<br> 创建了 Observable 巳和 Observer 之后，我们还需要使用 subscribe() 方法将它们连接起来，这样整个上下游就能衔接起来实现链式调用。</li>
 </ol>
+<p>例子：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 基本的Rxjava流</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">basicRxjava</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 1.创建Observable</span></span><br><span class="line">    <span class="comment">// val observable = Observable.just(1,2,3,4,5)</span></span><br><span class="line">    <span class="keyword">val</span> observable = Observable.create&lt;<span class="built_in">Int</span>&gt; &#123; emitter -&gt;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            emitter.onNext(<span class="number">1</span>)</span><br><span class="line">            emitter.onNext(<span class="number">2</span>)</span><br><span class="line">            emitter.onNext(<span class="number">3</span>)</span><br><span class="line">            <span class="comment">// 主动抛出异常</span></span><br><span class="line">            <span class="keyword">throw</span> Exception(<span class="string">&quot;Observable数据发射错误!!!&quot;</span>)</span><br><span class="line">            emitter.onNext(<span class="number">4</span>)</span><br><span class="line">        &#125; <span class="keyword">catch</span> (e: java.lang.Exception) &#123;</span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * 主动发送异常给observer</span></span><br><span class="line"><span class="comment">             * 此时onComplete/OnNext均不会再执行了</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            emitter.onError(e)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 2. 创建Observer对象</span></span><br><span class="line"><span class="comment">     * Observer是一个接口，这里将其实例化就需要重写里面的方法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">val</span> observer = <span class="keyword">object</span> : Observer&lt;<span class="built_in">Int</span>&gt; &#123;</span><br><span class="line">        <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onSubscribe</span><span class="params">(d: <span class="type">Disposable</span>)</span></span> &#123;</span><br><span class="line">            println(<span class="string">&quot;observer-onSubscribe...订阅开始&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onError</span><span class="params">(e: <span class="type">Throwable</span>)</span></span> &#123;</span><br><span class="line">            println(<span class="string">&quot;observer-onError...错误的信息为<span class="subst">$&#123;e.message&#125;</span>&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 异常发生时则不执行onComplete</span></span><br><span class="line">        <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onComplete</span><span class="params">()</span></span> &#123;</span><br><span class="line">            println(<span class="string">&quot;observer-onComplete...Observable已发射完数据，订阅结束&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onNext</span><span class="params">(t: <span class="type">Int</span>)</span></span> &#123;</span><br><span class="line">            println(<span class="string">&quot;observer-onNext...接收到的数据为<span class="variable">$t</span>&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3. 开始订阅（被观察者“订阅”观察者）</span></span><br><span class="line">    observable.subscribe(observer)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>just() 和 create() 都是用于创建Observable的操作符，区别在于：</p>
+<ul>
+<li>just() 适用于简单的场景，当你想要立即发送一个或几个已知的值给订阅者时。</li>
+<li>create() 提供了更高的灵活性，允许你完全自定义 Observable 的行为，包括何时发射数据、如何处理错误以及何时完成。它更适合于复杂的异步操作和自定义数据流。</li>
+</ul>
 </blockquote>
-<h2 id="MQTT环境配置"><a href="#MQTT环境配置" class="headerlink" title="MQTT环境配置"></a>MQTT环境配置</h2><blockquote>
-<p>软件包中<code>ROI_env</code>目录下有<code>MQTT</code>相关环境</p>
-<p><img src="/../../images/%E7%A7%91%E7%A0%94/%E7%AC%94%E8%AE%B0%E6%9C%AC-N210%E5%AE%89%E8%A3%85V2X-ZUC%E7%89%88%E6%9C%AC%E7%9A%84ROI%E7%B3%BB%E7%BB%9F%E6%95%99%E7%A8%8B/MQTT%E7%8E%AF%E5%A2%83%E7%9B%B8%E5%85%B3%E7%9B%AE%E5%BD%95.png" class="lazyload placeholder" data-srcset="/../../images/%E7%A7%91%E7%A0%94/%E7%AC%94%E8%AE%B0%E6%9C%AC-N210%E5%AE%89%E8%A3%85V2X-ZUC%E7%89%88%E6%9C%AC%E7%9A%84ROI%E7%B3%BB%E7%BB%9F%E6%95%99%E7%A8%8B/MQTT%E7%8E%AF%E5%A2%83%E7%9B%B8%E5%85%B3%E7%9B%AE%E5%BD%95.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
+<p>上述例子的输出结果为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">observer-onSubscribe...订阅开始</span><br><span class="line">observer-onNext...接收到的数据为1</span><br><span class="line">observer-onNext...接收到的数据为2</span><br><span class="line">observer-onNext...接收到的数据为3</span><br><span class="line">observer-onError...错误的信息为Observable数据发射错误!!!</span><br></pre></td></tr></table></figure>
+<h3 id="1-1-异常终止后观察者的生命周期"><a href="#1-1-异常终止后观察者的生命周期" class="headerlink" title="1.1 异常终止后观察者的生命周期"></a>1.1 异常终止后观察者的生命周期</h3><p>可能有小伙伴就会问了：在也就是说，在<code>throw Exception(&quot;Observable数据发射错误!!!&quot;)</code>之后的<code>emitter.onNext(4)</code>咋没有执行呢？并且Observer的<code>onComplete()</code>回调也没有执行。这是因为Observable在抛出异常的情况下，会终止掉后续数据的发射，Observer也就不能正常结束，只会走到<code>onError</code>的回调函数中。</p>
+<blockquote>
+<p>综上所述，在Observable异常终止的情况下，observer的生命周期为：<code>onSubscribe-&gt;onNext-&gt;onError</code></p>
 </blockquote>
-<h3 id="安装paho-mqtt-c"><a href="#安装paho-mqtt-c" class="headerlink" title="安装paho.mqtt.c"></a>安装paho.mqtt.c</h3><blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> paho.mqtt.c</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
-
-<p>成功的话，会在<code>paho.mqtt.c/build/output</code>下可以找到各种动静态链接。</p>
-<p>补充: 若在make的时候出现以下错误提示：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">In file included from src/Socket.c:33:0:</span><br><span class="line">src/SocketBuffer.h:28:25: fatal error: openssl/ssl.h: No such file or directory</span><br><span class="line">compilation terminated.</span><br></pre></td></tr></table></figure>
-
-<p>导致这种情况的原因是：openssl环境没有配置正确，此时需要通过如下命令来安装OpenSSL 开发包：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libssl-dev</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-数据完整发射完成后观察者的生命周期"><a href="#1-2-数据完整发射完成后观察者的生命周期" class="headerlink" title="1.2 数据完整发射完成后观察者的生命周期"></a>1.2 数据完整发射完成后观察者的生命周期</h3><p>这里将Observable主动抛出异常的代码注释掉，也不向Observer发射error事件。由于发射数据的形式简单，所以我们可以用just操作符来创建Observable。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> observable = Observable.just(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+<p>运行后的结果如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">observer-onSubscribe...订阅开始</span><br><span class="line">observer-onNext...接收到的数据为1</span><br><span class="line">observer-onNext...接收到的数据为2</span><br><span class="line">observer-onNext...接收到的数据为3</span><br><span class="line">observer-onNext...接收到的数据为4</span><br><span class="line">observer-onComplete...Observable已发射完数据，订阅结束</span><br></pre></td></tr></table></figure>
+<p>这里可以看到，Observer已经执行了onComplete的回调函数了。</p>
+<blockquote>
+<p>综上所述，在Observable正常发射数据的情况下，observer的生命周期为：<code>onSubscribe-&gt;onNext-&gt;onComplete</code></p>
 </blockquote>
-<h3 id="初始化日志系统"><a href="#初始化日志系统" class="headerlink" title="初始化日志系统"></a>初始化日志系统</h3><blockquote>
-<ol>
-<li><p>安装<code>gflags</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> gflags</span><br><span class="line"><span class="built_in">mkdir</span> build</span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line">cmake -DGFLAGS_NAMESPACE=google -DCMAKE_CXX_FLAGS=-fPIC -DBUILD_SHARED_LIBS=ON ..</span><br><span class="line">make -j4</span><br><span class="line">sudo make install</span><br><span class="line">sudo ldconfig</span><br></pre></td></tr></table></figure>
+<h2 id="二、Do操作符"><a href="#二、Do操作符" class="headerlink" title="二、Do操作符"></a>二、Do操作符</h2><p>do 操作符可以<strong>给 Observable 生命周期</strong>的各个阶段加上一系列的回调监听，当 Observable 执行到这个阶段时，这些回调就会被触发。在 RxJava 中包含了很多的 do… 操作符。<br><img src="https://i-blog.csdnimg.cn/direct/e174b0c5f95e47c3a57098cf99962388.png#pic_center" class="lazyload placeholder" data-srcset="https://i-blog.csdnimg.cn/direct/e174b0c5f95e47c3a57098cf99962388.png#pic_center" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="在这里插入图片描述"></p>
+<h3 id="2-1-Do操作符的作用"><a href="#2-1-Do操作符的作用" class="headerlink" title="2.1 Do操作符的作用"></a>2.1 Do操作符的作用</h3><table>
+<thead>
+<tr>
+<th>操作符</th>
+<th align="left"><center>作用</center></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>doOnNext</td>
+<td align="left">当Observable发射一个数据项给它的观察者时，会先执行这个操作符指定的动作。这个操作不会改变数据项，也不会影响Observable的后续操作。</td>
+</tr>
+<tr>
+<td>doOnError</td>
+<td align="left">当Observable遇到错误并准备通过onError方法通知其观察者时，会先执行这个操作符指定的错误处理动作。注意：这个操作不会阻止onError通知的传递，也不会改变错误本身。</td>
+</tr>
+<tr>
+<td>doOnComplete</td>
+<td align="left">当Observable正常完成时，会执行这个操作符指定的完成操作。这个操作同样不会影响Observable的完成通知。</td>
+</tr>
+<tr>
+<td>doOnSubscribe</td>
+<td align="left">当观察者订阅Observable时，会先执行这个操作符指定的订阅动作。这可以用于记录订阅事件、管理资源等。</td>
+</tr>
+<tr>
+<td>doOnTerminate</td>
+<td align="left">当Observable正常完成或遇到错误时（即调用onComplete或onError方法时），会执行这个操作符指定的终止操作。这个操作允许你在Observable的生命周期结束时执行一些清理工作。</td>
+</tr>
+<tr>
+<td>doOnDispose</td>
+<td align="left">当Observable的订阅被取消（即调用Disposable的dispose方法时），会执行这个操作符指定的操作。这可以用于释放资源、取消后台任务等。</td>
+</tr>
+<tr>
+<td>doFinally</td>
+<td align="left">在Observable正常完成、遇到错误或者下游（downstream）取消订阅时执行一个特定的操作。且doFinally优先于doAfterTerminate的调用</td>
+</tr>
+<tr>
+<td>doAfterTerminate</td>
+<td align="left">在Observable正常完成或遇到错误时执行一个操作。但是，与doFinally不同的是，doAfterTerminate不会在下游取消订阅时被调用。</td>
+</tr>
+</tbody></table>
+<h3 id="2-2-Do操作符的生命周期"><a href="#2-2-Do操作符的生命周期" class="headerlink" title="2.2 Do操作符的生命周期"></a>2.2 Do操作符的生命周期</h3><p>这里直接看个demo</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * do操作符的执行顺序</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@SuppressLint(<span class="string">&quot;CheckResult&quot;</span>)</span></span><br><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">rxjavaDo</span><span class="params">()</span></span> &#123;</span><br><span class="line">    Observable.create&lt;<span class="built_in">Int</span>&gt; &#123; emitter -&gt;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            emitter.onNext(<span class="number">1</span>)</span><br><span class="line"><span class="comment">//            throw Exception(&quot;Observable抛出异常!!!&quot;)</span></span><br><span class="line">            emitter.onNext(<span class="number">4</span>)</span><br><span class="line">        &#125; <span class="keyword">catch</span> (e: java.lang.Exception) &#123;</span><br><span class="line">            <span class="comment">// 发射异常信息（否则Observer接收不到）</span></span><br><span class="line"><span class="comment">//            emitter.onError(e)</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;.doOnNext &#123; value -&gt;</span><br><span class="line">        println(<span class="string">&quot;Observable-doOnNext-value=<span class="variable">$value</span>&quot;</span>)</span><br><span class="line">    &#125;.doAfterNext &#123; value -&gt;</span><br><span class="line">        println(<span class="string">&quot;Observable-doAfterNext-value=<span class="variable">$value</span>&quot;</span>)</span><br><span class="line">    &#125;.doOnComplete &#123;</span><br><span class="line">        println(<span class="string">&quot;Observable-doOnComplete&quot;</span>)</span><br><span class="line">    &#125;.doOnSubscribe &#123;</span><br><span class="line">        println(<span class="string">&quot;Observable-doOnSubscribe&quot;</span>)</span><br><span class="line">    &#125;.doOnTerminate &#123;</span><br><span class="line">        println(<span class="string">&quot;Observable-doOnTerminate&quot;</span>)</span><br><span class="line">    &#125;.doAfterTerminate &#123;</span><br><span class="line">        println(<span class="string">&quot;Observable-doAfterTerminate&quot;</span>)</span><br><span class="line">    &#125;.doFinally &#123;</span><br><span class="line">        println(<span class="string">&quot;Observable-doFinally&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Observable 每发射一个数据就会触发这个回调，不仅包括onNext，还包括onComplete和onError</span></span><br><span class="line">    .doOnEach &#123; stringNotification -&gt;</span><br><span class="line">        println(<span class="string">&quot;*******doOnEach-start*******&quot;</span>)</span><br><span class="line">        <span class="keyword">if</span> (stringNotification.isOnNext) &#123;</span><br><span class="line">            println(<span class="string">&quot;isOnNext&quot;</span>)</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (stringNotification.isOnComplete) &#123;</span><br><span class="line">            println(<span class="string">&quot;isOnComplete&quot;</span>)</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (stringNotification.isOnError) &#123;</span><br><span class="line">            println(<span class="string">&quot;isOnError&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        println(<span class="string">&quot;*******doOnEach-end*******&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 订阅后可以取消订阅</span></span><br><span class="line">    .doOnLifecycle(&#123; disposable -&gt;</span><br><span class="line">        println(<span class="string">&quot;Observable-doOnLifecycle-Consumer-是否disposed:<span class="subst">$&#123;disposable.isDisposed&#125;</span>&quot;</span>)</span><br><span class="line">    &#125;, &#123; println(<span class="string">&quot;Observable-doOnLifecycle-Action&quot;</span>) &#125;)</span><br><span class="line">    .subscribe(<span class="keyword">object</span> : Observer&lt;<span class="built_in">Int</span>&gt; &#123;</span><br><span class="line">        <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onSubscribe</span><span class="params">(d: <span class="type">Disposable</span>)</span></span> &#123;</span><br><span class="line">            println(<span class="string">&quot;observer-onSubscribe...订阅开始&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onError</span><span class="params">(e: <span class="type">Throwable</span>)</span></span> &#123;</span><br><span class="line">            println(<span class="string">&quot;observer-onError...错误的信息为<span class="subst">$&#123;e.message&#125;</span>&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 异常发生时则不执行onComplete</span></span><br><span class="line">        <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onComplete</span><span class="params">()</span></span> &#123;</span><br><span class="line">            println(<span class="string">&quot;observer-onComplete...Observable已发射完数据，订阅结束&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onNext</span><span class="params">(t: <span class="type">Int</span>)</span></span> &#123;</span><br><span class="line">            println(<span class="string">&quot;observer-onNext...接收到的数据为<span class="variable">$t</span>&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行的结果为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Observable-doOnSubscribe</span><br><span class="line">Observable-doOnLifecycle-Consumer-是否disposed:<span class="literal">false</span></span><br><span class="line">observer-onSubscribe...订阅开始</span><br><span class="line">Observable-doOnNext-value=1</span><br><span class="line">*******doOnEach-start*******</span><br><span class="line">isOnNext</span><br><span class="line">*******doOnEach-end*******</span><br><span class="line">observer-onNext...接收到的数据为1</span><br><span class="line">Observable-doAfterNext-value=1</span><br><span class="line">Observable-doOnNext-value=4</span><br><span class="line">*******doOnEach-start*******</span><br><span class="line">isOnNext</span><br><span class="line">*******doOnEach-end*******</span><br><span class="line">observer-onNext...接收到的数据为4</span><br><span class="line">Observable-doAfterNext-value=4</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>可以看到，Observable正常发射完数据后，Do操作符的生命周期为：<br>doOnSubscribe-&gt;doOnLifecycle-&gt;doOnNext-&gt;doOnEach-&gt;doAfterNext</p>
+</blockquote>
+<p>而当Observable主动抛出异常后，执行的结果为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Observable-doOnSubscribe</span><br><span class="line">Observable-doOnLifecycle-Consumer-是否disposed:<span class="literal">false</span></span><br><span class="line">observer-onSubscribe...订阅开始</span><br><span class="line">Observable-doOnNext-value=1</span><br><span class="line">*******doOnEach-start*******</span><br><span class="line">isOnNext</span><br><span class="line">*******doOnEach-end*******</span><br><span class="line">observer-onNext...接收到的数据为1</span><br><span class="line">Observable-doAfterNext-value=1</span><br><span class="line">Observable-doOnTerminate</span><br><span class="line">*******doOnEach-start*******</span><br><span class="line">isOnError</span><br><span class="line">*******doOnEach-end*******</span><br><span class="line">observer-onError...错误的信息为Observable抛出异常!!!</span><br><span class="line">Observable-doFinally</span><br><span class="line">Observable-doAfterTerminate</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>可以看到，Observabl异常终止后，Do操作符的生命周期为：<br>doOnSubscribe-&gt;doOnLifecycle-&gt;doOnNext-&gt;doOnEach(onNext事件)-&gt;doAfterNext-&gt;doOnTerminate-&gt;doOnEach(error事件)-&gt;doFinally-&gt;doAfterTerminate</p>
+</blockquote>
+<h2 id="三、filter过滤为false时Observable和Observer的生命周期"><a href="#三、filter过滤为false时Observable和Observer的生命周期" class="headerlink" title="三、filter过滤为false时Observable和Observer的生命周期"></a>三、filter过滤为false时Observable和Observer的生命周期</h2><p>在做项目的时候，发现当filter为false时，Observable依旧会执行doOnTerminate等回调方法。导致结果不符合预期。所以这里我特地探究了下filter过滤为false时Observable和Observer的生命周期。<br>在上述demo中为Observable加上一层filter。即</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.filter&#123; <span class="literal">false</span> &#125;</span><br></pre></td></tr></table></figure>
+<p>得到的结果为：</p>
+<ul>
+<li>异常数据终止的情况<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Observable-doOnSubscribe</span><br><span class="line">Observable-doOnLifecycle-Consumer-是否disposed:<span class="literal">false</span></span><br><span class="line">observer-onSubscribe...订阅开始</span><br><span class="line">Observable-doOnNext-value=1</span><br><span class="line">*******doOnEach-start*******</span><br><span class="line">isOnNext</span><br><span class="line">*******doOnEach-end*******</span><br><span class="line">Observable-doAfterNext-value=1</span><br><span class="line">Observable-doOnTerminate</span><br><span class="line">*******doOnEach-start*******</span><br><span class="line">isOnError</span><br><span class="line">*******doOnEach-end*******</span><br><span class="line">observer-onError...错误的信息为Observable抛出异常!!!</span><br><span class="line">Observable-doFinally</span><br><span class="line">Observable-doAfterTerminate</span><br></pre></td></tr></table></figure></li>
+<li>正常完成数据发射的情况<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Observable-doOnSubscribe</span><br><span class="line">Observable-doOnLifecycle-Consumer-是否disposed:<span class="literal">false</span></span><br><span class="line">observer-onSubscribe...订阅开始</span><br><span class="line">Observable-doOnNext-value=1</span><br><span class="line">*******doOnEach-start*******</span><br><span class="line">isOnNext</span><br><span class="line">*******doOnEach-end*******</span><br><span class="line">Observable-doAfterNext-value=1</span><br><span class="line">Observable-doOnNext-value=4</span><br><span class="line">*******doOnEach-start*******</span><br><span class="line">isOnNext</span><br><span class="line">*******doOnEach-end*******</span><br><span class="line">Observable-doAfterNext-value=4</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>由输出结果可以看到：Observable的生命周期还是正常执行的，但Observer的onNext却没有收到任何数据。这说明：filter操作符过滤为false时，<strong>它仅影响传递给Observer的数据，而不直接影响Observable或Observer的生命周期。</strong></p>
+</blockquote>
 </li>
-<li><p>安装<code>glog</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> glog</span><br><span class="line"><span class="built_in">mkdir</span> build</span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line">cmake ../ &amp;&amp; make &amp;&amp; sudo make install</span><br></pre></td></tr></table></figure>
-
-<p>注：在安装<code>glog</code>日志系统时可能会因为cmake版本要求<code>cmake_3.16</code>以上而出错，此时的解决方法为：</p>
-<p>（1）进入软件包中<code>cmake-3.16.8-Linux-x86_64</code>文件夹</p>
-<p>（2）把里面的四个文件夹<code>bin doc man share</code>移动到 <code>/usr/local/cmake</code>目录下，（默认是放到这里，如果没有cmake目录，就自己新建一个）</p>
-<p>（3）接下来就是为<code>cmake</code>添加<code>path</code>，执行<code>sudo gedit ~/.bashrc</code>，在最后一行添加如下路径：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment"># 注意这里的路径是有冒号的，而且，= 前后不能有空格，否则会出现not a valid identifier的错误</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="string">&quot;/usr/local/cmake/bin:<span class="variable">$PATH</span>&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>（4）最后，使配置文件生效即可</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
-
-<p>（5）检查是否安装成功</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmake --version</span><br></pre></td></tr></table></figure></li>
-</ol>
-</blockquote>
-<h2 id="安装子模块gr-roi"><a href="#安装子模块gr-roi" class="headerlink" title="安装子模块gr-roi"></a>安装子模块gr-roi</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/V2X-ZUC/GModule/gr-roi <span class="comment"># 切入gr-roi子模块目录</span></span><br><span class="line"><span class="built_in">mkdir</span> build <span class="comment"># 新建build目录，用于编译安装模块</span></span><br><span class="line"><span class="built_in">cd</span> build <span class="comment"># 切换到build目录</span></span><br><span class="line">cmake ../ &amp;&amp; make &amp;&amp; sudo make install &amp;&amp; sudo ldconfig <span class="comment"># 编译安装gr-roi模块</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="编译并运行ROI"><a href="#编译并运行ROI" class="headerlink" title="编译并运行ROI"></a>编译并运行ROI</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> V2X-ZUC <span class="comment"># 切入V2X-ZUC文件夹</span></span><br><span class="line"><span class="built_in">mkdir</span> build <span class="comment"># 新建build目录，用于编译</span></span><br><span class="line"><span class="built_in">cd</span> build <span class="comment"># 切换到build目录</span></span><br><span class="line">cmake ../ &amp;&amp; make <span class="comment"># 编译</span></span><br><span class="line"><span class="built_in">cd</span> ../bin <span class="comment"># 切换到ROI源码目录下的bin目录,可以看到有一个名为ROI的可执行文件</span></span><br><span class="line">./ROI <span class="comment"># 命令行运行该可执行文件（或者图像界面切换到该目录下，双击允许该文件）</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="启动图形化界面"><a href="#启动图形化界面" class="headerlink" title="启动图形化界面"></a>启动图形化界面</h2><blockquote>
-<p>进入软件包中的目录：<code>V2X-ZUC\caic</code></p>
-<ol>
-<li><p>执行<code>caicdemo</code>，启动服务器进行监听</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./caicdemo</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>打开浏览器，输入网址<code>localhost:8080/public/frontend/html/scifi.html</code>，启动可视化界面</p>
-</li>
-<li><p>回到<code>~/V2X-ZUC/V2X-ZUC/build</code>目录下，重新<code>make</code>编译（若ROI系统的代码有修改则需执行此项操作，否则不需要）</p>
-</li>
-</ol>
-<p><strong>实验效果：</strong></p>
-<p>（1）Alice端</p>
-<p><img src="/../../images/%E7%A7%91%E7%A0%94/%E7%AC%94%E8%AE%B0%E6%9C%AC-N210%E5%AE%89%E8%A3%85V2X-ZUC%E7%89%88%E6%9C%AC%E7%9A%84ROI%E7%B3%BB%E7%BB%9F%E6%95%99%E7%A8%8B/alice-V2X-ZUC%E7%89%88%E6%9C%AC%E7%B3%BB%E7%BB%9F-N210.png" class="lazyload placeholder" data-srcset="/../../images/%E7%A7%91%E7%A0%94/%E7%AC%94%E8%AE%B0%E6%9C%AC-N210%E5%AE%89%E8%A3%85V2X-ZUC%E7%89%88%E6%9C%AC%E7%9A%84ROI%E7%B3%BB%E7%BB%9F%E6%95%99%E7%A8%8B/alice-V2X-ZUC%E7%89%88%E6%9C%AC%E7%B3%BB%E7%BB%9F-N210.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
-<p>（2）Bob端</p>
-<p><img src="/../../images/%E7%A7%91%E7%A0%94/%E7%AC%94%E8%AE%B0%E6%9C%AC-N210%E5%AE%89%E8%A3%85V2X-ZUC%E7%89%88%E6%9C%AC%E7%9A%84ROI%E7%B3%BB%E7%BB%9F%E6%95%99%E7%A8%8B/bob-V2X-ZUC%E7%89%88%E6%9C%AC%E7%B3%BB%E7%BB%9F-N210.png" class="lazyload placeholder" data-srcset="/../../images/%E7%A7%91%E7%A0%94/%E7%AC%94%E8%AE%B0%E6%9C%AC-N210%E5%AE%89%E8%A3%85V2X-ZUC%E7%89%88%E6%9C%AC%E7%9A%84ROI%E7%B3%BB%E7%BB%9F%E6%95%99%E7%A8%8B/bob-V2X-ZUC%E7%89%88%E6%9C%AC%E7%B3%BB%E7%BB%9F-N210.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
-<p>（3）可视化界面</p>
-<p><img src="/../../images/%E7%A7%91%E7%A0%94/%E7%AC%94%E8%AE%B0%E6%9C%AC-N210%E5%AE%89%E8%A3%85V2X-ZUC%E7%89%88%E6%9C%AC%E7%9A%84ROI%E7%B3%BB%E7%BB%9F%E6%95%99%E7%A8%8B/bob-V2X-ZUC%E7%89%88%E6%9C%AC%E7%B3%BB%E7%BB%9F-N210-%E6%96%B0%E7%95%8C%E9%9D%A2.png" class="lazyload placeholder" data-srcset="/../../images/%E7%A7%91%E7%A0%94/%E7%AC%94%E8%AE%B0%E6%9C%AC-N210%E5%AE%89%E8%A3%85V2X-ZUC%E7%89%88%E6%9C%AC%E7%9A%84ROI%E7%B3%BB%E7%BB%9F%E6%95%99%E7%A8%8B/bob-V2X-ZUC%E7%89%88%E6%9C%AC%E7%B3%BB%E7%BB%9F-N210-%E6%96%B0%E7%95%8C%E9%9D%A2.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
-</blockquote>
-<h2 id="室内建议阈值"><a href="#室内建议阈值" class="headerlink" title="室内建议阈值"></a>室内建议阈值</h2><h3 id="Alice端"><a href="#Alice端" class="headerlink" title="Alice端"></a>Alice端</h3><blockquote>
-<p>PSS能量阈值：50</p>
-<p>PSS相关阈值：10</p>
-<p>DMRS能量阈值：10</p>
-<p>DMRS相关阈值：15</p>
-</blockquote>
-<h3 id="Bob端"><a href="#Bob端" class="headerlink" title="Bob端"></a>Bob端</h3><blockquote>
-<p>PSS能量阈值：150</p>
-<p>PSS相关阈值：60</p>
-</blockquote>
+</ul>
 
       </div>
       <div class="post-tags-categories">
         
         <div class="tags">
           
-            <a href="/tags/%E7%A7%91%E7%A0%94/" class="">
-              科研
+            <a href="/tags/RxJava/" class="">
+              RxJava
             </a>
           
-            <a href="/tags/ROI%E7%B3%BB%E7%BB%9F/" class="">
-              ROI系统
+            <a href="/tags/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="">
+              生命周期
             </a>
           
         </div>
@@ -561,7 +574,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/2024/01/06/科研/笔记本-N210安装V2X-ZUC版本的ROI系统教程/" target="_blank" title="笔记本+N210安装V2X-ZUC版本的ROI系统教程">https://peng-hc.github.io/2024/01/06/科研/笔记本-N210安装V2X-ZUC版本的ROI系统教程/</a>
+    <a href="/2024/09/07/RxJava/探索RxJava的生命周期/" target="_blank" title="探索RxJava的生命周期">https://peng-hc.github.io/2024/09/07/RxJava/探索RxJava的生命周期/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -583,21 +596,18 @@
   <div class="post-nav-prev post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" class="lazyload placeholder" data-srcset="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+      <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
     </div>
-    <a href="/2024/01/12/%E7%A7%91%E7%A0%94/%E8%BD%A6%E8%81%94%E7%BD%91%E5%AE%9E%E9%AA%8C%E5%AE%89%E6%8E%92/" class="post-nav-link">
+    <a href="/2024/09/08/Kotlin%E5%AD%A6%E4%B9%A0/Kotlin%E4%B9%8B%E5%8D%8F%E7%A8%8B%E7%9A%84%E4%BD%BF%E7%94%A8/" class="post-nav-link">
       <div class="title">
         <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">车联网实验安排</div>
+        <div class="title-text">Kotlin之协程的使用</div>
       </div>
       
       <!-- <div class="content">
-        车联网实验安排基于m序列设计的TDD快速切换设计
-展示发射和接收到的信号
+        Kotlin之协程的使用
 
-展示导频信号设计模型
-
-Alice端10帧测
+协程是基于线程的，可以理解为轻量级的线程。协程的调度是协作式的，程序员需要手动控制协程的切换
       </div> -->
     </a>
   </div>
@@ -608,19 +618,19 @@ Alice端10帧测
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
     </div>
-    <a href="/2023/12/20/leetcode%E5%88%B7%E9%A2%98/%E9%93%BE%E8%A1%A8/" class="post-nav-link">
+    <a href="/2024/08/11/Android%E5%BC%80%E5%8F%91/Android%E4%B8%8A%E5%A6%82%E4%BD%95%E8%BF%90%E7%94%A8%E6%89%8B%E6%9C%BA%E5%A4%9A%E5%AA%92%E4%BD%93/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">链表</div>
+        <div class="title-text">Android上如何运用手机多媒体</div>
       </div>
       <!-- <div class="content">
-        链表
-LC141. 环形链表题目描述
-141. 环形链表
-给你一个链表的头节点 head ，判断链表中是否有环。
-如果链
+        Android上如何运用手机多媒体
+调用摄像头和相册调用摄像头拍照
+新建CameraAlbumTest项目
+
+修改布局a
       </div> -->
     </a>
   </div>
@@ -841,7 +851,7 @@ LC141. 环形链表题目描述
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%94%E8%AE%B0%E6%9C%AC-N210%E5%AE%89%E8%A3%85V2X-ZUC%E7%89%88%E6%9C%AC%E7%9A%84ROI%E7%B3%BB%E7%BB%9F%E6%95%99%E7%A8%8B"><span class="toc-text">笔记本+N210安装V2X-ZUC版本的ROI系统教程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87"><span class="toc-text">前期准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MQTT%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="toc-text">MQTT环境配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85paho-mqtt-c"><span class="toc-text">安装paho.mqtt.c</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F"><span class="toc-text">初始化日志系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%AD%90%E6%A8%A1%E5%9D%97gr-roi"><span class="toc-text">安装子模块gr-roi</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E5%B9%B6%E8%BF%90%E8%A1%8CROI"><span class="toc-text">编译并运行ROI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E5%9B%BE%E5%BD%A2%E5%8C%96%E7%95%8C%E9%9D%A2"><span class="toc-text">启动图形化界面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%A4%E5%86%85%E5%BB%BA%E8%AE%AE%E9%98%88%E5%80%BC"><span class="toc-text">室内建议阈值</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Alice%E7%AB%AF"><span class="toc-text">Alice端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bob%E7%AB%AF"><span class="toc-text">Bob端</span></a></li></ol></li></ol></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%A2%E7%B4%A2RxJava%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">探索RxJava的生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-text">一、基本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E5%BC%82%E5%B8%B8%E7%BB%88%E6%AD%A2%E5%90%8E%E8%A7%82%E5%AF%9F%E8%80%85%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">1.1 异常终止后观察者的生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E6%95%B0%E6%8D%AE%E5%AE%8C%E6%95%B4%E5%8F%91%E5%B0%84%E5%AE%8C%E6%88%90%E5%90%8E%E8%A7%82%E5%AF%9F%E8%80%85%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">1.2 数据完整发射完成后观察者的生命周期</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Do%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="toc-text">二、Do操作符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Do%E6%93%8D%E4%BD%9C%E7%AC%A6%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">2.1 Do操作符的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Do%E6%93%8D%E4%BD%9C%E7%AC%A6%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">2.2 Do操作符的生命周期</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81filter%E8%BF%87%E6%BB%A4%E4%B8%BAfalse%E6%97%B6Observable%E5%92%8CObserver%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">三、filter过滤为false时Observable和Observer的生命周期</span></a></li></ol></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
