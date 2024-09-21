@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>链表 | Penghc_Blog</title>
+  <title>设计模式之建造者模式（Builder Pattern） | Penghc_Blog</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -417,21 +417,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg')">
+  background-position: center center;position: relative;background-image:url('https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        链表
+        设计模式之建造者模式（Builder Pattern）
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> Published in：2023-12-20 |
+          <i class="fas fa-calendar"></i> Published in：2024-09-16 |
         </span>
       
 
@@ -455,197 +455,88 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h1><hr>
-<h2 id="LC141-环形链表"><a href="#LC141-环形链表" class="headerlink" title="LC141. 环形链表"></a>LC141. 环形链表</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><blockquote>
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/linked-list-cycle/">141. 环形链表</a></p>
-<p>给你一个链表的头节点 <code>head</code> ，判断链表中是否有环。</p>
-<p>如果链表中有某个节点，可以通过连续跟踪 <code>next</code> 指针再次到达，则链表中存在环。 为了表示给定链表中的环，评测系统内部使用整数 <code>pos</code> 来表示链表尾连接到链表中的位置（索引从 0 开始）。<strong>注意：<code>pos</code> 不作为参数进行传递</strong> 。仅仅是为了标识链表的实际情况。</p>
-<p><em>如果链表中存在环</em> ，则返回 <code>true</code> 。 否则，返回 <code>false</code> 。</p>
-<p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist.png" class="lazyload placeholder" data-srcset="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="img"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：head = [3,2,0,-4], pos = 1</span><br><span class="line">输出：true</span><br><span class="line">解释：链表中有一个环，其尾部连接到第二个节点。</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 2：</strong></p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist_test2.png" class="lazyload placeholder" data-srcset="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist_test2.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="img"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：head = [1,2], pos = 0</span><br><span class="line">输出：true</span><br><span class="line">解释：链表中有一个环，其尾部连接到第一个节点。</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 3：</strong></p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist_test3.png" class="lazyload placeholder" data-srcset="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist_test3.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="img"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：head = [1], pos = -1</span><br><span class="line">输出：false</span><br><span class="line">解释：链表中没有环。</span><br></pre></td></tr></table></figure>
-
-<p><strong>提示：</strong></p>
-<ul>
-<li>链表中节点的数目范围是 <code>[0, 104]</code></li>
-<li><code>-105 &lt;= Node.val &lt;= 105</code></li>
-<li><code>pos</code> 为 <code>-1</code> 或者链表中的一个 <strong>有效索引</strong> 。</li>
-</ul>
-<p><strong>进阶：</strong>你能用 <code>O(1)</code>（即，常量）内存解决此问题吗？</p>
-</blockquote>
-<h3 id="解题方法"><a href="#解题方法" class="headerlink" title="解题方法"></a>解题方法</h3><blockquote>
-<p>思路：使用快慢指针——slow每次移动一个节点,fast每次移动两个节点，若存在环形链路的话，则两个节点一定会再次相遇，此时只要判断slow是否等于fast即可</p>
-<p><strong>代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// 快慢指针</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">hasCycle</span><span class="params">(ListNode *head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head==<span class="literal">nullptr</span>||head-&gt;next==<span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode *slow=head,*fast=head;</span><br><span class="line">        <span class="keyword">while</span>(fast!=<span class="literal">nullptr</span>) &#123;</span><br><span class="line">            fast = fast-&gt;next;</span><br><span class="line">            <span class="keyword">if</span>(fast!=<span class="literal">nullptr</span>) &#123;</span><br><span class="line">                fast = fast-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(slow==fast) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            slow = slow-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>时间复杂度：<code>O(n)</code></p>
-<p>空间复杂度：<code>O(1)</code></p>
-</blockquote>
-<h2 id="LC142-环形链表-II"><a href="#LC142-环形链表-II" class="headerlink" title="LC142. 环形链表 II"></a>LC142. 环形链表 II</h2><h3 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h3><blockquote>
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/linked-list-cycle-ii/">142. 环形链表 II</a></p>
-<p>给定一个链表的头节点  <code>head</code> ，返回链表开始入环的第一个节点。 <em>如果链表无环，则返回 <code>null</code>。</em></p>
-<p>如果链表中有某个节点，可以通过连续跟踪 <code>next</code> 指针再次到达，则链表中存在环。 为了表示给定链表中的环，评测系统内部使用整数 <code>pos</code> 来表示链表尾连接到链表中的位置（<strong>索引从 0 开始</strong>）。如果 <code>pos</code> 是 <code>-1</code>，则在该链表中没有环。<strong>注意：<code>pos</code> 不作为参数进行传递</strong>，仅仅是为了标识链表的实际情况。</p>
-<p><strong>不允许修改</strong> 链表。</p>
-<p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2018/12/07/circularlinkedlist.png" class="lazyload placeholder" data-srcset="https://assets.leetcode.com/uploads/2018/12/07/circularlinkedlist.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="img"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：head = [3,2,0,-4], pos = 1</span><br><span class="line">输出：返回索引为 1 的链表节点</span><br><span class="line">解释：链表中有一个环，其尾部连接到第二个节点。</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 2：</strong></p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist_test2.png" class="lazyload placeholder" data-srcset="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist_test2.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="img"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：head = [1,2], pos = 0</span><br><span class="line">输出：返回索引为 0 的链表节点</span><br><span class="line">解释：链表中有一个环，其尾部连接到第一个节点。</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 3：</strong></p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist_test3.png" class="lazyload placeholder" data-srcset="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist_test3.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="img"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：head = [1], pos = -1</span><br><span class="line">输出：返回 null</span><br><span class="line">解释：链表中没有环。</span><br></pre></td></tr></table></figure>
-
-<p><strong>提示：</strong></p>
-<ul>
-<li>链表中节点的数目范围在范围 <code>[0, 104]</code> 内</li>
-<li><code>-105 &lt;= Node.val &lt;= 105</code></li>
-<li><code>pos</code> 的值为 <code>-1</code> 或者链表中的一个有效索引</li>
-</ul>
-<p><strong>进阶：</strong>你是否可以使用 <code>O(1)</code> 空间解决此题？</p>
-</blockquote>
-<h3 id="解题方法-1"><a href="#解题方法-1" class="headerlink" title="解题方法"></a>解题方法</h3><h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><blockquote>
-<ul>
-<li>第一阶段：快指针步数为2，慢指针步数为1，第一次相遇</li>
-<li>第二阶段：快指针步数为1，慢指针步数为1，第二次相遇，返回<code>slow</code></li>
-</ul>
-</blockquote>
-<h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><blockquote>
-<p>执行以上两个阶段后，可能出现两种结果：</p>
-<p><strong>第一种结果</strong>： fast 指针走过链表末端，说明链表无环，此时直接返回 null。</p>
-<p><strong>第二种结果</strong>：如果链表存在环，则双指针一定会相遇。因为每走 1 轮，fast 与 slow 的间距 +1，fast 一定会追上 slow 。</p>
-<p>设链表共有 a+b 个节点，其中 链表头部到链表入口 有 a个节点（不计链表入口节点）， 链表环 有 b 个节点（这里需要注意，a 和 b 是未知数，例如图解上链表 a&#x3D;4 , b&#x3D;5）；设两指针分别走了 f，s 步，则有：</p>
-<ul>
-<li>fast 走的步数是 slow 步数的 2 倍，即 f&#x3D;2s；（解析： fast 每轮走 222 步）</li>
-<li>fast 比 slow 多走了 n 个环的长度，即 f&#x3D;s+nb；（ 解析： 双指针都走过 a 步，然后在环内绕圈直到重合，重合时 fast 比 slow 多走环的长度整数倍 ）。</li>
-<li>将以上两式相减得到 f&#x3D;2nb，s&#x3D;nb，即 fast 和 slow 指针分别走了 2n，n 个环的周长。</li>
-</ul>
-<p><em>接下来该怎么做呢？</em></p>
-<p>如果让指针从链表头部一直向前走并统计步数k，那么所有 走到链表入口节点时的步数是：k&#x3D;a+nb，即先走 a 步到入口节点，之后每绕 1 圈环（ b 步）都会再次到入口节点。而目前 slow 指针走了 nb 步。因此，我们只要想办法让 slow 再走 a 步停下来，就可以到环的入口。</p>
-<p>但是我们不知道 a 的值，该怎么办？依然是使用双指针法。考虑构建一个指针，此指针需要有以下性质：此指针和 slow 一起向前走 a 步后，两者在入口节点重合。那么从哪里走到入口节点需要 a 步？答案是链表头节点head。</p>
-<p><strong>双指针第二次相遇：</strong></p>
+        <h1 id="设计模式之建造者模式（Builder-Pattern）"><a href="#设计模式之建造者模式（Builder-Pattern）" class="headerlink" title="设计模式之建造者模式（Builder Pattern）"></a>设计模式之建造者模式（Builder Pattern）</h1><hr>
+<h2 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h2><h3 id="1-1-模式说明"><a href="#1-1-模式说明" class="headerlink" title="1.1 模式说明"></a>1.1 模式说明</h3><p>隐藏创建对象的建造过程 &amp; 细节，使得用户在不知对象的建造过程 &amp; 细节的情况下，就可直接创建复杂的对象</p>
+<blockquote>
 <ol>
-<li>令 fast 重新指向链表头部节点。此时 f&#x3D;0，s&#x3D;nb。</li>
-<li>slow 和 fast 同时每轮向前走 1 步。</li>
-<li>当 fast 指针走到 <code>f=a</code> 步时，slow 指针走到 <code>s=a+nb</code> 步。此时两指针重合，并同时指向链表环入口，返回 slow 指向的节点即可。</li>
+<li>用户只需要给出指定复杂对象的类型和内容；</li>
+<li>建造者模式负责按顺序创建复杂对象（把内部的建造过程和细节隐藏起来)</li>
 </ol>
 </blockquote>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode *<span class="title">detectCycle</span><span class="params">(ListNode *head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head==<span class="literal">nullptr</span>||head-&gt;next==<span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">bool</span> hasCircle = <span class="literal">false</span>;</span><br><span class="line">        ListNode *slow=head,*fast=head;</span><br><span class="line">        <span class="keyword">while</span>(fast!=<span class="literal">nullptr</span>) &#123;</span><br><span class="line">            fast = fast-&gt;next;</span><br><span class="line">            <span class="keyword">if</span>(fast!=<span class="literal">nullptr</span>) &#123;</span><br><span class="line">                fast = fast-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            slow=slow-&gt;next;</span><br><span class="line">            <span class="comment">// 证明了有环,第一轮相遇</span></span><br><span class="line">            <span class="keyword">if</span>(slow==fast) &#123;</span><br><span class="line">                hasCircle = <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(hasCircle) &#123;</span><br><span class="line">            <span class="comment">// 快慢指针重新开始移动,此时让快指针从头节点开始一步一步移动</span></span><br><span class="line">            fast = head;</span><br><span class="line">            <span class="comment">// 第二轮相遇</span></span><br><span class="line">            <span class="keyword">while</span>(slow!=fast) &#123;</span><br><span class="line">                slow = slow-&gt;next;</span><br><span class="line">                fast = fast-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> slow;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>时间复杂度：<code>O(n)</code></p>
-<p>空间复杂度：<code>O(1)</code></p>
-</blockquote>
-<h2 id="LC160-相交链表"><a href="#LC160-相交链表" class="headerlink" title="LC160. 相交链表"></a>LC160. 相交链表</h2><h3 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h3><blockquote>
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/intersection-of-two-linked-lists/">160. 相交链表</a></p>
-<p>给你两个单链表的头节点 <code>headA</code> 和 <code>headB</code> ，请你找出并返回两个单链表相交的起始节点。如果两个链表不存在相交节点，返回 <code>null</code> 。</p>
-<p>图示两个链表在节点 <code>c1</code> 开始相交<strong>：</strong></p>
-<p><a target="_blank" rel="noopener" href="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/14/160_statement.png"><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/14/160_statement.png" class="lazyload placeholder" data-srcset="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/14/160_statement.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="img"></a></p>
-<p>题目数据 <strong>保证</strong> 整个链式结构中不存在环。</p>
-<p><strong>注意</strong>，函数返回结果后，链表必须 <strong>保持其原始结构</strong> 。</p>
-<p><strong>自定义评测：</strong></p>
-<p><strong>评测系统</strong> 的输入如下（你设计的程序 <strong>不适用</strong> 此输入）：</p>
-<ul>
-<li><code>intersectVal</code> - 相交的起始节点的值。如果不存在相交节点，这一值为 <code>0</code></li>
-<li><code>listA</code> - 第一个链表</li>
-<li><code>listB</code> - 第二个链表</li>
-<li><code>skipA</code> - 在 <code>listA</code> 中（从头节点开始）跳到交叉节点的节点数</li>
-<li><code>skipB</code> - 在 <code>listB</code> 中（从头节点开始）跳到交叉节点的节点数</li>
-</ul>
-<p>评测系统将根据这些输入创建链式数据结构，并将两个头节点 <code>headA</code> 和 <code>headB</code> 传递给你的程序。如果程序能够正确返回相交节点，那么你的解决方案将被 <strong>视作正确答案</strong> 。</p>
-<p><strong>示例 1：</strong></p>
-<p><a target="_blank" rel="noopener" href="https://assets.leetcode.com/uploads/2018/12/13/160_example_1.png"><img src="https://assets.leetcode.com/uploads/2021/03/05/160_example_1_1.png" class="lazyload placeholder" data-srcset="https://assets.leetcode.com/uploads/2021/03/05/160_example_1_1.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="img"></a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入：intersectVal = 8, listA = [4,1,8,4,5], listB = [5,6,1,8,4,5], skipA = 2, skipB = 3</span><br><span class="line">输出：Intersected at &#x27;8&#x27;</span><br><span class="line">解释：相交节点的值为 8 （注意，如果两个链表相交则不能为 0）。</span><br><span class="line">从各自的表头开始算起，链表 A 为 [4,1,8,4,5]，链表 B 为 [5,6,1,8,4,5]。</span><br><span class="line">在 A 中，相交节点前有 2 个节点；在 B 中，相交节点前有 3 个节点。</span><br><span class="line">— 请注意相交节点的值不为 1，因为在链表 A 和链表 B 之中值为 1 的节点 (A 中第二个节点和 B 中第三个节点) 是不同的节点。换句话说，它们在内存中指向两个不同的位置，而链表 A 和链表 B 中值为 8 的节点 (A 中第三个节点，B 中第四个节点) 在内存中指向相同的位置。</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 2：</strong></p>
-<p><a target="_blank" rel="noopener" href="https://assets.leetcode.com/uploads/2018/12/13/160_example_2.png"><img src="https://assets.leetcode.com/uploads/2021/03/05/160_example_2.png" class="lazyload placeholder" data-srcset="https://assets.leetcode.com/uploads/2021/03/05/160_example_2.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="img"></a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：intersectVal = 2, listA = [1,9,1,2,4], listB = [3,2,4], skipA = 3, skipB = 1</span><br><span class="line">输出：Intersected at &#x27;2&#x27;</span><br><span class="line">解释：相交节点的值为 2 （注意，如果两个链表相交则不能为 0）。</span><br><span class="line">从各自的表头开始算起，链表 A 为 [1,9,1,2,4]，链表 B 为 [3,2,4]。</span><br><span class="line">在 A 中，相交节点前有 3 个节点；在 B 中，相交节点前有 1 个节点。</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 3：</strong></p>
-<p><a target="_blank" rel="noopener" href="https://assets.leetcode.com/uploads/2018/12/13/160_example_3.png"><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/14/160_example_3.png" class="lazyload placeholder" data-srcset="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/14/160_example_3.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="img"></a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：intersectVal = 0, listA = [2,6,4], listB = [1,5], skipA = 3, skipB = 2</span><br><span class="line">输出：null</span><br><span class="line">解释：从各自的表头开始算起，链表 A 为 [2,6,4]，链表 B 为 [1,5]。</span><br><span class="line">由于这两个链表不相交，所以 intersectVal 必须为 0，而 skipA 和 skipB 可以是任意值。</span><br><span class="line">这两个链表不相交，因此返回 null 。</span><br></pre></td></tr></table></figure>
-
-<p><strong>提示：</strong></p>
-<ul>
-<li><code>listA</code> 中节点数目为 <code>m</code></li>
-<li><code>listB</code> 中节点数目为 <code>n</code></li>
-<li><code>1 &lt;= m, n &lt;= 3 * 104</code></li>
-<li><code>1 &lt;= Node.val &lt;= 105</code></li>
-<li><code>0 &lt;= skipA &lt;= m</code></li>
-<li><code>0 &lt;= skipB &lt;= n</code></li>
-<li>如果 <code>listA</code> 和 <code>listB</code> 没有交点，<code>intersectVal</code> 为 <code>0</code></li>
-<li>如果 <code>listA</code> 和 <code>listB</code> 有交点，<code>intersectVal == listA[skipA] == listB[skipB]</code></li>
-</ul>
-<p><strong>进阶：</strong>你能否设计一个时间复杂度 <code>O(m + n)</code> 、仅用 <code>O(1)</code> 内存的解决方案？</p>
-</blockquote>
-<h3 id="解题方法-2"><a href="#解题方法-2" class="headerlink" title="解题方法"></a>解题方法</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><blockquote>
-<p><strong>如果两个链表相交，那么相交点之后的长度是相同的</strong></p>
-<p>我们需要做的事情是，让两个链表从同距离末尾同等距离的位置开始遍历。这个位置只能是较短链表的头结点位置。为此，我们必须消除两个链表的长度差</p>
-<ol>
-<li>指针 pA 指向 A 链表，指针 pB 指向 B 链表，依次往后遍历</li>
-<li>如果 pA 到了末尾，则 pA &#x3D; headB 继续遍历</li>
-<li>如果 pB 到了末尾，则 pB &#x3D; headA 继续遍历</li>
-<li>比较长的链表指针指向较短链表head时，长度差就消除了</li>
-<li>如此，只需要将最短链表遍历两次即可找到位置</li>
+<h3 id="1-2-作用"><a href="#1-2-作用" class="headerlink" title="1.2 作用"></a>1.2 作用</h3><ol>
+<li>降低创建复杂对象的复杂度</li>
+<li>隔离了创建对象的构建过程 &amp; 表示</li>
 </ol>
-<p>听着可能有点绕，看图最直观，<strong>链表的题目最适合看图了</strong></p>
-<p><img src="https://pic.leetcode-cn.com/e86e947c8b87ac723b9c858cd3834f9a93bcc6c5e884e41117ab803d205ef662-%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8.png" class="lazyload placeholder" data-srcset="https://pic.leetcode-cn.com/e86e947c8b87ac723b9c858cd3834f9a93bcc6c5e884e41117ab803d205ef662-%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="相交链表.png"></p>
-</blockquote>
-<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode *<span class="title">getIntersectionNode</span><span class="params">(ListNode *headA, ListNode *headB)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(headA==<span class="literal">nullptr</span>||headB==<span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode *pA=headA,*pB=headB;</span><br><span class="line">        <span class="keyword">while</span>(pA!=pB) &#123;</span><br><span class="line">            pA = pA==<span class="literal">nullptr</span>?headB:pA-&gt;next;</span><br><span class="line">            pB = pB==<span class="literal">nullptr</span>?headA:pB-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> pA;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>时间复杂度：<code>O(n)</code></p>
-<p>空间复杂度：<code>O(1)</code></p>
-</blockquote>
-<h2 id="LC21-合并两个有序链表"><a href="#LC21-合并两个有序链表" class="headerlink" title="LC21. 合并两个有序链表"></a>LC21. 合并两个有序链表</h2><h3 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h3><blockquote>
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/merge-two-sorted-lists/">21. 合并两个有序链表</a></p>
-<p>将两个升序链表合并为一个新的 <strong>升序</strong> 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 </p>
-<p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2020/10/03/merge_ex1.jpg" class="lazyload placeholder" data-srcset="https://assets.leetcode.com/uploads/2020/10/03/merge_ex1.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="img"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：l1 = [1,2,4], l2 = [1,3,4]</span><br><span class="line">输出：[1,1,2,3,4,4]</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 2：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：l1 = [], l2 = []</span><br><span class="line">输出：[]</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 3：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：l1 = [], l2 = [0]</span><br><span class="line">输出：[0]</span><br></pre></td></tr></table></figure>
-
-<p><strong>提示：</strong></p>
+<p>从而：</p>
 <ul>
-<li>两个链表的节点数目范围是 <code>[0, 50]</code></li>
-<li><code>-100 &lt;= Node.val &lt;= 100</code></li>
-<li><code>l1</code> 和 <code>l2</code> 均按 <strong>非递减顺序</strong> 排列</li>
+<li>方便用户创建复杂的对象（不需要知道实现过程）</li>
+<li>代码复用性 &amp; 封装性（将对象构建过程和细节进行封装 &amp; 复用）<blockquote>
+<p>例子：造汽车 &amp; 买汽车。</p>
+<ol>
+<li>工厂（建造者模式）：负责制造汽车（组装过程和细节在工厂内）</li>
+<li>汽车购买者（用户）：你只需要说出你需要的型号（对象的类型和内容），然后直接购买就可以使用了（不需要知道汽车是怎么组装的（车轮、车门、发动机、方向盘等等））</li>
+</ol>
+</blockquote>
+</li>
 </ul>
+<h2 id="二、模式原理"><a href="#二、模式原理" class="headerlink" title="二、模式原理"></a>二、模式原理</h2><h3 id="2-1-UML类图"><a href="#2-1-UML类图" class="headerlink" title="2.1 UML类图"></a>2.1 UML类图</h3><p><img src="https://i-blog.csdnimg.cn/direct/e55c113b9dfe44f88b10d9c177d56a26.png" class="lazyload placeholder" data-srcset="https://i-blog.csdnimg.cn/direct/e55c113b9dfe44f88b10d9c177d56a26.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="在这里插入图片描述"></p>
+<h3 id="2-2-模式讲解"><a href="#2-2-模式讲解" class="headerlink" title="2.2 模式讲解"></a>2.2 模式讲解</h3><ol>
+<li>指挥者（Director）直接和客户（Client）进行需求沟通；</li>
+<li>沟通后指挥者将客户创建产品的需求划分为各个部件的建造请求（Builder）；</li>
+<li>将各个部件的建造请求委派到具体的建造者（ConcreteBuilder）；</li>
+<li>各个具体建造者负责进行产品部件的构建；</li>
+<li>最终构建成具体产品（Product）。</li>
+</ol>
+<h2 id="三、实例讲解"><a href="#三、实例讲解" class="headerlink" title="三、实例讲解"></a>三、实例讲解</h2><p>接下来我用一个实例来对建造者模式进行更深一步的介绍。</p>
+<h3 id="3-1-实例概况"><a href="#3-1-实例概况" class="headerlink" title="3.1 实例概况"></a>3.1 实例概况</h3><ul>
+<li>背景<br>小彭希望去电脑城买一台组装的台式主机</li>
+<li>过程<blockquote>
+<ol>
+<li>电脑城老板（Diretor）和小彭（Client）进行需求沟通（买来打游戏？学习？看片？）</li>
+<li>了解需求后，电脑城老板将小彭需要的主机划分为各个部件（Builder）的建造请求（CPU、主板blabla）</li>
+<li>指挥装机人员（ConcreteBuilder）去构建组件；</li>
+<li>将组件组装起来成为小彭需要的电脑（Product）</li>
+</ol>
 </blockquote>
-<h3 id="解题方法-3"><a href="#解题方法-3" class="headerlink" title="解题方法"></a>解题方法</h3><blockquote>
-<p>直接在原链表上修改指针指向，并巧妙设置哑节点<code>dummyHead</code></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    原链表基础上改，巧妙设置哑节点</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* list1, ListNode* list2)</span> </span>&#123;</span><br><span class="line">        ListNode* dummyHead = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">0</span>);</span><br><span class="line">        ListNode* curNode = dummyHead;</span><br><span class="line">        <span class="keyword">while</span>(list1!=<span class="literal">nullptr</span>||list2!=<span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span>(list1==<span class="literal">nullptr</span>) &#123;</span><br><span class="line">                curNode-&gt;next = list2;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(list2==<span class="literal">nullptr</span>) &#123;</span><br><span class="line">                curNode-&gt;next = list1;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(list1-&gt;val&lt;list2-&gt;val) &#123;</span><br><span class="line">                curNode-&gt;next = list1;</span><br><span class="line">                list1 = list1-&gt;next;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                curNode-&gt;next = list2;</span><br><span class="line">                list2 = list2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            curNode = curNode-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dummyHead-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3-2-使用步骤"><a href="#3-2-使用步骤" class="headerlink" title="3.2 使用步骤"></a>3.2 使用步骤</h3><p>步骤1：定义组装的过程（Builder）：组装电脑的过程</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 定义组装的过程</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Builder</span> &#123;</span><br><span class="line">    <span class="comment">// 第一步：装CPU</span></span><br><span class="line">    <span class="keyword">abstract</span> <span class="function"><span class="keyword">fun</span> <span class="title">buildCPU</span><span class="params">(cpu: <span class="type">String</span>)</span></span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 第二步：装主板</span></span><br><span class="line">    <span class="keyword">abstract</span> <span class="function"><span class="keyword">fun</span> <span class="title">buildMainBoard</span><span class="params">(mainBoard: <span class="type">String</span>)</span></span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 第三步：装硬盘</span></span><br><span class="line">    <span class="keyword">abstract</span> <span class="function"><span class="keyword">fun</span> <span class="title">buildHardDisk</span><span class="params">(hardDisk: <span class="type">String</span>)</span></span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 返回产品</span></span><br><span class="line">    <span class="keyword">abstract</span> <span class="function"><span class="keyword">fun</span> <span class="title">getComputer</span><span class="params">()</span></span>: Computer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>步骤2： 电脑城老板委派任务给装机人员（Director）</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 产品经理（跟客户沟通需求，命令组件安装员工）</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Director</span>(<span class="keyword">private</span> <span class="keyword">val</span> builder: Builder) &#123;</span><br><span class="line">    <span class="keyword">init</span> &#123;</span><br><span class="line">        builder.buildCPU(<span class="string">&quot;i7-9700K&quot;</span>)</span><br><span class="line">        builder.buildHardDisk(<span class="string">&quot;2T&quot;</span>)</span><br><span class="line">        builder.buildMainBoard(<span class="string">&quot;M3芯片&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>步骤3： 创建具体的建造者（ConcreteBuilder）:装机人员</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 具体装机工作人员</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ConcreteBuilder</span>: <span class="type">Builder</span>() &#123;</span><br><span class="line">    <span class="comment">// 创建产品实例</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> computer: Computer = Computer()</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">buildCPU</span><span class="params">(cpu: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">        computer.addPart(cpu)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">buildMainBoard</span><span class="params">(mainBoard: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">        computer.addPart(mainBoard)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">buildHardDisk</span><span class="params">(hardDisk: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">        computer.addPart(hardDisk)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">getComputer</span><span class="params">()</span></span>: Computer &#123;</span><br><span class="line">        <span class="keyword">return</span> computer</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>步骤4： 定义具体产品类（Product）：电脑</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 产品</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Computer</span> &#123;</span><br><span class="line">    <span class="comment">// 电脑组件的集合</span></span><br><span class="line">    <span class="keyword">val</span> computer: MutableList&lt;String&gt; = ArrayList()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">addPart</span><span class="params">(part: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">        computer.add(part)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 用于将组件组装到电脑里</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">showParts</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (part <span class="keyword">in</span> computer) &#123;</span><br><span class="line">            println(<span class="string">&quot;组件：<span class="variable">$part</span> 已安装完毕!&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>步骤5：客户端调用-小彭到电脑城找老板买电脑</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 客户购买历程</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Customer</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 装机仔实例(方便老板调遣)</span></span><br><span class="line">    <span class="keyword">val</span> builder: ConcreteBuilder = ConcreteBuilder()</span><br><span class="line">    <span class="comment">// 产品经理实例(与客户沟通，确认需求)</span></span><br><span class="line">    <span class="comment">// leader下发任务给装机仔</span></span><br><span class="line">    <span class="keyword">val</span> director: Director = Director(builder)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 拿到组装好的电脑</span></span><br><span class="line">    <span class="keyword">val</span> computer = builder.getComputer()</span><br><span class="line">    <span class="comment">// 展示给用户看</span></span><br><span class="line">    computer.showParts()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">组件：i7-9700K 已安装完毕!</span><br><span class="line">组件：2T 已安装完毕!</span><br><span class="line">组件：M3芯片 已安装完毕!</span><br></pre></td></tr></table></figure>
 
-<p>时间复杂度：<code>O(m+n)</code></p>
-<p>空间复杂度：<code>O(1)</code></p>
+<h2 id="四、特点"><a href="#四、特点" class="headerlink" title="四、特点"></a>四、特点</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>易于解耦<br>将产品本身与产品创建过程进行解耦，可以使用相同的创建过程来得到不同的产品。也就说细节依赖抽象。</li>
+<li>易于精确控制对象的创建<br>将复杂产品的创建步骤分解在不同的方法中，使得创建过程更加清晰</li>
+<li>易于拓展<br>增加新的具体建造者无需修改原有类库的代码，易于拓展，符合“开闭原则“。<blockquote>
+<p>每一个具体建造者都相对独立，而与其他的具体建造者无关，因此可以很方便地替换具体建造者或增加新的具体建造者，用户使用不同的具体建造者即可得到不同的产品对象。</p>
 </blockquote>
+</li>
+</ul>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>建造者模式所创建的产品一般具有较多的共同点，其组成部分相似；如果产品之间的差异性很大，则不适合使用建造者模式，因此其使用范围受到一定的限制。</li>
+<li>如果产品的内部变化复杂，可能会导致需要定义很多具体建造者类来实现这种变化，导致系统变得很庞大。</li>
+</ul>
+<h2 id="五、应用场景"><a href="#五、应用场景" class="headerlink" title="五、应用场景"></a>五、应用场景</h2><ul>
+<li>需要生成的产品对象有复杂的内部结构，这些产品对象具备共性；</li>
+<li>隔离复杂对象的创建和使用，并使得相同的创建过程可以创建不同的产品。</li>
+</ul>
 
       </div>
       <div class="post-tags-categories">
         
         <div class="tags">
           
-            <a href="/tags/leetcode/" class="">
-              leetcode
-            </a>
-          
-            <a href="/tags/%E9%93%BE%E8%A1%A8/" class="">
-              链表
+            <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="">
+              设计模式
             </a>
           
         </div>
@@ -659,7 +550,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/2023/12/20/leetcode刷题/链表/" target="_blank" title="链表">https://peng-hc.github.io/2023/12/20/leetcode刷题/链表/</a>
+    <a href="/2024/09/16/Java高阶学习/设计模式/设计模式之建造者模式（Builder-Pattern）/" target="_blank" title="设计模式之建造者模式（Builder Pattern）">https://peng-hc.github.io/2024/09/16/Java高阶学习/设计模式/设计模式之建造者模式（Builder-Pattern）/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -681,20 +572,17 @@
   <div class="post-nav-prev post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pic4.zhimg.com/80/v2-83ea273b88e119d9615aed0d89aad4ab_1440w.webp" class="lazyload placeholder" data-srcset="https://pic4.zhimg.com/80/v2-83ea273b88e119d9615aed0d89aad4ab_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+      <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
     </div>
-    <a href="/2024/01/06/%E7%A7%91%E7%A0%94/%E7%AC%94%E8%AE%B0%E6%9C%AC-N210%E5%AE%89%E8%A3%85V2X-ZUC%E7%89%88%E6%9C%AC%E7%9A%84ROI%E7%B3%BB%E7%BB%9F%E6%95%99%E7%A8%8B/" class="post-nav-link">
+    <a href="/2024/09/17/Android%E5%BC%80%E5%8F%91/App%E5%BC%80%E5%8F%91%E7%9A%84%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%94%A8%E6%80%A7%E5%86%B3%E7%AD%96%E6%96%B9%E6%A1%88%E2%80%94%E2%80%94%E5%BC%80%E5%AE%9E%E9%AA%8C/" class="post-nav-link">
       <div class="title">
         <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">笔记本+N210安装V2X-ZUC版本的ROI系统教程</div>
+        <div class="title-text">App开发的功能实用性决策方案——开实验</div>
       </div>
       
       <!-- <div class="content">
-        笔记本+N210安装V2X-ZUC版本的ROI系统教程
-前期准备
-
-两台安装了Ubuntu 16.04系统的笔记本电脑
-
+        App开发的功能实用性决策方案——开实验
+入职过互联网开发的同学应该对实验这个词并不陌生，也手动开过实验或者给自己加过白
       </div> -->
     </a>
   </div>
@@ -705,18 +593,17 @@
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" class="lazyload placeholder" data-srcset="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
     </div>
-    <a href="/2023/12/19/leetcode%E5%88%B7%E9%A2%98/%E7%9F%A9%E9%98%B5/" class="post-nav-link">
+    <a href="/2024/09/08/Kotlin%E5%AD%A6%E4%B9%A0/Kotlin%E4%B9%8B%E5%8D%8F%E7%A8%8B%E7%9A%84%E4%BD%BF%E7%94%A8/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">矩阵</div>
+        <div class="title-text">Kotlin之协程的使用</div>
       </div>
       <!-- <div class="content">
-        矩阵
-LC73. 矩阵置零题目描述
-73. 矩阵置零
-给定一个 *m* x *n* 的矩阵，如果一个元素为 0 ，则将其
+        Kotlin之协程的使用
+
+协程是基于线程的，可以理解为轻量级的线程。协程的调度是协作式的，程序员需要手动控制协程的切换
       </div> -->
     </a>
   </div>
@@ -937,7 +824,7 @@ LC73. 矩阵置零题目描述
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8"><span class="toc-text">链表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#LC141-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8"><span class="toc-text">LC141. 环形链表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95"><span class="toc-text">解题方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LC142-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8-II"><span class="toc-text">LC142. 环形链表 II</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-1"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95-1"><span class="toc-text">解题方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95"><span class="toc-text">方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90"><span class="toc-text">分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LC160-%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8"><span class="toc-text">LC160. 相交链表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-2"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95-2"><span class="toc-text">解题方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="toc-text">代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LC21-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8"><span class="toc-text">LC21. 合并两个有序链表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-3"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95-3"><span class="toc-text">解题方法</span></a></li></ol></li></ol></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F%EF%BC%88Builder-Pattern%EF%BC%89"><span class="toc-text">设计模式之建造者模式（Builder Pattern）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%AE%80%E4%BB%8B"><span class="toc-text">一、简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E6%A8%A1%E5%BC%8F%E8%AF%B4%E6%98%8E"><span class="toc-text">1.1 模式说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E4%BD%9C%E7%94%A8"><span class="toc-text">1.2 作用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%A8%A1%E5%BC%8F%E5%8E%9F%E7%90%86"><span class="toc-text">二、模式原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-UML%E7%B1%BB%E5%9B%BE"><span class="toc-text">2.1 UML类图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E6%A8%A1%E5%BC%8F%E8%AE%B2%E8%A7%A3"><span class="toc-text">2.2 模式讲解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AE%9E%E4%BE%8B%E8%AE%B2%E8%A7%A3"><span class="toc-text">三、实例讲解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%AE%9E%E4%BE%8B%E6%A6%82%E5%86%B5"><span class="toc-text">3.1 实例概况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4"><span class="toc-text">3.2 使用步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E7%89%B9%E7%82%B9"><span class="toc-text">四、特点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9"><span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">五、应用场景</span></a></li></ol></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
