@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>矩阵 | Penghc_Blog</title>
+  <title>Android多线程编程 | Penghc_Blog</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -417,21 +417,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp')">
+  background-position: center center;position: relative;background-image:url('https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        矩阵
+        Android多线程编程
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> Published in：2023-12-19 |
+          <i class="fas fa-calendar"></i> Published in：2024-09-22 |
         </span>
       
 
@@ -455,116 +455,52 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h1><hr>
-<h2 id="LC73-矩阵置零"><a href="#LC73-矩阵置零" class="headerlink" title="LC73. 矩阵置零"></a>LC73. 矩阵置零</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><blockquote>
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/set-matrix-zeroes/">73. 矩阵置零</a></p>
-<p>给定一个 <code>*m* x *n*</code> 的矩阵，如果一个元素为 <strong>0</strong> ，则将其所在行和列的所有元素都设为 <strong>0</strong> 。请使用 <strong><a target="_blank" rel="noopener" href="http://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95">原地</a></strong> 算法<strong>。</strong></p>
-<p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2020/08/17/mat1.jpg" class="lazyload placeholder" data-srcset="https://assets.leetcode.com/uploads/2020/08/17/mat1.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="img"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：matrix = [[1,1,1],[1,0,1],[1,1,1]]</span><br><span class="line">输出：[[1,0,1],[0,0,0],[1,0,1]]</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 2：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2020/08/17/mat2.jpg" class="lazyload placeholder" data-srcset="https://assets.leetcode.com/uploads/2020/08/17/mat2.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="img"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：matrix = [[0,1,2,0],[3,4,5,2],[1,3,1,5]]</span><br><span class="line">输出：[[0,0,0,0],[0,4,5,0],[0,3,1,0]]</span><br></pre></td></tr></table></figure>
-
-<p><strong>提示：</strong></p>
-<ul>
-<li><code>m == matrix.length</code></li>
-<li><code>n == matrix[0].length</code></li>
-<li><code>1 &lt;= m, n &lt;= 200</code></li>
-<li><code>-231 &lt;= matrix[i][j] &lt;= 231 - 1</code></li>
+        <h1 id="Android多线程编程"><a href="#Android多线程编程" class="headerlink" title="Android多线程编程"></a>Android多线程编程</h1><hr>
+<p>Android的UI是线程不安全的。即，如果想要更新应用程序里的UI元素，必须<strong>在主线程</strong>中进行，否则就会出现异常。但是如果我们想在主线程中开一个子线程来执行一些耗时操作（比如网络请求等），在Android中该怎么做呢？这个时候就要用到handler的消息机制了。<br>我们来看一个demo：</p>
+<h2 id="UI布局"><a href="#UI布局" class="headerlink" title="UI布局"></a>UI布局</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">RelativeLayout</span> <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:tools</span>=<span class="string">&quot;http://schemas.android.com/tools&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">tools:context</span>=<span class="string">&quot;.service.AndroidThreadTest&quot;</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/btn&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">&quot;change text&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/tv&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textSize</span>=<span class="string">&quot;20sp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_centerInParent</span>=<span class="string">&quot;true&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">&quot;hello world&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这里在activity_android_thread_test.xml布局中创建了一个button和一个textView组件</p>
+<h2 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a>Activity</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">AndroidThreadTest</span> : <span class="type">AppCompatActivity</span>() &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> btn: Button <span class="keyword">by</span> lazy &#123;</span><br><span class="line">        findViewById(R.id.btn)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> tv: TextView <span class="keyword">by</span> lazy &#123;</span><br><span class="line">        findViewById(R.id.tv)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> textList: List&lt;String&gt; = listOf(<span class="string">&quot;hello world&quot;</span>, <span class="string">&quot;after change&quot;</span>, <span class="string">&quot;666&quot;</span>, <span class="string">&quot;999&quot;</span>)</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> index = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> updateTextTag = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 异步消息处理机制</span></span><br><span class="line"><span class="comment">     * Looper.getMainLooper():主线程</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> handler = <span class="keyword">object</span> : Handler(Looper.getMainLooper()) &#123;</span><br><span class="line">        <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">handleMessage</span><span class="params">(msg: <span class="type">Message</span>)</span></span> &#123;</span><br><span class="line">            <span class="keyword">when</span> (msg.what) &#123;</span><br><span class="line">                updateTextTag -&gt; &#123;</span><br><span class="line">                        index = (index + <span class="number">1</span>) % textList.size</span><br><span class="line">                        tv.text = textList[index]</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        setContentView(R.layout.activity_android_thread_test)</span><br><span class="line">        btn.setOnClickListener &#123;</span><br><span class="line">            handlerThread()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 不能在子线程中去操作UI，这里是通过异步消息机制</span></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">handlerThread</span><span class="params">()</span></span> &#123;</span><br><span class="line">        thread &#123;</span><br><span class="line">        	sleep(<span class="number">1000</span>)</span><br><span class="line">            <span class="keyword">val</span> msg = Message()</span><br><span class="line">            msg.what = updateTextTag</span><br><span class="line">            handler.sendMessage(msg)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这部分代码还是比较复杂的，但功能应该能理解：通过点击button，来改变textView显示的文字。<br>由于这里我们在点击之后，想创建一个子线程来执行一些耗时操作（这里模拟为sleep(1000)），所以可以考虑使用handler机制。<br>接下来我来详细介绍一下代码的含义。</p>
+<ol>
+<li>新建一个handler对象，重写handleMessage方法，对消息队列中的消息进行处理。<ul>
+<li><code>msg.what</code>用于表示消息的唯一性（因为可以存在多个消息）</li>
+<li><code>Looper.getMainLooper()</code>表示在主线程中执行 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 异步消息处理机制</span></span><br><span class="line"><span class="comment">    * Looper.getMainLooper():主线程</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">val</span> handler = <span class="keyword">object</span> : Handler(Looper.getMainLooper()) &#123;</span><br><span class="line">       <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">handleMessage</span><span class="params">(msg: <span class="type">Message</span>)</span></span> &#123;</span><br><span class="line">           <span class="keyword">when</span> (msg.what) &#123;</span><br><span class="line">               updateTextTag -&gt; &#123;</span><br><span class="line">                       index = (index + <span class="number">1</span>) % textList.size</span><br><span class="line">                       tv.text = textList[index]</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<p><strong>进阶：</strong></p>
-<ul>
-<li>一个直观的解决方案是使用  <code>O(*m**n*)</code> 的额外空间，但这并不是一个好的解决方案。</li>
-<li>一个简单的改进方案是使用 <code>O(*m* + *n*)</code> 的额外空间，但这仍然不是最好的解决方案。</li>
-<li>你能想出一个仅使用常量空间的解决方案吗？</li>
-</ul>
-</blockquote>
-<h3 id="解题方法"><a href="#解题方法" class="headerlink" title="解题方法"></a>解题方法</h3><blockquote>
-<p>思路：</p>
-<p>巧用第一行第一列当作标志位</p>
-<p>  1.判断第一行、第一列中是否有0，设置flagRow和flagCol</p>
-<p>  2.判断每一行（除第一行）中是否有0，如有，则将该行的第一列置0</p>
-<p>  3.判断每一列（除第一列）中是否有0，如有，则将该列的第一行置0</p>
-<p>  4.根据第一行和第一列中的0将矩阵对应行列置0</p>
-<p>  5.根据第一行和第一列的flagRow和flagCol判断是否将第一行或是第一列置为0</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    巧用第一行第一列当作标志位</span></span><br><span class="line"><span class="comment">    1.判断第一行、第一列中是否有0，设置flagRow和flagCol</span></span><br><span class="line"><span class="comment">    2.判断每一行（除第一行）中是否有0，如有，则将该行的第一列置0</span></span><br><span class="line"><span class="comment">    3.判断每一列（除第一列）中是否有0，如有，则将该列的第一行置0</span></span><br><span class="line"><span class="comment">    4.根据第一行和第一列中的0将矩阵对应行列置0</span></span><br><span class="line"><span class="comment">    5.根据第一行和第一列的flagRow和flagCol判断是否将第一行或是第一列置为0</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setZeroes</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//用于判断第一行、第一列是否有0</span></span><br><span class="line">        <span class="type">bool</span> flagRow = <span class="literal">false</span>,flagCol=<span class="literal">false</span>; </span><br><span class="line">        <span class="type">int</span> m = matrix.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> n = matrix[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;m;i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(matrix[i][<span class="number">0</span>]==<span class="number">0</span>) &#123;</span><br><span class="line">                flagCol = <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;n;j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(matrix[<span class="number">0</span>][j]==<span class="number">0</span>) &#123;</span><br><span class="line">                flagRow = <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;m;i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;n;j++) &#123;</span><br><span class="line">                <span class="keyword">if</span>(matrix[i][j]==<span class="number">0</span>) &#123;</span><br><span class="line">                    matrix[i][<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">                    matrix[<span class="number">0</span>][j]=<span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;m;i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(matrix[i][<span class="number">0</span>]==<span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;n;j++) &#123;</span><br><span class="line">                    matrix[i][j]=<span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;n;j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(matrix[<span class="number">0</span>][j]==<span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;m;i++) &#123;</span><br><span class="line">                    matrix[i][j]=<span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(flagRow) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;n;j++) &#123;</span><br><span class="line">                matrix[<span class="number">0</span>][j]=<span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flagCol) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;m;i++) &#123;</span><br><span class="line">                matrix[i][<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>时间复杂度：<code>O(n^2)</code></p>
-<p>空间复杂度：<code>O(1)</code></p>
-</blockquote>
-<h2 id="LC240-搜索二维矩阵-II"><a href="#LC240-搜索二维矩阵-II" class="headerlink" title="LC240. 搜索二维矩阵 II"></a>LC240. 搜索二维矩阵 II</h2><h3 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h3><blockquote>
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/search-a-2d-matrix-ii/">240. 搜索二维矩阵 II</a></p>
-<p>编写一个高效的算法来搜索 <code>*m* x *n*</code> 矩阵 <code>matrix</code> 中的一个目标值 <code>target</code> 。该矩阵具有以下特性：</p>
-<ul>
-<li>每行的元素从左到右升序排列。</li>
-<li>每列的元素从上到下升序排列。</li>
-</ul>
-<p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/11/25/searchgrid2.jpg" class="lazyload placeholder" data-srcset="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/11/25/searchgrid2.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="img"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], target = 5</span><br><span class="line">输出：true</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 2：</strong></p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/11/25/searchgrid.jpg" class="lazyload placeholder" data-srcset="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/11/25/searchgrid.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="img"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], target = 20</span><br><span class="line">输出：false</span><br></pre></td></tr></table></figure>
-
-<p><strong>提示：</strong></p>
-<ul>
-<li><code>m == matrix.length</code></li>
-<li><code>n == matrix[i].length</code></li>
-<li><code>1 &lt;= n, m &lt;= 300</code></li>
-<li><code>-109 &lt;= matrix[i][j] &lt;= 109</code></li>
-<li>每行的所有元素从左到右升序排列</li>
-<li>每列的所有元素从上到下升序排列</li>
-<li><code>-109 &lt;= target &lt;= 109</code></li>
-</ul>
-</blockquote>
-<h3 id="解题方法-1"><a href="#解题方法-1" class="headerlink" title="解题方法"></a>解题方法</h3><h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><blockquote>
-<p>从右上角开始遍历</p>
-<ul>
-<li>若<code>target&gt;matrix[row][col]</code>，那么row++，即丢弃改行。因为该行已经没有比<code>matrix[row][col]</code>更大的了</li>
-<li>若<code>target&lt;matrix[row][col]</code>，那么col–，即丢弃改列。因为该列已经没有比<code>matrix[row][col]</code>更小的了</li>
-<li>若<code>target==matrix[row][col]</code>，则<code>return true</code>;</li>
-</ul>
-</blockquote>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><blockquote>
-<p>数组从左到右和从上到下都是升序的，如果从右上角出发开始遍历呢？会发现每次都是向左数字会变小，向下数字会变大，有点和二分查找树相似。二分查找树的话，是向左数字变小，向右数字变大。</p>
-<p>所以我们可以把 target 和当前值比较。</p>
-<ul>
-<li><p>如果 target 的值大于当前值，那么就向下走。</p>
 </li>
-<li><p>如果 target 的值小于当前值，那么就向左走。</p>
-</li>
-<li><p>如果相等的话，直接返回 true 。</p>
-</li>
+<li>创建子线程，并通过<code>handler</code>来<code>sendMessage</code><ul>
+<li><code>sleep(1000)</code>用于模拟耗时操作</li>
+<li><code>val msg = Message()</code>新创建了Message对象，并通过<code>msg.what</code>来表示这个消息</li>
+<li><code>handler.sendMessage(msg)</code>通过handler实例来发送msg这条消息 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">thread &#123;</span><br><span class="line">       	sleep(<span class="number">1000</span>)</span><br><span class="line">           <span class="keyword">val</span> msg = Message()</span><br><span class="line">           msg.what = updateTextTag</span><br><span class="line">           handler.sendMessage(msg)</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<p>也可以换个角度思考。</p>
+</li>
+</ol>
+<h2 id="解析异步消息处理机制"><a href="#解析异步消息处理机制" class="headerlink" title="解析异步消息处理机制"></a>解析异步消息处理机制</h2><blockquote>
+<p>Android中的异步消息处理主要由4个部分组成：<strong>Message、Handler、MessageQueue和Looper</strong>。</p>
+</blockquote>
 <ul>
-<li>如果 target 的值小于当前值，也就意味着当前值所在的列肯定不会存在 target 了，可以把当前列去掉，从新的右上角的值开始遍历。</li>
-<li>同理，如果 target 的值大于当前值，也就意味着当前值所在的行肯定不会存在 target 了，可以把当前行去掉，从新的右上角的值开始遍历。</li>
+<li>Message<br>  Message是在线程之间传递的消息，它可以在内部携带少量的信息，用于在不同线程之间传递数据。我们在demo中使用到了Message的what字段，除此之外还可以使用arg1和arg2字段来携带一些整型数据，使用obj字段携带一个Object对象。</li>
+<li>Handler<br>  Handler顾名思义也就是处理者的意思，它主要是用于发送和处理消息的。发送消息一般是使用Handler的sendMessage()方法、post()方法等，而发出的消息经过一系列地辗转处理后，最终会传递到Handler的handleMessage()方法中。</li>
+<li>MessageQueue<br>  MessageQueue是消息队列的意思，它主要用于存放所有通过Handler发送的消息。这部分消息会一直存在于消息队列中，等待被处理。每个线程中只会有一个MessageQueue对象。</li>
+<li>Looper<br>  Looper是每个线程中的MessageQueue的管家，调用Looper的loop()方法后，就会进入一个无限循环当中，然后每当发现MessageQueue中存在一条消息时，就会将它取出，并传递到Handler的handleMessage()方法中。每个线程中只会有一个Looper对象。</li>
 </ul>
-<p>看下边的例子。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">[1,   4,  7, 11, 15],</span><br><span class="line">[2,   5,  8, 12, 19],</span><br><span class="line">[3,   6,  9, 16, 22],</span><br><span class="line">[10, 13, 14, 17, 24],</span><br><span class="line">[18, 21, 23, 26, 30]</span><br><span class="line"></span><br><span class="line">如果 target  = 9，如果我们从 15 开始遍历, cur = 15</span><br><span class="line">    </span><br><span class="line">target &lt; 15, 去掉当前列, cur = 11</span><br><span class="line">[1,   4,  7, 11],</span><br><span class="line">[2,   5,  8, 12],</span><br><span class="line">[3,   6,  9, 16],</span><br><span class="line">[10, 13, 14, 17],</span><br><span class="line">[18, 21, 23, 26]    </span><br><span class="line">    </span><br><span class="line">target &lt; 11, 去掉当前列, cur = 7  </span><br><span class="line">[1,   4,  7],</span><br><span class="line">[2,   5,  8],</span><br><span class="line">[3,   6,  9],</span><br><span class="line">[10, 13, 14],</span><br><span class="line">[18, 21, 23]     </span><br><span class="line"></span><br><span class="line">target &gt; 7, 去掉当前行, cur = 8   </span><br><span class="line">[2,   5,  8],</span><br><span class="line">[3,   6,  9],</span><br><span class="line">[10, 13, 14],</span><br><span class="line">[18, 21, 23]       </span><br><span class="line"></span><br><span class="line">target &gt; 8, 去掉当前行, cur = 9, 遍历结束    </span><br><span class="line">[3,   6,  9],</span><br><span class="line">[10, 13, 14],</span><br><span class="line">[18, 21, 23]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>了解了Message、Handler、MessageQueue以及Looper的基本概念后，我们再来把异步消息处理的整个流程梳理一遍。<br>首先需要在主线程当中创建一个Handler对象，并重写handleMessage()方法。然后当子线程中需要进行UI操作时，就创建一个Message对象，并通过Handler将这条消息发送出去。之后这条消息会被添加到MessageQueue的队列中等待被处理，而Looper则会一直尝试从MessageQueue中取出待处理消息，最后分发回Handler的handleMessage()方法中。由于Handler的构造函数中我们传入了Looper.getMainLooper()，所以此时handleMessage()方法中的代码也会在主线程中运行，于是我们在这里就可以安心地进行UI操作了。<br>整个异步消息处理机制的流程如图所示。</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/6e69dc6941d547699978144ce80702cd.png" class="lazyload placeholder" data-srcset="https://i-blog.csdnimg.cn/direct/6e69dc6941d547699978144ce80702cd.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="在这里插入图片描述"></p>
 </blockquote>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 从右上角开始遍历</span></span><br><span class="line"><span class="comment">// 若target&gt;matrix[row][col]，那么row++，即丢弃改行。因为该行已经没有比matrix[row][col]更大的了</span></span><br><span class="line"><span class="comment">// 若target&lt;matrix[row][col]，那么col--，即丢弃改列。因为该列已经没有比matrix[row][col]更小的了</span></span><br><span class="line"><span class="comment">// 若target==matrix[row][col]，则return true;</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">searchMatrix</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; matrix, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> row = <span class="number">0</span>,col=matrix[<span class="number">0</span>].<span class="built_in">size</span>()<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(row&gt;=<span class="number">0</span>&amp;&amp;row&lt;matrix.<span class="built_in">size</span>()&amp;&amp;col&gt;=<span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span>(target&gt;matrix[row][col]) &#123;</span><br><span class="line">                row++;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span>(target&lt;matrix[row][col]) &#123;</span><br><span class="line">                col--;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>时间复杂度：<code>O(m+n)</code></p>
-<p>空间复杂度：<code>O(1)</code></p>
-</blockquote>
+<p>一条Message经过以上流程的辗转调用后，也就从子线程进入了主线程，从不能更新UI变成了<br>可以更新UI，整个异步消息处理的核心思想就是如此。</p>
+<p>​	</p>
 
       </div>
       <div class="post-tags-categories">
         
         <div class="tags">
           
-            <a href="/tags/leetcode/" class="">
-              leetcode
+            <a href="/tags/Android/" class="">
+              Android
             </a>
           
-            <a href="/tags/%E7%9F%A9%E9%98%B5/" class="">
-              矩阵
+            <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" class="">
+              多线程
             </a>
           
         </div>
@@ -578,7 +514,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/2023/12/19/leetcode刷题/矩阵/" target="_blank" title="矩阵">https://peng-hc.github.io/2023/12/19/leetcode刷题/矩阵/</a>
+    <a href="/2024/09/22/Android开发/Android多线程编程/" target="_blank" title="Android多线程编程">https://peng-hc.github.io/2024/09/22/Android开发/Android多线程编程/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -600,20 +536,17 @@
   <div class="post-nav-prev post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+      <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-9c50d3af0bc62a0e8b6e89e24c769317_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-9c50d3af0bc62a0e8b6e89e24c769317_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
     </div>
-    <a href="/2023/12/20/leetcode%E5%88%B7%E9%A2%98/%E9%93%BE%E8%A1%A8/" class="post-nav-link">
+    <a href="/2024/10/02/Android%E5%BC%80%E5%8F%91/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E5%9B%9E%E8%B0%83%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/" class="post-nav-link">
       <div class="title">
         <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">链表</div>
+        <div class="title-text">网络请求回调的实现方式</div>
       </div>
       
       <!-- <div class="content">
-        链表
-LC141. 环形链表题目描述
-141. 环形链表
-给你一个链表的头节点 head ，判断链表中是否有环。
-如果链
+        Android网络请求回调的实现方式
+在Android开发中，实现网络请求回调的方式包括HttpURLConnectio
       </div> -->
     </a>
   </div>
@@ -624,17 +557,16 @@ LC141. 环形链表题目描述
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
     </div>
-    <a href="/2023/12/18/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E8%A7%A3%E5%86%B3hexo-deploy%E9%83%A8%E7%BD%B2%E5%90%8E%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/" class="post-nav-link">
+    <a href="/2024/09/17/Android%E5%BC%80%E5%8F%91/App%E5%BC%80%E5%8F%91%E7%9A%84%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%94%A8%E6%80%A7%E5%86%B3%E7%AD%96%E6%96%B9%E6%A1%88%E2%80%94%E2%80%94%E5%BC%80%E5%AE%9E%E9%AA%8C/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">解决hexo deploy部署后自定义域名失效问题</div>
+        <div class="title-text">App开发的功能实用性决策方案——开实验</div>
       </div>
       <!-- <div class="content">
-        解决hexo deploy部署后自定义域名失效问题
-问题描述
-本地执行hexo deploy将网页部署到服务器上后，访问
+        App开发的功能实用性决策方案——开实验
+入职过互联网开发的同学应该对实验这个词并不陌生，也手动开过实验或者给自己加过白
       </div> -->
     </a>
   </div>
@@ -855,7 +787,7 @@ LC141. 环形链表题目描述
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5"><span class="toc-text">矩阵</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#LC73-%E7%9F%A9%E9%98%B5%E7%BD%AE%E9%9B%B6"><span class="toc-text">LC73. 矩阵置零</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95"><span class="toc-text">解题方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LC240-%E6%90%9C%E7%B4%A2%E4%BA%8C%E7%BB%B4%E7%9F%A9%E9%98%B5-II"><span class="toc-text">LC240. 搜索二维矩阵 II</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-1"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95-1"><span class="toc-text">解题方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95"><span class="toc-text">方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a></li></ol></li></ol></li></ol></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Android%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B"><span class="toc-text">Android多线程编程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#UI%E5%B8%83%E5%B1%80"><span class="toc-text">UI布局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Activity"><span class="toc-text">Activity</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6"><span class="toc-text">解析异步消息处理机制</span></a></li></ol></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>

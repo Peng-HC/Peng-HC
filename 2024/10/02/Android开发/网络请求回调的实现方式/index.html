@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>矩阵 | Penghc_Blog</title>
+  <title>网络请求回调的实现方式 | Penghc_Blog</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -417,21 +417,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp')">
+  background-position: center center;position: relative;background-image:url('https://picx.zhimg.com/80/v2-9c50d3af0bc62a0e8b6e89e24c769317_1440w.webp')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        矩阵
+        网络请求回调的实现方式
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> Published in：2023-12-19 |
+          <i class="fas fa-calendar"></i> Published in：2024-10-02 |
         </span>
       
 
@@ -455,116 +455,48 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h1><hr>
-<h2 id="LC73-矩阵置零"><a href="#LC73-矩阵置零" class="headerlink" title="LC73. 矩阵置零"></a>LC73. 矩阵置零</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><blockquote>
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/set-matrix-zeroes/">73. 矩阵置零</a></p>
-<p>给定一个 <code>*m* x *n*</code> 的矩阵，如果一个元素为 <strong>0</strong> ，则将其所在行和列的所有元素都设为 <strong>0</strong> 。请使用 <strong><a target="_blank" rel="noopener" href="http://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95">原地</a></strong> 算法<strong>。</strong></p>
-<p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2020/08/17/mat1.jpg" class="lazyload placeholder" data-srcset="https://assets.leetcode.com/uploads/2020/08/17/mat1.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="img"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：matrix = [[1,1,1],[1,0,1],[1,1,1]]</span><br><span class="line">输出：[[1,0,1],[0,0,0],[1,0,1]]</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 2：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2020/08/17/mat2.jpg" class="lazyload placeholder" data-srcset="https://assets.leetcode.com/uploads/2020/08/17/mat2.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="img"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：matrix = [[0,1,2,0],[3,4,5,2],[1,3,1,5]]</span><br><span class="line">输出：[[0,0,0,0],[0,4,5,0],[0,3,1,0]]</span><br></pre></td></tr></table></figure>
-
-<p><strong>提示：</strong></p>
+        <h1 id="Android网络请求回调的实现方式"><a href="#Android网络请求回调的实现方式" class="headerlink" title="Android网络请求回调的实现方式"></a>Android网络请求回调的实现方式</h1><hr>
+<p>在Android开发中，实现网络请求回调的方式包括HttpURLConnection和OkHttp。由于在一个app中会使用到很多次网络请求，所以通常情况下会将这些通用的网络操作提取到一个公共的类中，并提供一个通用的方法，当想要发起网络请求的时候，只需要调用这个方法即可。</p>
+<h2 id="一、公共类HttpUtil"><a href="#一、公共类HttpUtil" class="headerlink" title="一、公共类HttpUtil"></a>一、公共类<code>HttpUtil</code></h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// HttpURLConnection</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">sendRequestWithHttpURLConnection</span><span class="params">(urlStr: <span class="type">String</span>)</span></span>:String &#123;</span><br><span class="line">   <span class="keyword">var</span> connection: HttpURLConnection? = <span class="literal">null</span></span><br><span class="line">   <span class="keyword">try</span> &#123;</span><br><span class="line">       <span class="keyword">val</span> response = StringBuilder()</span><br><span class="line">       <span class="comment">// 1. 创建URL对象</span></span><br><span class="line">       <span class="keyword">val</span> url = URL(urlStr)</span><br><span class="line">       <span class="comment">// 2. 使用HttpURLConnection类打开到该URL的连接</span></span><br><span class="line">       connection = url.openConnection() <span class="keyword">as</span> HttpURLConnection</span><br><span class="line">       <span class="comment">// 3. HttpURLConnection实例属性设置</span></span><br><span class="line">       connection.requestMethod = <span class="string">&quot;GET&quot;</span></span><br><span class="line">       connection.connectTimeout = <span class="number">8000</span></span><br><span class="line">       connection.readTimeout = <span class="number">8000</span></span><br><span class="line">       <span class="comment">// 4. 获得请求后服务器返回的数据流</span></span><br><span class="line">       <span class="keyword">val</span> inputText = connection.inputStream</span><br><span class="line">       <span class="comment">// 5. 对获取到的输入流进行读取</span></span><br><span class="line">       <span class="keyword">val</span> reader = BufferedReader(InputStreamReader(inputText))</span><br><span class="line">       reader.use &#123;</span><br><span class="line">           it.forEachLine &#123;</span><br><span class="line">               response.append(it)</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> response.toString()</span><br><span class="line">   &#125; <span class="keyword">catch</span> (e: Exception) &#123;</span><br><span class="line">       e.printStackTrace()</span><br><span class="line">       <span class="keyword">return</span> e.message.toString()</span><br><span class="line">   &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">       connection?.disconnect()</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以后每当需要发起一条HTTP请求的时候，就可以这样写：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HttpUtil.sendRequestWithHttpURLConnection(urlStr.text.toString())</span><br></pre></td></tr></table></figure>
+<p>但是需要注意：</p>
+<ol>
+<li>网络请求通常属于耗时操作，而sendHttpRequest()方法的内部并没有开启线程，这样就有可能导致在调用sendHttpRequest()方法的时候主线程被阻塞。</li>
+<li>如果在sendHttpRequest()方法内部开启一个线程，由于线程是独立的执行路径，当你在sendHttpRequest()方法中启动一个新线程来发送HTTP请求时，这个新线程会独立运行，而sendHttpRequest()方法会立即返回（因为它只是启动了线程，并没有等待线程完成）。这意味着<strong>sendHttpRequest()方法会在服务器还没来得及响应的时候就执行结束了，当然也就无法返回响应的数据了</strong>。</li>
+</ol>
+<h2 id="二、巧用回调机制"><a href="#二、巧用回调机制" class="headerlink" title="二、巧用回调机制"></a>二、巧用回调机制</h2><p>遇到这种<u>因耗时较长需要开辟新线程，且需要给主线程返回数据的需求</u>时，就需要考虑使用接口来实现<strong>回调机制</strong>了。这种机制可以在子线程获得数据后告知住线程获取数据。<br>具体步骤如下：</p>
+<h3 id="2-1-定义接口"><a href="#2-1-定义接口" class="headerlink" title="2.1 定义接口"></a>2.1 定义接口</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">HttpCallbackListener</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> response:服务器返回的数据</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">onFinish</span><span class="params">(response:<span class="type">String</span>)</span></span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> e:记录着错误的详细信息</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">onError</span><span class="params">(e:<span class="type">Exception</span>)</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li><code>m == matrix.length</code></li>
-<li><code>n == matrix[0].length</code></li>
-<li><code>1 &lt;= m, n &lt;= 200</code></li>
-<li><code>-231 &lt;= matrix[i][j] &lt;= 231 - 1</code></li>
+<li>onFinish()方法表示当服务器成功响应我们请求的时候调用</li>
+<li>onError()表示当进行网络操作出现错误的时候调用</li>
 </ul>
-<p><strong>进阶：</strong></p>
-<ul>
-<li>一个直观的解决方案是使用  <code>O(*m**n*)</code> 的额外空间，但这并不是一个好的解决方案。</li>
-<li>一个简单的改进方案是使用 <code>O(*m* + *n*)</code> 的额外空间，但这仍然不是最好的解决方案。</li>
-<li>你能想出一个仅使用常量空间的解决方案吗？</li>
-</ul>
-</blockquote>
-<h3 id="解题方法"><a href="#解题方法" class="headerlink" title="解题方法"></a>解题方法</h3><blockquote>
-<p>思路：</p>
-<p>巧用第一行第一列当作标志位</p>
-<p>  1.判断第一行、第一列中是否有0，设置flagRow和flagCol</p>
-<p>  2.判断每一行（除第一行）中是否有0，如有，则将该行的第一列置0</p>
-<p>  3.判断每一列（除第一列）中是否有0，如有，则将该列的第一行置0</p>
-<p>  4.根据第一行和第一列中的0将矩阵对应行列置0</p>
-<p>  5.根据第一行和第一列的flagRow和flagCol判断是否将第一行或是第一列置为0</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    巧用第一行第一列当作标志位</span></span><br><span class="line"><span class="comment">    1.判断第一行、第一列中是否有0，设置flagRow和flagCol</span></span><br><span class="line"><span class="comment">    2.判断每一行（除第一行）中是否有0，如有，则将该行的第一列置0</span></span><br><span class="line"><span class="comment">    3.判断每一列（除第一列）中是否有0，如有，则将该列的第一行置0</span></span><br><span class="line"><span class="comment">    4.根据第一行和第一列中的0将矩阵对应行列置0</span></span><br><span class="line"><span class="comment">    5.根据第一行和第一列的flagRow和flagCol判断是否将第一行或是第一列置为0</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setZeroes</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//用于判断第一行、第一列是否有0</span></span><br><span class="line">        <span class="type">bool</span> flagRow = <span class="literal">false</span>,flagCol=<span class="literal">false</span>; </span><br><span class="line">        <span class="type">int</span> m = matrix.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> n = matrix[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;m;i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(matrix[i][<span class="number">0</span>]==<span class="number">0</span>) &#123;</span><br><span class="line">                flagCol = <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;n;j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(matrix[<span class="number">0</span>][j]==<span class="number">0</span>) &#123;</span><br><span class="line">                flagRow = <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;m;i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;n;j++) &#123;</span><br><span class="line">                <span class="keyword">if</span>(matrix[i][j]==<span class="number">0</span>) &#123;</span><br><span class="line">                    matrix[i][<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">                    matrix[<span class="number">0</span>][j]=<span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;m;i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(matrix[i][<span class="number">0</span>]==<span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;n;j++) &#123;</span><br><span class="line">                    matrix[i][j]=<span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;n;j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(matrix[<span class="number">0</span>][j]==<span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;m;i++) &#123;</span><br><span class="line">                    matrix[i][j]=<span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(flagRow) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;n;j++) &#123;</span><br><span class="line">                matrix[<span class="number">0</span>][j]=<span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flagCol) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;m;i++) &#123;</span><br><span class="line">                matrix[i][<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>时间复杂度：<code>O(n^2)</code></p>
-<p>空间复杂度：<code>O(1)</code></p>
-</blockquote>
-<h2 id="LC240-搜索二维矩阵-II"><a href="#LC240-搜索二维矩阵-II" class="headerlink" title="LC240. 搜索二维矩阵 II"></a>LC240. 搜索二维矩阵 II</h2><h3 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h3><blockquote>
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/search-a-2d-matrix-ii/">240. 搜索二维矩阵 II</a></p>
-<p>编写一个高效的算法来搜索 <code>*m* x *n*</code> 矩阵 <code>matrix</code> 中的一个目标值 <code>target</code> 。该矩阵具有以下特性：</p>
-<ul>
-<li>每行的元素从左到右升序排列。</li>
-<li>每列的元素从上到下升序排列。</li>
-</ul>
-<p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/11/25/searchgrid2.jpg" class="lazyload placeholder" data-srcset="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/11/25/searchgrid2.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="img"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], target = 5</span><br><span class="line">输出：true</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 2：</strong></p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/11/25/searchgrid.jpg" class="lazyload placeholder" data-srcset="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/11/25/searchgrid.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="img"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], target = 20</span><br><span class="line">输出：false</span><br></pre></td></tr></table></figure>
-
-<p><strong>提示：</strong></p>
-<ul>
-<li><code>m == matrix.length</code></li>
-<li><code>n == matrix[i].length</code></li>
-<li><code>1 &lt;= n, m &lt;= 300</code></li>
-<li><code>-109 &lt;= matrix[i][j] &lt;= 109</code></li>
-<li>每行的所有元素从左到右升序排列</li>
-<li>每列的所有元素从上到下升序排列</li>
-<li><code>-109 &lt;= target &lt;= 109</code></li>
-</ul>
-</blockquote>
-<h3 id="解题方法-1"><a href="#解题方法-1" class="headerlink" title="解题方法"></a>解题方法</h3><h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><blockquote>
-<p>从右上角开始遍历</p>
-<ul>
-<li>若<code>target&gt;matrix[row][col]</code>，那么row++，即丢弃改行。因为该行已经没有比<code>matrix[row][col]</code>更大的了</li>
-<li>若<code>target&lt;matrix[row][col]</code>，那么col–，即丢弃改列。因为该列已经没有比<code>matrix[row][col]</code>更小的了</li>
-<li>若<code>target==matrix[row][col]</code>，则<code>return true</code>;</li>
-</ul>
-</blockquote>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><blockquote>
-<p>数组从左到右和从上到下都是升序的，如果从右上角出发开始遍历呢？会发现每次都是向左数字会变小，向下数字会变大，有点和二分查找树相似。二分查找树的话，是向左数字变小，向右数字变大。</p>
-<p>所以我们可以把 target 和当前值比较。</p>
-<ul>
-<li><p>如果 target 的值大于当前值，那么就向下走。</p>
-</li>
-<li><p>如果 target 的值小于当前值，那么就向左走。</p>
-</li>
-<li><p>如果相等的话，直接返回 true 。</p>
-</li>
-</ul>
-<p>也可以换个角度思考。</p>
-<ul>
-<li>如果 target 的值小于当前值，也就意味着当前值所在的列肯定不会存在 target 了，可以把当前列去掉，从新的右上角的值开始遍历。</li>
-<li>同理，如果 target 的值大于当前值，也就意味着当前值所在的行肯定不会存在 target 了，可以把当前行去掉，从新的右上角的值开始遍历。</li>
-</ul>
-<p>看下边的例子。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">[1,   4,  7, 11, 15],</span><br><span class="line">[2,   5,  8, 12, 19],</span><br><span class="line">[3,   6,  9, 16, 22],</span><br><span class="line">[10, 13, 14, 17, 24],</span><br><span class="line">[18, 21, 23, 26, 30]</span><br><span class="line"></span><br><span class="line">如果 target  = 9，如果我们从 15 开始遍历, cur = 15</span><br><span class="line">    </span><br><span class="line">target &lt; 15, 去掉当前列, cur = 11</span><br><span class="line">[1,   4,  7, 11],</span><br><span class="line">[2,   5,  8, 12],</span><br><span class="line">[3,   6,  9, 16],</span><br><span class="line">[10, 13, 14, 17],</span><br><span class="line">[18, 21, 23, 26]    </span><br><span class="line">    </span><br><span class="line">target &lt; 11, 去掉当前列, cur = 7  </span><br><span class="line">[1,   4,  7],</span><br><span class="line">[2,   5,  8],</span><br><span class="line">[3,   6,  9],</span><br><span class="line">[10, 13, 14],</span><br><span class="line">[18, 21, 23]     </span><br><span class="line"></span><br><span class="line">target &gt; 7, 去掉当前行, cur = 8   </span><br><span class="line">[2,   5,  8],</span><br><span class="line">[3,   6,  9],</span><br><span class="line">[10, 13, 14],</span><br><span class="line">[18, 21, 23]       </span><br><span class="line"></span><br><span class="line">target &gt; 8, 去掉当前行, cur = 9, 遍历结束    </span><br><span class="line">[3,   6,  9],</span><br><span class="line">[10, 13, 14],</span><br><span class="line">[18, 21, 23]</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 从右上角开始遍历</span></span><br><span class="line"><span class="comment">// 若target&gt;matrix[row][col]，那么row++，即丢弃改行。因为该行已经没有比matrix[row][col]更大的了</span></span><br><span class="line"><span class="comment">// 若target&lt;matrix[row][col]，那么col--，即丢弃改列。因为该列已经没有比matrix[row][col]更小的了</span></span><br><span class="line"><span class="comment">// 若target==matrix[row][col]，则return true;</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">searchMatrix</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; matrix, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> row = <span class="number">0</span>,col=matrix[<span class="number">0</span>].<span class="built_in">size</span>()<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(row&gt;=<span class="number">0</span>&amp;&amp;row&lt;matrix.<span class="built_in">size</span>()&amp;&amp;col&gt;=<span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span>(target&gt;matrix[row][col]) &#123;</span><br><span class="line">                row++;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span>(target&lt;matrix[row][col]) &#123;</span><br><span class="line">                col--;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>时间复杂度：<code>O(m+n)</code></p>
-<p>空间复杂度：<code>O(1)</code></p>
-</blockquote>
+<h3 id="2-2-使用回调接口"><a href="#2-2-使用回调接口" class="headerlink" title="2.2 使用回调接口"></a>2.2 使用回调接口</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// HttpURLConnection</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">sendRequestWithHttpURLConnection</span><span class="params">(urlStr: <span class="type">String</span>, listener: <span class="type">HttpCallbackListener</span>)</span></span> &#123;</span><br><span class="line">    thread &#123;</span><br><span class="line">        <span class="keyword">var</span> connection: HttpURLConnection? = <span class="literal">null</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">val</span> response = StringBuilder()</span><br><span class="line">            <span class="comment">// 1. 创建URL对象</span></span><br><span class="line">            <span class="keyword">val</span> url = URL(urlStr)</span><br><span class="line">            <span class="comment">// 2. 使用HttpURLConnection类打开到该URL的连接</span></span><br><span class="line">            connection = url.openConnection() <span class="keyword">as</span> HttpURLConnection</span><br><span class="line">            <span class="comment">// 3. HttpURLConnection实例属性设置</span></span><br><span class="line">            connection.requestMethod = <span class="string">&quot;GET&quot;</span></span><br><span class="line">            connection.connectTimeout = <span class="number">8000</span></span><br><span class="line">            connection.readTimeout = <span class="number">8000</span></span><br><span class="line">            <span class="comment">// 4. 获得请求后服务器返回的数据流</span></span><br><span class="line">            <span class="keyword">val</span> inputText = connection.inputStream</span><br><span class="line">            <span class="comment">// 5. 对获取到的输入流进行读取</span></span><br><span class="line">            <span class="keyword">val</span> reader = BufferedReader(InputStreamReader(inputText))</span><br><span class="line">            reader.use &#123;</span><br><span class="line">                it.forEachLine &#123;</span><br><span class="line">                    response.append(it)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 回调</span></span><br><span class="line">            listener.onFinish(response.toString())</span><br><span class="line">        &#125; <span class="keyword">catch</span> (e: Exception) &#123;</span><br><span class="line">            e.printStackTrace()</span><br><span class="line">            <span class="comment">// 回调</span></span><br><span class="line">            listener.onError(e)</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            connection?.disconnect()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对比：</p>
+<ol>
+<li>给sendHttpRequest()方法添加了一个<strong>HttpCallbackListener参数</strong></li>
+<li>在sendRequestWithHttpURLConnection方法中开辟了子线程thread，而由于<strong>子线程中是无法通过return语句返回数据的</strong>，因此该方法不需要返回值</li>
+<li>请求服务器后返回的数据通过回调HttpCallbackListener的onFinish()方法进行传递，如果出现了异常，就将异常原因传入onError()方法中。</li>
+</ol>
+<h3 id="2-3-定义回调后的处理方法"><a href="#2-3-定义回调后的处理方法" class="headerlink" title="2.3 定义回调后的处理方法"></a>2.3 定义回调后的处理方法</h3><p>现在sendHttpRequest()方法接收两个参数，因此我们在调用它的时候还需要将<strong>HttpCallbackListener的实例</strong>传入，如下所示：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">HttpUtil.sendRequestWithHttpURLConnection(urlStr.text.toString(),<span class="keyword">object</span>:HttpCallbackListener &#123;</span><br><span class="line">	      <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onFinish</span><span class="params">(response: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">	          <span class="comment">// 在主线程中操作UI</span></span><br><span class="line">	          showOnUIThread(response)</span><br><span class="line">	      &#125;</span><br><span class="line">	      <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onError</span><span class="params">(e: <span class="type">Exception</span>)</span></span> &#123;</span><br><span class="line">	          Toast.makeText(<span class="keyword">this</span><span class="symbol">@MainActivity</span>,<span class="string">&quot;网络请求失败:<span class="subst">$&#123;e.message.toString()&#125;</span>&quot;</span>,Toast.LENGTH_SHORT).show()</span><br><span class="line">	      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>这样当服务器成功响应的时候，我们就可以在onFinish()方法里对响应数据进行处理了。类似地，如果出现了异常，就可以在onError()方法里对异常情况进行处理。如此一来，我们就巧妙地利用回调机制将响应数据成功返回给调用方了。</p>
+<h2 id="三、使用OkHttp自带的回调方法"><a href="#三、使用OkHttp自带的回调方法" class="headerlink" title="三、使用OkHttp自带的回调方法"></a>三、使用OkHttp自带的回调方法</h2><h3 id="3-1-使用回调方法"><a href="#3-1-使用回调方法" class="headerlink" title="3.1 使用回调方法"></a>3.1 使用回调方法</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 使用Okhttp自带的回调okhttp3.Callback</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">sendOkHttpRequest</span><span class="params">(address:<span class="type">String</span>,callback: <span class="type">okhttp3</span>.<span class="type">Callback</span>)</span></span> &#123;</span><br><span class="line">   <span class="keyword">val</span> client = OkHttpClient()</span><br><span class="line">   <span class="keyword">val</span> request = Request.Builder()</span><br><span class="line">       .url(address)</span><br><span class="line">       .build()</span><br><span class="line">   client.newCall(request).enqueue(callback)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到，sendOkHttpRequest()方法中有一个<strong>okhttp3.Callback参数</strong>，这个是OkHttp库中自带的回调接口，类似于我们刚才自己编写的HttpCallbackListener。然后在client.newCall()之后没有像之前那样一直调用execute()方法，而是调用了一个<strong>enqueue()方法，并把okhttp3.Callback参数传入</strong>。OkHttp在enqueue()方法的内部已经帮我们开好子线程了，然后会在子线程中执行HTTP请求，并将最终的请求结果回调到okhttp3.Callback当中。</p>
+<h3 id="3-2-定义回调后的处理方法"><a href="#3-2-定义回调后的处理方法" class="headerlink" title="3.2 定义回调后的处理方法"></a>3.2 定义回调后的处理方法</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">HttpUtil.sendOkHttpRequest(urlStr.text.toString(),<span class="keyword">object</span> :okhttp3.Callback &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onResponse</span><span class="params">(call: <span class="type">Call</span>, response: <span class="type">Response</span>)</span></span> &#123;</span><br><span class="line">        <span class="comment">// 在主线程中操作UI</span></span><br><span class="line">        showOnUIThread(response.body?.string()?:<span class="string">&quot;&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onFailure</span><span class="params">(call: <span class="type">Call</span>, e: <span class="type">IOException</span>)</span></span> &#123;</span><br><span class="line">        Toast.makeText(<span class="keyword">this</span><span class="symbol">@MainActivity</span>,<span class="string">&quot;网络请求失败:<span class="subst">$&#123;e.message.toString()&#125;</span>&quot;</span>,Toast.LENGTH_SHORT).show()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>另外，需要注意的是，不管是使用HttpURLConnection还是OkHttp，最终的回调接口都还是在子线程中运行的，因此我们不可以在这里执行任何的UI操作，除非借助<strong>runOnUiThread()方法</strong>来进行线程转换。</p>
 
       </div>
       <div class="post-tags-categories">
         
         <div class="tags">
           
-            <a href="/tags/leetcode/" class="">
-              leetcode
+            <a href="/tags/%E7%BD%91%E7%BB%9C/" class="">
+              网络
             </a>
           
-            <a href="/tags/%E7%9F%A9%E9%98%B5/" class="">
-              矩阵
+            <a href="/tags/%E8%AF%B7%E6%B1%82%E5%9B%9E%E8%B0%83/" class="">
+              请求回调
             </a>
           
         </div>
@@ -578,7 +510,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/2023/12/19/leetcode刷题/矩阵/" target="_blank" title="矩阵">https://peng-hc.github.io/2023/12/19/leetcode刷题/矩阵/</a>
+    <a href="/2024/10/02/Android开发/网络请求回调的实现方式/" target="_blank" title="网络请求回调的实现方式">https://peng-hc.github.io/2024/10/02/Android开发/网络请求回调的实现方式/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -596,45 +528,22 @@
 
 
 
-  
-  <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-    </div>
-    <a href="/2023/12/20/leetcode%E5%88%B7%E9%A2%98/%E9%93%BE%E8%A1%A8/" class="post-nav-link">
-      <div class="title">
-        <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">链表</div>
-      </div>
-      
-      <!-- <div class="content">
-        链表
-LC141. 环形链表题目描述
-141. 环形链表
-给你一个链表的头节点 head ，判断链表中是否有环。
-如果链
-      </div> -->
-    </a>
-  </div>
-
 
 
   
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" class="lazyload placeholder" data-srcset="https://pic4.zhimg.com/80/v2-e434e3a2888fb4efb1844845b8791d1f_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
     </div>
-    <a href="/2023/12/18/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E8%A7%A3%E5%86%B3hexo-deploy%E9%83%A8%E7%BD%B2%E5%90%8E%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/" class="post-nav-link">
+    <a href="/2024/09/22/Android%E5%BC%80%E5%8F%91/Android%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">解决hexo deploy部署后自定义域名失效问题</div>
+        <div class="title-text">Android多线程编程</div>
       </div>
       <!-- <div class="content">
-        解决hexo deploy部署后自定义域名失效问题
-问题描述
-本地执行hexo deploy将网页部署到服务器上后，访问
+        Android多线程编程
+Android的UI是线程不安全的。即，如果想要更新应用程序里的UI元素，必须在主线程中进行，
       </div> -->
     </a>
   </div>
@@ -855,7 +764,7 @@ LC141. 环形链表题目描述
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5"><span class="toc-text">矩阵</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#LC73-%E7%9F%A9%E9%98%B5%E7%BD%AE%E9%9B%B6"><span class="toc-text">LC73. 矩阵置零</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95"><span class="toc-text">解题方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LC240-%E6%90%9C%E7%B4%A2%E4%BA%8C%E7%BB%B4%E7%9F%A9%E9%98%B5-II"><span class="toc-text">LC240. 搜索二维矩阵 II</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-1"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95-1"><span class="toc-text">解题方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95"><span class="toc-text">方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a></li></ol></li></ol></li></ol></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Android%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E5%9B%9E%E8%B0%83%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="toc-text">Android网络请求回调的实现方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%85%AC%E5%85%B1%E7%B1%BBHttpUtil"><span class="toc-text">一、公共类HttpUtil</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%B7%A7%E7%94%A8%E5%9B%9E%E8%B0%83%E6%9C%BA%E5%88%B6"><span class="toc-text">二、巧用回调机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%AE%9A%E4%B9%89%E6%8E%A5%E5%8F%A3"><span class="toc-text">2.1 定义接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E4%BD%BF%E7%94%A8%E5%9B%9E%E8%B0%83%E6%8E%A5%E5%8F%A3"><span class="toc-text">2.2 使用回调接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E5%AE%9A%E4%B9%89%E5%9B%9E%E8%B0%83%E5%90%8E%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95"><span class="toc-text">2.3 定义回调后的处理方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E4%BD%BF%E7%94%A8OkHttp%E8%87%AA%E5%B8%A6%E7%9A%84%E5%9B%9E%E8%B0%83%E6%96%B9%E6%B3%95"><span class="toc-text">三、使用OkHttp自带的回调方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E4%BD%BF%E7%94%A8%E5%9B%9E%E8%B0%83%E6%96%B9%E6%B3%95"><span class="toc-text">3.1 使用回调方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E5%AE%9A%E4%B9%89%E5%9B%9E%E8%B0%83%E5%90%8E%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95"><span class="toc-text">3.2 定义回调后的处理方法</span></a></li></ol></li></ol></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
