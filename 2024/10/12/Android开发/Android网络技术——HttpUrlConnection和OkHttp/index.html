@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>解决hexo deploy部署后自定义域名失效问题 | Penghc_Blog</title>
+  <title>Android网络技术——HttpUrlConnection和OkHttp | Penghc_Blog</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -417,21 +417,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://picx.zhimg.com/80/v2-b44931ea513e5f7b3b06f2703f79653c_1440w.webp')">
+  background-position: center center;position: relative;background-image:url('https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        解决hexo deploy部署后自定义域名失效问题
+        Android网络技术——HttpUrlConnection和OkHttp
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> Published in：2023-12-18 |
+          <i class="fas fa-calendar"></i> Published in：2024-10-12 |
         </span>
       
 
@@ -455,39 +455,48 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="解决hexo-deploy部署后自定义域名失效问题"><a href="#解决hexo-deploy部署后自定义域名失效问题" class="headerlink" title="解决hexo deploy部署后自定义域名失效问题"></a>解决hexo deploy部署后自定义域名失效问题</h1><hr>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><blockquote>
-<p>本地执行<code>hexo deploy</code>将网页部署到服务器上后，访问自定义域名<code>penghc.cn</code>，发现报404网页无法找到</p>
-<p><img src="/images/%E8%A7%A3%E5%86%B3hexo-deploy%E9%83%A8%E7%BD%B2%E5%90%8E%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/404%E6%8A%A5%E9%94%99.png" class="lazyload placeholder" data-srcset="/images/%E8%A7%A3%E5%86%B3hexo-deploy%E9%83%A8%E7%BD%B2%E5%90%8E%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/404%E6%8A%A5%E9%94%99.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="404报错"></p>
-<p>查看Github pages的setting发现Custom domain也被清空了，代码中也不存在<code>CNAME</code>文件了</p>
-<p>在<code>Custom domain</code>手动添加上域名后，访问正常。但我们也不能每次部署网页到服务器都去setting中手动添加域名呀，这也太麻烦了。</p>
-</blockquote>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><blockquote>
-<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/fitnig/article/details/106522833">解决hexo deploy之后自定义域名失效问题-CSDN博客</a></p>
+        <h1 id="Android网络技术——HttpUrlConnection和OkHttp"><a href="#Android网络技术——HttpUrlConnection和OkHttp" class="headerlink" title="Android网络技术——HttpUrlConnection和OkHttp"></a>Android网络技术——HttpUrlConnection和OkHttp</h1><hr>
+<ul>
+<li>HttpURLConnection是一个abstract类，可用于发起网络请求</li>
+<li>OkHttp不仅在接口封装上做得简单易用，就连在底层实现上也是自成一派，比起原生的HttpURLConnection，可以说是有过之而无不及，现在已经成了广大Android开发者首选的网络通信库</li>
+</ul>
+<h2 id="一、布局设置"><a href="#一、布局设置" class="headerlink" title="一、布局设置"></a>一、布局设置</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:app</span>=<span class="string">&quot;http://schemas.android.com/apk/res-auto&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:tools</span>=<span class="string">&quot;http://schemas.android.com/tools&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">&quot;vertical&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">tools:context</span>=<span class="string">&quot;.MainActivity&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:orientation</span>=<span class="string">&quot;horizontal&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:padding</span>=<span class="string">&quot;5dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginBottom</span>=<span class="string">&quot;10dp&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">EditText</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">&quot;@+id/url&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_weight</span>=<span class="string">&quot;7&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:hint</span>=<span class="string">&quot;请输入网址&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:inputType</span>=<span class="string">&quot;text&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">&quot;0dp&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">View</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">&quot;0dp&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_weight</span>=<span class="string">&quot;0.5&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">&quot;@+id/jumpToWeb&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_weight</span>=<span class="string">&quot;2.5&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">&quot;0dp&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">&quot;跳转&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">ScrollView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">&quot;@+id/responseText&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ScrollView</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>注：ScrollView容器用于滚动内部的组件，并且只允许有一个child</strong></p>
+<h2 id="二、网络请求"><a href="#二、网络请求" class="headerlink" title="二、网络请求"></a>二、网络请求</h2><h3 id="2-1-HttpURLConnection"><a href="#2-1-HttpURLConnection" class="headerlink" title="2.1 HttpURLConnection"></a>2.1 HttpURLConnection</h3><p>步骤如下：</p>
 <ol>
-<li><p>配置正确的<code>Custom domain</code>。</p>
-</li>
-<li><p>到本地<code>source</code>目录下，创建<code>CNAME</code>文件，并在里面写入自定义的域名。</p>
-<p>注意：这里创建的文件的后缀需要删除掉（不能是<code>txt</code>文件格式），而要是<code>All files</code>格式</p>
-<p><img src="/images/%E8%A7%A3%E5%86%B3hexo-deploy%E9%83%A8%E7%BD%B2%E5%90%8E%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/source%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%B7%BB%E5%8A%A0CNAME%E6%96%87%E4%BB%B6.png" class="lazyload placeholder" data-srcset="/images/%E8%A7%A3%E5%86%B3hexo-deploy%E9%83%A8%E7%BD%B2%E5%90%8E%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/source%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%B7%BB%E5%8A%A0CNAME%E6%96%87%E4%BB%B6.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
-</li>
-<li><p>重新发布</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo generate &amp;&amp; hexo deploy</span><br></pre></td></tr></table></figure></li>
+<li>创建URL对象<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> url = URL(urlStr.text.toString())</span><br></pre></td></tr></table></figure></li>
+<li>使用HttpURLConnection类打开到该URL的连接<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> connection:HttpURLConnection = url.openConnection() <span class="keyword">as</span> HttpURLConnection</span><br></pre></td></tr></table></figure></li>
+<li>HttpURLConnection实例属性设置<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">connection.requestMethod = <span class="string">&quot;GET&quot;</span></span><br><span class="line">connection.connectTimeout = <span class="number">8000</span></span><br><span class="line">connection.readTimeout = <span class="number">8000</span></span><br></pre></td></tr></table></figure></li>
+<li>获得请求后服务器返回的数据流<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> inputText = connection.inputStream</span><br></pre></td></tr></table></figure></li>
+<li>对获取到的输入流进行读取<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> reader = BufferedReader(InputStreamReader(inputText))</span><br><span class="line">reader.use &#123;</span><br><span class="line">    it.forEachLine &#123;</span><br><span class="line">        response.append(it)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<strong>注：这里的use会让reader在使用完后自动关闭</strong></li>
 </ol>
-<p>之后<code>hexo deploy</code>部署后自定义域名就不会被重置为空值了</p>
-</blockquote>
+<h3 id="2-2-OkHttp"><a href="#2-2-OkHttp" class="headerlink" title="2.2 OkHttp"></a>2.2 OkHttp</h3><ol>
+<li>在项目<code>app/build.gradle</code>文件中添加OkHttp库的依赖<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line"> 	implementation &#x27;com.squareup.okhttp3:okhttp:4.1.0&#x27;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>创建OkHttpClient实例<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> client = OkHttpClient()</span><br></pre></td></tr></table></figure></li>
+<li>如果要发起http请求，则需要创建一个Request对象<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> request = Request.Builder()</span><br><span class="line">				     .url(urlStr.text.toString())</span><br><span class="line">				     .build()</span><br></pre></td></tr></table></figure></li>
+<li>创建一个Call对象，传入request参数，并调用它的execute方法来发送请求以获得服务器返回的数据<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> response = client.newCall(request).execute()</span><br></pre></td></tr></table></figure></li>
+<li>获得response的主体内容<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> responseData = response.body?.string()</span><br><span class="line"><span class="keyword">if</span>(responseData != <span class="literal">null</span>) &#123;</span><br><span class="line">	  showResponseTextOnUI(responseData)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="三、完整代码"><a href="#三、完整代码" class="headerlink" title="三、完整代码"></a>三、完整代码</h2><h3 id="3-1-HttpURLConnection"><a href="#3-1-HttpURLConnection" class="headerlink" title="3.1 HttpURLConnection"></a>3.1 HttpURLConnection</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MainActivity</span> : <span class="type">AppCompatActivity</span>() &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> urlStr: TextView</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> jumpToWeb: Button</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> responseText: TextView</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        setContentView(R.layout.activity_main)</span><br><span class="line">        urlStr = findViewById(R.id.url)</span><br><span class="line">        jumpToWeb = findViewById(R.id.jumpToWeb)</span><br><span class="line">        responseText = findViewById(R.id.responseText)</span><br><span class="line"></span><br><span class="line">        jumpToWeb.setOnClickListener &#123;</span><br><span class="line">            sendRequestWithHttpURLConnection(urlStr)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">sendRequestWithHttpURLConnection</span><span class="params">(urlStr: <span class="type">TextView</span>)</span></span> &#123;</span><br><span class="line">        <span class="comment">// 需要开启线程发起网络请求，因为网络请求耗时很大</span></span><br><span class="line">        thread &#123;</span><br><span class="line">            <span class="keyword">var</span> connection: HttpURLConnection? = <span class="literal">null</span></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">val</span> response = StringBuilder()</span><br><span class="line">                <span class="comment">// 1. 创建URL对象</span></span><br><span class="line">                <span class="keyword">val</span> url = URL(urlStr.text.toString())</span><br><span class="line">                <span class="comment">// 2. 使用HttpURLConnection类打开到该URL的连接</span></span><br><span class="line">                connection = url.openConnection() <span class="keyword">as</span> HttpURLConnection</span><br><span class="line">                <span class="comment">// 3. HttpURLConnection实例属性设置</span></span><br><span class="line">                connection.requestMethod = <span class="string">&quot;GET&quot;</span></span><br><span class="line">                connection.connectTimeout = <span class="number">8000</span></span><br><span class="line">                connection.readTimeout = <span class="number">8000</span></span><br><span class="line">                <span class="comment">// 4. 获得请求后服务器返回的数据流</span></span><br><span class="line">                <span class="keyword">val</span> inputText = connection.inputStream</span><br><span class="line">                <span class="comment">// 5. 对获取到的输入流进行读取</span></span><br><span class="line">                <span class="keyword">val</span> reader = BufferedReader(InputStreamReader(inputText))</span><br><span class="line">                reader.use &#123;</span><br><span class="line">                    it.forEachLine &#123;</span><br><span class="line">                        response.append(it)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 在主线程UI中显示</span></span><br><span class="line">                showResponseTextOnUI(response.toString())</span><br><span class="line">            &#125; <span class="keyword">catch</span> (e: Exception) &#123;</span><br><span class="line">                e.printStackTrace()</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                connection?.disconnect()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">showResponseTextOnUI</span><span class="params">(responseStr: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">        <span class="comment">// 在主线程上才能操作UI，将结果显示到界面上</span></span><br><span class="line">        runOnUiThread &#123;</span><br><span class="line">            responseText.text = responseStr</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-OkHttp"><a href="#3-2-OkHttp" class="headerlink" title="3.2 OkHttp"></a>3.2 OkHttp</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// OkHttp</span></span><br><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">sendRequestWithOkHttp</span><span class="params">(urlStr: <span class="type">TextView</span>)</span></span> &#123;</span><br><span class="line">    <span class="comment">// 需要开启线程发起网络请求，因为网络请求耗时很大</span></span><br><span class="line">    thread &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 1. 创建OkHttpClient实例</span></span><br><span class="line">            <span class="keyword">val</span> client = OkHttpClient()</span><br><span class="line">            <span class="comment">// 2. 如果要发起http请求，则需要创建一个Request对象</span></span><br><span class="line">            <span class="keyword">val</span> request = Request.Builder()</span><br><span class="line">                .url(urlStr.text.toString())</span><br><span class="line">                .build()</span><br><span class="line">            <span class="comment">// 3. 创建一个Call对象，传入request参数，并调用它的execute方法来发送请求以获得服务器返回的数据</span></span><br><span class="line">            <span class="keyword">val</span> response = client.newCall(request).execute()</span><br><span class="line">            <span class="comment">// 4. 获得response的主体内容</span></span><br><span class="line">            <span class="keyword">val</span> responseData = response.body?.string()</span><br><span class="line">            <span class="keyword">if</span>(responseData != <span class="literal">null</span>) &#123;</span><br><span class="line">                showResponseTextOnUI(responseData)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (e:Exception) &#123;</span><br><span class="line">            e.printStackTrace()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注：</strong></p>
+<ul>
+<li>网络请求是一个比较耗时的操作，所以一般需要另开一个<strong>线程异步执行</strong></li>
+<li>对UI的操作需要在<strong>主线程</strong>中进行，可以使用<code>runOnUiThread</code></li>
+</ul>
+<h2 id="四、权限申请"><a href="#四、权限申请" class="headerlink" title="四、权限申请"></a>四、权限申请</h2><p>由于本程序使用到了网络功能，而访问网络是需要声明权限的，因此我们还得修改AndroidManifest.xml文件，并加入权限声明</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">&quot;android.permission.INTERNET&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="五、运行结果"><a href="#五、运行结果" class="headerlink" title="五、运行结果"></a>五、运行结果</h2><p><img src="https://i-blog.csdnimg.cn/blog_migrate/18e621c72afd09b5b7404f9c171a26a6.png" class="lazyload placeholder" data-srcset="https://i-blog.csdnimg.cn/blog_migrate/18e621c72afd09b5b7404f9c171a26a6.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="在这里插入图片描述"></p>
 
       </div>
       <div class="post-tags-categories">
         
         <div class="tags">
           
-            <a href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E5%A4%B1%E6%95%88/" class="">
-              自定义域名失效
-            </a>
-          
-            <a href="/tags/hexo-deploy/" class="">
-              hexo deploy
+            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/" class="">
+              网络技术
             </a>
           
         </div>
@@ -501,7 +510,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/2023/12/18/个人博客/解决hexo-deploy部署后自定义域名失效问题/" target="_blank" title="解决hexo deploy部署后自定义域名失效问题">https://peng-hc.github.io/2023/12/18/个人博客/解决hexo-deploy部署后自定义域名失效问题/</a>
+    <a href="/2024/10/12/Android开发/Android网络技术——HttpUrlConnection和OkHttp/" target="_blank" title="Android网络技术——HttpUrlConnection和OkHttp">https://peng-hc.github.io/2024/10/12/Android开发/Android网络技术——HttpUrlConnection和OkHttp/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -519,27 +528,6 @@
 
 
 
-  
-  <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" class="lazyload placeholder" data-srcset="https://pic1.zhimg.com/80/v2-03a22891ccba9bccf6424dfd7cbf4be7_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-    </div>
-    <a href="/2023/12/19/leetcode%E5%88%B7%E9%A2%98/%E7%9F%A9%E9%98%B5/" class="post-nav-link">
-      <div class="title">
-        <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">矩阵</div>
-      </div>
-      
-      <!-- <div class="content">
-        矩阵
-LC73. 矩阵置零题目描述
-73. 矩阵置零
-给定一个 *m* x *n* 的矩阵，如果一个元素为 0 ，则将其
-      </div> -->
-    </a>
-  </div>
-
 
 
   
@@ -548,16 +536,14 @@ LC73. 矩阵置零题目描述
       background-position: center center;">
       <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-9c50d3af0bc62a0e8b6e89e24c769317_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-9c50d3af0bc62a0e8b6e89e24c769317_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
     </div>
-    <a href="/2023/12/17/leetcode%E5%88%B7%E9%A2%98/%E6%99%AE%E9%80%9A%E6%95%B0%E7%BB%84/" class="post-nav-link">
+    <a href="/2024/10/06/Android%E5%BC%80%E5%8F%91/%E5%A4%9A%E6%80%81%E5%AE%9E%E7%8E%B0%E4%BE%9D%E8%B5%96%E5%80%92%E8%BD%AC%E5%8E%9F%E5%88%99/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">普通数组</div>
+        <div class="title-text">多态实现依赖倒转原则</div>
       </div>
       <!-- <div class="content">
-        普通数组
-LC53. 最大子数组和题目描述
-53. 最大子数组和
-给你一个整数数组 nums ，请你找出一个具有最大和的
+        多态实现依赖倒转原则
+依赖倒转原则（Dependency Inversion Principle，DIP）：是指将两个模
       </div> -->
     </a>
   </div>
@@ -778,7 +764,7 @@ LC53. 最大子数组和题目描述
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3hexo-deploy%E9%83%A8%E7%BD%B2%E5%90%8E%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98"><span class="toc-text">解决hexo deploy部署后自定义域名失效问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-text">解决方法</span></a></li></ol></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Android%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF%E2%80%94%E2%80%94HttpUrlConnection%E5%92%8COkHttp"><span class="toc-text">Android网络技术——HttpUrlConnection和OkHttp</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%B8%83%E5%B1%80%E8%AE%BE%E7%BD%AE"><span class="toc-text">一、布局设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82"><span class="toc-text">二、网络请求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-HttpURLConnection"><span class="toc-text">2.1 HttpURLConnection</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-OkHttp"><span class="toc-text">2.2 OkHttp</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="toc-text">三、完整代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-HttpURLConnection"><span class="toc-text">3.1 HttpURLConnection</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-OkHttp"><span class="toc-text">3.2 OkHttp</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%9D%83%E9%99%90%E7%94%B3%E8%AF%B7"><span class="toc-text">四、权限申请</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C"><span class="toc-text">五、运行结果</span></a></li></ol></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
